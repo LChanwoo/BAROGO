@@ -12,9 +12,9 @@
 	$(document).ready(function(){
 	});
 </script>
-<link rel="stylesheet" href="/css/hotel.css" />
+<link rel="stylesheet" href="css/hotel.css" />
 </head>
-<body style="background-image: URL(images/hotel.png); 
+<body style="background-image: URL(/images/hotel.png); 
 background-repeat: no-repeat;
 background-size: 100% 250px; 
  background-blend-mode: multiply;">

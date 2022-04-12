@@ -1,0 +1,354 @@
+@charset "UTF-8";
+
+/* hotel 페이지  */
+
+.search_bar{
+	width:1000px;
+	height:100px;
+	margin:0 auto;
+	margin-top : 25px; 
+	background-color: white;
+	justify-content:center;
+	align-items:center;
+	border: 1px rgba(0,0,0,0.1) solid;
+	border-radius: 30px;
+
+}
+.hotel_list{
+	width:1360px;
+	min-height:500px;
+	margin:0 auto;
+	margin-top:50px;
+	align-items:center;
+	border: 1px rgba(0,0,0,0.1) solid;
+	background-color: white;
+	border-radius: 30px;
+	display:flex;
+	flex-wrap: wrap;
+	align-content: stretch;
+	align-self: flex-start;
+
+	
+	
+}
+.hotel_list_infor{	
+/* 	position:relative; */
+	margin-top :20px ; 
+	margin-left :20px ; 
+	margin-bottom :20px ; 
+	width:240px;
+	min-height:300px;
+	max-height:500px;
+
+	display: flex;
+	flex-direction: column;
+	flex-grow:1;
+	align-items: stretch;
+	border-radius: 30px;
+	filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.5));
+
+}
+.hotel_list_infor_pic{/* 
+	background-color: red; */
+	background-image:url("/images/hotel111.jpg");
+	min-height:150px;
+	max-height:300px;
+	flex:1;
+	border: 1px rgba(0,0,0,0.1) solid;
+	border-radius: 16px 16px 0px 0px;
+	position:relative;
+	
+}
+.hotel_list_infor_contents{
+	position:relative;
+ 	background-color: white; 
+ 	flex:1;
+	border: 1px rgba(0,0,0,0.1) solid;
+	border-radius: 0px 0px 16px 16px ;
+}
+.hotel_list_infor_name{
+	border-top:1px rgba(0,0,0,0.3) solid;
+	border-bottom:1px rgba(0,0,0,0.3) solid;
+	        display: flex;
+        align-items: center;
+ 	background-color: white; 
+	height:30px;
+}
+.hotel_name{
+	margin-top:5px; 
+	margin-left:10px; 
+	
+}
+.hotel_list_infor_detail{
+	margin-top :10px ; 
+	margin-left :10px ;
+	margin-right :5px ;
+	overflow: visible;
+}
+.manage_hotel_list{
+	width:960px;
+	min-height:300px;
+	margin:0 auto;
+	margin-top:20px;
+	align-items:center;
+	border: 1px rgba(0,0,0,0.1) solid;
+	background-color: white;
+	border-radius: 30px;
+	display:flex;
+ 	flex-direction:column;
+	justify-content: flex-start;
+/*	flex-wrap: wrap; */
+
+}
+
+
+.manage_hotel_list_infor{	
+/* 	position:relative; */
+	margin:0;
+	margin-top :20px ; 
+	
+	margin-bottom :20px ; 
+	width:900px;
+	height:150px;
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	border-radius: 10px;
+	filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.5));
+}
+
+.manage_hotel_list_infor_pic{/* 
+	background-color: red; */
+	background-image:url("/images/hotel111.jpg");
+	background-size:cover;
+	min-height:60px;
+	flex:2;
+/* 	border: 1px rgba(0,0,0,0.1) solid; */
+	border-radius: 16px 0px 0px 16px;
+	position:relative;
+	
+	
+}
+.manage_hotel_list_infor_contents{
+	position:relative;
+ 	background-color: white; 
+ 	flex:8;
+	border: 1px rgba(0,0,0,0.1) solid;
+	border-radius: 0px 16px 16px 0px ;
+    text-decoration: none;
+    color: windowtext; 
+
+}
+.manage_hotel_ul{
+	padding:0;
+}
+.manage_hotel_list_infor_name{
+	/* border-top:1px rgba(0,0,0,0.3) solid; */
+	border-bottom:1px rgba(0,0,0,0.3) solid;
+    align-items: center;
+ 	background-color: white; 
+	height:30px;
+ 	border-radius: 0px 16px 0px 0px ; 
+}
+.manage_hotel_name{
+	margin-top:5px; 
+	margin-left:20px; 	
+
+}
+.manage_hotel_list_infor_detail{
+	margin-top :10px ; 
+	margin-left :10px ;
+	margin-right :5px ;
+	overflow: visible;
+}
+.page_name{
+	
+	margin-top:40px;
+	margin-left: 15%;
+	font-size: 30px;
+	font-weight: 600;
+}
+#add_hotel{
+	margin-bottom: -20px;
+	margin-left:800px;
+}
+#manage_hotel_list_pages{
+	color:black;
+	text-align: center;
+
+}
+.manage_hotel_list_page{
+	list-style-type: none;
+	float:left;
+	color:black;
+	margin-left:3px;
+	margin-right:3px;
+}
+
+
+
+
+/* hotel/manage/add page */ 
+#manage_hotel_add_form{
+	width:900px;
+	min-height:1000px;
+	margin-top:30px;
+	margin-bottom:30px;
+}
+.manage_hotel_add_form.textbox{
+	font-size:30px;
+	margin:0 auto;
+	margin-top:8px;
+	margin-bottom:4px;
+	width:800px;
+	min-height:60px;
+	background-color: white;
+	
+}
+.manage_hotel_add_form.textbox input[type="text"]{
+	font-size:14px;
+	font-weight:800;
+	width:300px;
+	height:30px;
+	/* background-color: white; */
+	background-color: rgb(233, 233, 233);
+/* 	border-width: 0px;
+	border-style: none; */
+	border:0;
+ 	border-bottom: 1px solid black;  
+	
+}
+.manage_hotel_add_form.textbox input[type="text"]:focus{
+	outline: none;
+}
+
+#manage_add_hotel{
+	margin-bottom:20px;
+	margin-left:800px;
+
+}
+.manage_hotel_add_question{
+	font-weight: 800;
+}
+.yet{
+	font-size: 10px;
+}
+.manage_hotel_add_question_s{
+	margin-top:10px;
+	font-size: 20px;
+	font-weight: 800;
+}
+.manage_hotel_add_answer_s{
+	font-size: 16px;
+	
+}
+.ml10{
+	margin-left: 10px;
+}
+.ml20{
+	margin-left: 20px;
+}
+.mr20{
+	margin-right: 20px;
+}
+.mt20{
+	margin-top: 20px;
+}
+.mb20{
+	margin-bottom: 20px;
+}
+.mb40{
+	margin-bottom: 40px;
+}
+.f-s16{
+	font-size:16px;
+}
+.manage_hotel_add_form.textbox .convenience{
+	display:flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+#roadAddrPart{
+	font-size: 12px;
+}
+#addrDetail{
+	font-size: 12px;
+}
+.textareas{
+	width:800px;
+	height:350px;
+	resize: none;
+	 font-size:14px;
+	 outline: none;
+	 
+}
+#hotel_rull{
+	width:800px;
+	height:200px;
+	 resize: none;
+	 font-size:14px;
+	 outline: none;
+}
+
+#add_abs_infor{
+	font-size:20px;
+	border:1px solid white;
+	border-radius:10px;
+	background-color: none;
+	text-align: center;
+}
+
+#add_abs_infor:hover{
+	font-size:20px;
+	border:1px solid black;
+	border-radius:15px;
+	background-color: none; 
+	transition: 0.25s;
+	letter-spacing: 2px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+#add_abs_infor:active{
+	transform: scale(1.5);
+}
+.abs_infor_room_infors{
+	font-size:14px;
+	border:1px solid black;
+	border-radius:5px; 
+	width:300px;
+}
+.abs_infor_room_infors_inner{
+
+	margin-left:20px;
+	margin-right:20px;
+	width:280px;
+}
+.room_bed_size{
+	margin-right: 5px;
+	width:50px;
+	text-align: center;
+	
+}
+.room_bed_qty{
+	margin-left:5px;
+	width:50px;
+	text-align: center;
+}
+.room_bed_qtyac:active{
+
+}
+.spacingtb10{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.roomtxt{
+	border:0;
+	border-bottom: 1px black solid;
+	outline: none;
+}
+.room_etc{
+	width:155px;
+}
+.abs_infor_room_infors input[type="text"]{
+	outline: none;
+}
