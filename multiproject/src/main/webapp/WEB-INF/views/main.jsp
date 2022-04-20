@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="jquery-3.6.0.min.js"></script>
-<script src="js/chatbot.js"></script>
+<script src="/jquery-3.6.0.min.js"></script>
+<script src="/js/chatbot.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 	});
@@ -20,8 +20,8 @@
 	<!-- end of header import -->
 	<hr>
 	<section>
-
-		<div>
+		
+		<div class="wrapper">
 			<h1>세션태그부터 입력하시면 됩니다</h1>
 		</div>
 	</section>

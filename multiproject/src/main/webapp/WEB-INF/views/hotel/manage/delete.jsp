@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="/jquery-3.6.0.min.js"></script>
-<script src="/js/hotel_managelist.js"></script>
+<script src="/js/hotel_manage_delete.js"></script>
 <script src="/js/chatbot.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -28,11 +28,16 @@ background-size: 100% 250px;
 			<h1>이곳에 검색창을 만들예정?</h1>
 		</div>
 		
-			<div class="page_name">My호텔관리</div>
+			<div class="page_name">My호텔삭제</div>
 		<div class="manage_hotel_list">
 			<ul class="manage_hotel_ul"></ul>
-			<button id="add_hotel" href="/hotel/manage/post">호텔추가 </button>
-			<ul id="manage_hotel_list_pages"></ul>
+			<button id="delete_hotel">삭제 </button>
+			<ul id="manage_hotel_list_pages">
+				<li class="manage_hotel_list_page"><a href="#">1</a></li>
+				<li class="manage_hotel_list_page"><a href="#">2</a></li>
+				<li class="manage_hotel_list_page"><a href="#">3</a></li>
+				<li class="manage_hotel_list_page"><a href="#">4</a></li>
+			</ul>
 		</div>
 	
 		

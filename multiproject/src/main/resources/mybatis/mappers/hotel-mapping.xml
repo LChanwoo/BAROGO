@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="hotel.HotelDAO" >
+	<select id="selectHotelid" parameterType="hotelpostdto" resultType="hotelpostdto">
+		select * from hotel_table  where business_id = #{business_id} order by hotel_id desc limit 1
+	</select>
+
+	<select id="selectHotelManageList" parameterType="hotelpostdto" resultType="hotelpostdto">
+		select * from hotel_table where business_id = #{business_id} order by hotel_id desc limit #{page},3 
+	</select>
+	<select id="selectHotelcount" parameterType="hotelpostdto" resultType="int">
+		select count(*) from hotel_table where business_id = #{business_id}
+	</select>
+	
+	
+	
+	<insert id="postHotel" parameterType="hotelpostdto" >
+		 insert into hotel_table(business_id,hotel_name,hotel_category,hotel_address1,hotel_address2,hotel_animal,hotel_phone,hotel_convenience,hotel_rule,hotel_detail_account) values(#{business_id},#{hotel_name},#{hotel_category},#{hotel_address1},#{hotel_address2},#{hotel_animal},#{hotel_phone},#{hotel_convenience},#{hotel_rule},#{hotel_detail_account})
+	</insert>
+	
+	<insert id="postHotelName" parameterType="hotelpostdto" >
+		 insert into hotel_table(hotel_name) values(#{hotel_name})
+	</insert> 
+	<insert id="postHotelRoom" parameterType="hotelroomdto" >
+		 insert into hotel_room_table(hotel_id,room_name,room_bed_size,room_bed_qty,room_price,room_etc) values(#{hotel_id},#{room_name},#{room_bed_size},#{room_bed_qty},#{room_price},#{room_etc})
+	</insert> 
+	<insert id="postHotelPicture" parameterType="hotelpostdto" >
+		 insert into hotel_picture(hotel_id,picture_path) values(#{hotel_id},#{picture_path})
+	</insert> 
+
+	<update id="updateHotelPicture" parameterType="hotelpostdto" >
+		UPDATE hotel_table SET hotel_picture = #{hotel_picture} WHERE hotel_id = #{hotel_id};
+
+	</update>
+
+
+
+
+</mapper>

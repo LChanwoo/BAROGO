@@ -11,7 +11,7 @@
     <footer>
 	<div style="display: scroll; position: fixed; bottom: 100px; right: 42px;">
 	<a href="#" title="맨위로">
-	<img style="width: 25px;" src="<c:url value='images/angleup.png' />" alt="맨위로">
+	<img style="width: 25px;" src="<c:url value='/images/angleup.png' />" alt="맨위로">
 	</a>
 	</div>
 </footer>

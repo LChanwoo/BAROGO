@@ -1,4 +1,12 @@
+	let hotel_category="호텔";
+	let hotel_animal = 0;
 
+	function getcategory(event) {
+		hotel_category = event.target.value;
+	}
+	function getanimal(event) {
+		hotel_animal = event.target.value;
+	}
 	function goPopup(){
 		// 호출된 페이지(jusoPopup.jsp)에서 실제 주소검색URL(https://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
 		var pop = window.open("/hotel/manage/jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
@@ -19,23 +27,114 @@
 			var i =document.createElement('div');
 			i.setAttribute('class','abs_infor_room_infors')
 			i.innerHTML='<div class="abs_infor_room_infors_inner spacingtb10">'
-			+'	<div>룸 이름 : <input text=text class="room_name spacingtb10 roomtxt" value="ex)일반실, 특실"></div>'
-			+'	<div>침대 크기/수량 : <input text=text class="room_bed_size spacingtb10 roomtxt" value="ex)1인" >/<input text=text class="room_bed_qty roomtxt" value="ex)2개"></div>'
+			+'	<div>룸 이름 : <input text=text class="room_name spacingtb10 roomtxt"></div>'
+			+'	<div>침대 크기/수량 : <input text=text class="room_bed_size spacingtb10 roomtxt" >/<input text=text class="room_bed_qty roomtxt" ></div>'
+			+'	<div>가격 : <input text=text class="room_price spacingtb10 roomtxt" >'
 			+'	<div>기타 사항 : <input text=text class="room_etc spacingtb10 roomtxt" ></div>'
 			+'</div>';
 			var addressContainer = document.getElementsByClassName("abs_infor")[0];
 			addressContainer.appendChild(i);
+	};
+		const abs_delete =function(){
+			var select = document.getElementById('abs_infor');
+			if(select.lastChild===null) return;
+			select.removeChild(select.lastChild);
 		};
+
+
+
 $(document).ready(function () {
 	document.getElementById("roadAddrPart").onclick=function(){	goPopup();};  
-	document.getElementById("add_abs_infor").onclick=function(){ abs_add(); };  
-	// $.ajax({
-	// 		url : '/hotel/manage/jusoPopup' ,
-	// 		data : {'str':'str2'},
-	// 		type : 'post',
-	// 		dataType : 'json',
-	// 		success : function(respond){
-	// 		   alert("s");
-	// 		}
-	// }); 
+	document.getElementById("add_abs_infor").onclick=function(){ abs_add();};  
+	document.getElementById("delete_abs_infor").onclick=function(){ abs_delete();};  
+
+	
+	document.getElementById("manage_add_hotel").onclick=function(){
+		if(document.getElementById("hotel_names").value==''){alert('호텔명을 입력하세요.');return;}
+		const hotel_address1=document.getElementById('roadAddrPart').value+"";
+		const hotel_address2=document.getElementById('addrDetail').value+"";
+		if(hotel_address1==null || hotel_address2==null || hotel_address1=='주소를 입력해주세요.'|| hotel_address2=='상세주소를 입력해주세요.'){
+			alert('주소를 확인해주세요');
+			return;
+		}
+		console.log(hotel_address2);
+		const hotel_name= document.getElementById("hotel_names").value +"";
+		const hotel_phone = document.getElementById("hotel_phone1").value + "-" + document.getElementById("hotel_phone2").value + "-"+ document.getElementById("hotel_phone3").value
+		let hotel_convenience = '';
+		const h_convenience_array=document.querySelectorAll('.h_convenience');
+		for(var i=0;i<h_convenience_array.length;i++){
+			if(h_convenience_array.item(i).checked){
+				hotel_convenience +=  h_convenience_array[i].value+',';
+			}
+
+			if(h_convenience_array.length-1==i){
+				console.log(hotel_convenience);
+			}
+		}
+		const hotel_room_name=document.querySelectorAll(".room_name");
+		const hotel_room_bed_size=document.querySelectorAll(".room_bed_size");
+		const hotel_room_bed_qty=document.querySelectorAll(".room_bed_qty");
+		const hotel_room_price=document.querySelectorAll(".room_price");
+		const hotel_room_etc=document.querySelectorAll(".room_etc");
+
+		let hotel_room='['
+		for(var i=0;i<hotel_room_name.length;i++){
+				if(hotel_room_name[i].value==""||hotel_room_bed_size[i].value==""||hotel_room_bed_qty[i].value==""||hotel_room_price[i].value==""){
+					alert("ROOM 정보 입력내용을 확인하세요");	
+					return;
+				}
+				hotel_room +='{ \"room_name\" : \"'+ hotel_room_name[i].value+'\" ,'
+				+' \"room_bed_size\" : \"'+ hotel_room_bed_size[i].value+'\" ,'
+				+' \"room_bed_qty\" : \"'+ hotel_room_bed_qty[i].value+'\" ,'
+				+' \"room_price\" : \"'+ hotel_room_price[i].value+'\" ,'
+				+' \"room_etc\" : \"'+ hotel_room_etc[i].value+'\" '
+				;
+
+			if(hotel_room_name.length-1==i){
+				hotel_room += '}'
+			}
+			else{
+				hotel_room +='} ,';
+			}
+		}
+		hotel_room+=']';
+		console.log(hotel_room);
+		const hotel_rule=document.getElementById("hotel_rull").value +"";
+		const hotel_detail_account=document.getElementById("detail_infor").value +"";
+		console.log(hotel_rule);
+		console.log(hotel_detail_account);
+		const x=document.querySelectorAll("#image_preview img");
+		if(x[0]!=null){
+		var pictureList = new Array() ;
+		 for(var i=0; i<x.length; i++){
+			 var data = new Object() ; 
+			 data.path = x[i].getAttribute("id"); 
+			 pictureList.push(data) ; 
+		}
+			 var picture_jsonData = JSON.stringify(pictureList) ; 
+		}
+		$.ajax({
+				url : '/hotel/manage/post' ,
+				data : {'hotel_name':hotel_name,
+						'hotel_category':hotel_category,
+						'hotel_address1':hotel_address1,
+						'hotel_address2':hotel_address2+"",
+						'hotel_phone':hotel_phone,
+						'hotel_animal':hotel_animal,
+						'hotel_convenience':hotel_convenience,
+						'hotel_room':hotel_room,
+						'hotel_rule':hotel_rule,
+						'hotel_detail_account':hotel_detail_account,
+						'hotel_picture':picture_jsonData
+					},
+				type : 'post',
+				dataType : 'json',
+				traditional:true,
+				success : function(respond){
+				   alert("등록이 완료되었습니다");
+					window.location.href="/hotel/manage?page=1";
+				}
+		}); 
+	};
+
 });

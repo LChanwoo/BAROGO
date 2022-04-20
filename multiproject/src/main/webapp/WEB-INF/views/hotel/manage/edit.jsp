@@ -9,6 +9,7 @@
 <script src="/jquery-3.6.0.min.js"></script>
 <script src="/js/hotel_manage_add.js"></script>
 <script src="/js/chatbot.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 	});
@@ -28,13 +29,13 @@ background-size: 100% 250px;
 			<h1>이곳에 검색창을 만들예정?</h1>
 		</div>
 		
-			<div class="page_name">My호텔추가</div>
+			<div class="page_name">My호텔수정</div>
 		<div class="manage_hotel_list">
 			<div id="manage_hotel_add_form">
 				<div class="manage_hotel_add_form textbox">
 					<span  class="manage_hotel_add_question">호텔명</span>
 						<div>
-							 <input type="text"  class="txt" name="hotel_name">
+							 <input type="text"  class="txt" name="hotel_name" readonly="readonly">
 						 </div>
 				</div>
 				<div class="manage_hotel_add_form textbox">
@@ -44,7 +45,7 @@ background-size: 100% 250px;
 						<input type="radio" name="category" value="hotel"> 호텔
 						<input type="radio" name="category" value="motel"> 모텔
 						<input type="radio" name="category" value="pension"> 펜션
-						<input type="radio" name="category" value="pension"> 기타
+						<input type="radio" name="category" value="etc"> 기타
 						</div>
 					</div>
 				</div>
@@ -110,16 +111,8 @@ background-size: 100% 250px;
 					</div>
 				</div>
 				<div class="manage_hotel_add_form textbox">
-					<span class="manage_hotel_add_question">요약정보</span><button id="add_abs_infor" class="ml20 mr20" >+</button><span class="yet">이 안에, 방 종류, 욕실 수, 침대 수, 가격 등의 정보를 넣을 예정</span>
-					<div class="abs_infor">
-
-							<div class="abs_infor_room_infors">
-								<div class="abs_infor_room_infors_inner spacingtb10">
-									<div>룸 이름 : <input text=text class="room_name spacingtb10 roomtxt" value="ex)일반실, 특실"></div>
-									<div>침대 크기/수량 : <input text=text class="room_bed_size spacingtb10 roomtxt" value="ex)1인" >/<input text=text class="room_bed_qty roomtxt" value="ex)2개"></div>
-									<div>기타 사항 : <input text=text class="room_etc spacingtb10 roomtxt" ></div>
-								</div>
-							</div>
+					<span class="manage_hotel_add_question">요약정보</span><button id="add_abs_infor" class="ml20 mr20" >+</button><button id="delete_abs_infor" class=" mr20" >-</button><span class="yet">이 안에, 방 종류, 욕실 수, 침대 수, 가격 등의 정보를 넣을 예정</span>
+					<div class="abs_infor" id="abs_infor">
 
 					</div>
 				</div>
@@ -137,17 +130,40 @@ background-size: 100% 250px;
 					</div>
 				</div>
 				<div class="manage_hotel_add_form textbox">
-					<span class="manage_hotel_add_question">사진업로드</span> <input type="file"  class="file" name="picture_upload">
-				<span class="yet">사진업로드기능 추가예정</span>
+					<span class="manage_hotel_add_question">사진</span> <label className="input-file-button" class="input-file-button" for="btnAtt"> 업로드</label>
+					  <div id='image_preview'>
+					    <input type='file' id='btnAtt' multiple='multiple' style={{display:none}} />
+					    <div id='att_zone' data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
+					  </div>
+<!-- 					<input type="file"  class="file" name="picture_upload">
+ 					<form action="fileupload" method="post" enctype="multipart/form-data">
+						<div id="upload_picture">
+							<div class="form-groups">
+								 <label for="Inputpicture">파일첨부</label> 
+								 <input id="fileInput" type="file">
+							</div> 
+						</div>
+					</form>
+					<form name="frm" id="frm" method="post" enctype="multipart/form-data">
+					
+					    <div class="round photo profile-pic"  id="profile-pic" class="profile-pic" style="background-image: url(/images/hotel111.jpg); ">
+					        <div class="icon_camera">
+					            <button class="upload-button" >+</button>
+					            <input class="file-upload hotel_picures" type="file" accept="image/*" id="g_img[]" name="g_img[]"/>
+					        </div>
+					    </div>
+					
+					</form> -->
+					<div id="picture_views"></div>
 				</div>
-				
+							
 			</div>
 			<button id="manage_add_hotel" >호텔추가 </button>
 		</div>
 	
 		
 	</section>
-
+<script src="/js/hotel_manage_add_picture.js"></script>
 	<!-- footer import -->
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	<!-- end of footer import -->
