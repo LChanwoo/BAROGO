@@ -9,7 +9,7 @@ $(document).ready(function () {
 	console.log(page);
 	const makelist=function(){
 		var i =document.createElement('li');
-		i.innerHTML='<a class="manage_hotel_list_infor" href="/Hotel">'
+		i.innerHTML='<a class="manage_hotel_list_infor goedit" >'
 		+'	<div class="manage_hotel_list_infor_pic_div"><img class="manage_hotel_list_infor_pic"/></div>'
 		+'	<div class="manage_hotel_list_infor_contents">'
 		+'		<div class="manage_hotel_list_infor_name">'
@@ -57,9 +57,12 @@ $(document).ready(function () {
 				const hotelname= document.getElementsByClassName("manage_hotel_list_infor_name")[i];
 				const pic_url= document.getElementsByClassName("manage_hotel_list_infor_pic")[i];
 				const contents= document.getElementsByClassName("manage_hotel_list_infor_detail")[i];
+				const edithref = document.getElementsByClassName("goedit")[i];
+				console.log(respond[i].hotel_id);
+				edithref.setAttribute("href","/hotel/manage/edit/"+respond[i].hotel_id);
+				
 				hotelname.innerHTML = respond[i].hotelname;
 				console.log(respond[i].pic_url);
-				// pic_url.style.backgroundImage='url("'+ '/upload/hotel/example/example+(554e08ba-4ce8-4041-b186-62bfb7af7485).jpg'+'")';
 				pic_url.setAttribute("src",respond[i].pic_url);
 				contents.innerHTML = respond[i].contents;
 		   } 

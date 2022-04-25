@@ -31,101 +31,14 @@ background-size: 100% 250px;
 		</div>
 		<div class="hotel_list">
 		
-			<div class="hotel_list_infor" src="/Market">
-				<div class="hotel_list_infor_pic"></div>
-				<div class="hotel_list_infor_contents">
-					<div class="hotel_list_infor_name">
-						<span class="hotel_name">하얏트호텔</span>
-						<div class="hotel_reservation_button"></div>
-						</div>
-					<div class="hotel_list_infor_detail">
-						최대 인원 2명 침실 1개 침대 1개 
-					</div>
-				</div>
-			</div>			
-			<div class="hotel_list_infor">
-				<div class="hotel_list_infor_pic"></div>
-				<div class="hotel_list_infor_contents">
-					<div class="hotel_list_infor_name">
-						<span class="hotel_name">하얏트호텔</span>
-						<div class="hotel_reservation_button"></div>
-						</div>
-					<div class="hotel_list_infor_detail">
-						최대 인원 2명 침실 1개 침대 1개 
-						최대 인원 2명 침실 1개 침대 1개 
-						최대 인원 2명 침실 1개 침대 1개 
-						최대 인원 2명 침실 1개 침대 1개 
-						최대 인원 2명 침실 1개 침대 1개 
-						최대 인원 2명 침실 1개 침대 1개 
-					</div>
-				</div>
-			</div>
-						<div class="hotel_list_infor">
-				<div class="hotel_list_infor_pic"></div>
-				<div class="hotel_list_infor_contents">
-					<div class="hotel_list_infor_name">
-						<span class="hotel_name">하얏트호텔</span>
-						<div class="hotel_reservation_button"></div>
-						</div>
-					<div class="hotel_list_infor_detail">
-						최대 인원 2명 침실 1개 침대 1개 
-					</div>
-				</div>
-			</div>
-						<div class="hotel_list_infor">
-				<div class="hotel_list_infor_pic"></div>
-				<div class="hotel_list_infor_contents">
-					<div class="hotel_list_infor_name">
-						<span class="hotel_name">하얏트호텔</span>
-						<div class="hotel_reservation_button"></div>
-						</div>
-					<div class="hotel_list_infor_detail">
-						최대 인원 2명 침실 1개 침대 1개 
-					</div>
-				</div>
-			</div>
-						<div class="hotel_list_infor">
-				<div class="hotel_list_infor_pic"></div>
-				<div class="hotel_list_infor_contents">
-					<div class="hotel_list_infor_name">
-						<span class="hotel_name">하얏트호텔</span>
-						<div class="hotel_reservation_button"></div>
-						</div>
-					<div class="hotel_list_infor_detail">
-						최대 인원 2명 침실 1개 침대 1개 
-					</div>
-				</div>
-			</div>
-						<div class="hotel_list_infor">
-				<div class="hotel_list_infor_pic"></div>
-				<div class="hotel_list_infor_contents">
-					<div class="hotel_list_infor_name">
-						<span class="hotel_name">하얏트호텔</span>
-						<div class="hotel_reservation_button"></div>
-						</div>
-					<div class="hotel_list_infor_detail">
-						최대 인원 2명 침실 1개 침대 1개 
-					</div>
-				</div>
-			</div>
-									<div class="hotel_list_infor">
-				<div class="hotel_list_infor_pic"></div>
-				<div class="hotel_list_infor_contents">
-					<div class="hotel_list_infor_name">
-						<span class="hotel_name">하얏트호텔</span>
-						<div class="hotel_reservation_button"></div>
-						</div>
-					<div class="hotel_list_infor_detail">
-						최대 인원 2명 침실 1개 침대 1개 
-					</div>
-				</div>
-			</div>
+
 		</div>
 		
 	</section>
 
 	<!-- footer import -->
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
+	<script src="/js/hotel_list.js"></script>
 	<!-- end of footer import -->
 </body>
 

@@ -38,5 +38,11 @@ public class HotelPictureDTO {
 		this.picture_id = picture_id;
 		this.picture_path = picture_path;
 	}
+
+	@Override
+	public String toString() {
+		return "HotelPictureDTO [hotel_id=" + hotel_id + ", picture_id=" + picture_id + ", picture_path=" + picture_path
+				+ "]";
+	}
 	
 }

@@ -7,6 +7,9 @@
 <typeAliases>
 	<typeAlias type="hotel.HotelPostDTO" alias="hotelpostdto"/>
 	<typeAlias type="hotel.HotelRoomDTO" alias="hotelroomdto"/>
+	<typeAlias type="hotel.HotelPictureDTO" alias="hotelpicturedto"/>
+	<typeAlias type="hotel.HotelceoDTO" alias="hotelceodto"/>
+	<typeAlias type="hotel.HotelReservationDTO" alias="hotelreservationdto"/>
 </typeAliases>
 
 

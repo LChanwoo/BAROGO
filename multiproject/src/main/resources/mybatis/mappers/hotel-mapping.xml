@@ -3,8 +3,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="hotel.HotelDAO" >
+	<select id="selectHotelpagelist" parameterType="int" resultType="hotelpostdto">
+		select hotel_id, hotel_name, hotel_address1,hotel_address2,hotel_phone,hotel_picture from hotel_table where business_id not in( 'null') order by hotel_id desc limit #{page},15
+	</select>
 	<select id="selectHotelid" parameterType="hotelpostdto" resultType="hotelpostdto">
 		select * from hotel_table  where business_id = #{business_id} order by hotel_id desc limit 1
+	</select>
+	<select id="selectHotelhid" parameterType="hotelpostdto" resultType="hotelpostdto">
+		select * from hotel_table  where hotel_id = #{hotel_id} order by hotel_id desc limit 1
 	</select>
 
 	<select id="selectHotelManageList" parameterType="hotelpostdto" resultType="hotelpostdto">
@@ -13,7 +19,34 @@
 	<select id="selectHotelcount" parameterType="hotelpostdto" resultType="int">
 		select count(*) from hotel_table where business_id = #{business_id}
 	</select>
+	<select id="selectHotelceobyhids" parameterType="String" resultType="hotelceodto">
+		select * from is_business_id where business_id = #{business_id}
+	</select>
+	<select id="selectHotelRoombyhids" parameterType="String" resultType="hotelroomdto">
+		select * from hotel_room_table where hotel_id = #{hotel_id}
+	</select>
+	<select id="selectHotelRoombyhid" parameterType="hotelpostdto" resultType="hotelroomdto">
+		select * from hotel_room_table where hotel_id = #{hotel_id}
+	</select>
+	<select id="selectHotelPicturebyhid" parameterType="hotelpostdto" resultType="hotelpicturedto">
+		select * from hotel_picture where hotel_id = #{hotel_id}
+	</select>
+	<select id="selectHotelPicturebyhids" parameterType="String" resultType="hotelpicturedto">
+		select * from hotel_picture where hotel_id = #{hotel_id}
+	</select>
+	<select id="selectHotelbyhids" parameterType="String" resultType="hotelpostdto">
+		select * from hotel_table where hotel_id = #{hotel_id}
+	</select>
+	<select id="selectReservationsbyuids" parameterType="String" resultType="hotelreservationdto">
+		select * from hotel_reservation where user_id = #{user_id}  order by reservation_id desc
+	</select>
+	<select id="selectReservationsbybids" parameterType="String" resultType="hotelreservationdto">
+		select * from hotel_reservation where business_id = #{business_id} order by reservation_id desc
+	</select>
 	
+	<select id="isBusinessId" parameterType="String" resultType="int">
+		select count(*) from is_business_id where business_id = #{business_id};
+	</select>
 	
 	
 	<insert id="postHotel" parameterType="hotelpostdto" >
@@ -29,12 +62,47 @@
 	<insert id="postHotelPicture" parameterType="hotelpostdto" >
 		 insert into hotel_picture(hotel_id,picture_path) values(#{hotel_id},#{picture_path})
 	</insert> 
+	
+	<insert id="addceo" parameterType="hotelceodto" >
+		 insert is_business_id values(#{business_id},#{profile_picture},#{profile_text},#{business_registration})
+	</insert>
+	<insert id="postReservation" parameterType="hotelreservationdto" >
+		 insert into hotel_reservation(hotel_id,hotel_name,business_id,user_id,start_date,end_date,payment,regist_time) values(#{hotel_id},#{hotel_name},#{business_id},#{user_id},#{start_date},#{end_date},#{payment},#{regist_time})
+	</insert>
 
 	<update id="updateHotelPicture" parameterType="hotelpostdto" >
 		UPDATE hotel_table SET hotel_picture = #{hotel_picture} WHERE hotel_id = #{hotel_id};
 
 	</update>
+	
+	<update id="updateReservationCancle" parameterType="String" >
+		UPDATE hotel_reservation SET confirm = "취소됨" WHERE reservation_id = #{reservation_id};
 
+	</update>
+	
+	<update id="updateReservationConfirm" parameterType="String" >
+		UPDATE hotel_reservation SET confirm = "예약승인" WHERE reservation_id = #{reservation_id};
+	</update>
+	
+	<update id="updateHotel" parameterType="hotelpostdto" >
+		 update hotel_table set hotel_category = #{hotel_category},hotel_address1= #{hotel_address1},hotel_address2 =#{hotel_address2},hotel_animal=#{hotel_animal}
+		 ,hotel_phone=#{hotel_phone},hotel_convenience=#{hotel_convenience},hotel_rule=#{hotel_rule},hotel_detail_account=#{hotel_detail_account} WHERE hotel_id = #{hotel_id};
+	</update>
+	<delete id="deleteHotel" parameterType="String" >
+		DELETE FROM hotel_table WHERE hotel_id = #{hotel_id}
+	</delete>
+	<delete id="deleteHotelROOMbyString" parameterType="String" >
+		DELETE FROM hotel_room_table WHERE hotel_id = #{hotel_id}
+	</delete>
+	<delete id="deleteHotelPicturebyString" parameterType="String" >
+		DELETE FROM hotel_picture WHERE hotel_id = #{hotel_id}
+	</delete>
+	<delete id="deleteHotelROOM" parameterType="hotelpostdto" >
+		DELETE FROM hotel_room_table WHERE hotel_id = #{hotel_id}
+	</delete>
+	<delete id="deleteHotelPicture" parameterType="hotelpostdto" >
+		DELETE FROM hotel_picture WHERE hotel_id = #{hotel_id}
+	</delete>
 
 
 

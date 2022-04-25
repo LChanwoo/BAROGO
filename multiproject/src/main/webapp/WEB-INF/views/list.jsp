@@ -32,7 +32,9 @@ background-size: 100% 250px;
 		<div class="hotel_list">
 		
 			<div class="hotel_list_infor" src="/Market">
-				<div class="hotel_list_infor_pic"></div>
+				<div class="hotel_list_infor_pic">
+					<img class="hotel_list_infor_pic_img" src="/images/hotel111.jpg">
+				</div>
 				<div class="hotel_list_infor_contents">
 					<div class="hotel_list_infor_name">
 						<span class="hotel_name">하얏트호텔</span>
@@ -44,7 +46,7 @@ background-size: 100% 250px;
 				</div>
 			</div>			
 			<div class="hotel_list_infor">
-				<div class="hotel_list_infor_pic"></div>
+				<div class="hotel_list_infor_pic"><img class="hotel_list_infor_pic_img" src="/images/hotel111.jpg"></div>
 				<div class="hotel_list_infor_contents">
 					<div class="hotel_list_infor_name">
 						<span class="hotel_name">하얏트호텔</span>

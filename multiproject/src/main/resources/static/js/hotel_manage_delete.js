@@ -1,43 +1,114 @@
 let deleteChk= new Array();
+
 const listarr = new Array();
 const makelist=function(e){
 	var i =document.createElement('li');
-	i.innerHTML='<div class="manage_hotel_list_infor" id="list_infor'+e+'" for="checkbox_infor'+e+'" ><input type:"checkbox" class="delete_checkbox" id="checkbox_infor'+e+'">'
-	+'	<div class="manage_hotel_list_infor_pic"></div>'
+	i.setAttribute("class","delete_list");
+	i.setAttribute("readonly","readonly");
+	i.setAttribute("onfocus","this.blur()");
+	i.innerHTML='<a class="manage_hotel_list_infor goedit" id="goedit'+e+'"><div class ="hid_id" id="hid'+e+'" hidden ></div>'
+	+'	<div class="manage_hotel_list_infor_pic_div"><img class="manage_hotel_list_infor_pic"/></div>'
 	+'	<div class="manage_hotel_list_infor_contents">'
-	+'		<div class="manage_hotel_list_infor_name">'
-	+'			<span class="manage_hotel_name"></span>'
+	+'		<div class="manage_hotel_list_infor_name " readonly>'
+	+'			<span class="manage_hotel_name" readonly></span>'
 	+'		</div>'
-	+'		<div class="manage_hotel_list_infor_detail"></div>'
-	+'	</div></div>';
+	+'		<div class="manage_hotel_list_infor_detail" readonly></div>'
+	+'	</div></a>';
 	var addressContainer = document.getElementsByClassName("manage_hotel_ul")[0];
 
 	listarr[e]=addressContainer.appendChild(i);
 };
 
-$(document).ready(function () {
-	document.getElementById("delete_hotel").onclick=function(){
-		if(deleteChk[0].checked||deleteChk[1].checked||deleteChk[2].checked){
+document.getElementById("delete_hotel").onclick=function(){
+
+	let delete_member = document.querySelectorAll(".delete_member");
+	let deleteid=new Array();
+	let str="";
+	let count = 0;
+	let bbbtn = new Promise(function (resolve, reject) { 
+		for(var i=0; i<delete_member.length;i++){
+			deleteid[i]=delete_member[i].getElementsByClassName("hid_id")[0].innerHTML;
+			console.log(deleteid[i]);
+				 str+=deleteid[i];
+				 console.log(str);
+				 count++;
+		}
+	if(count==0){		
+		alert("삭제할 항목을 선택해주세요.");
+		return;
+	}
+	else{
+
 		let conf = confirm("정말로 삭제하시겠습니까?");
 		if(conf){
 			$.ajax({
 				url : '/hotel/manage/delete' ,
-				data : {'str':'str2'},
+				data : {'delete_id':str},
 				type : 'post',
 				dataType : 'json',
 				success : function(respond){
-					 
+					console.log("삭제가 완료되었습니다.");
 					window.location.href="/hotel/manage/delete";
 					}
 				}); 
+		}
+	}
+	});
+	// 	bbbtn.then(() => {
 		
-		}
-		}
-	};
+	//   }).catch(() => {
+	// 	// catch 는 위의 코드가 실패 했을 경우 실행 하는 code
+	// 	console.log("s");
+	//   })
+	// if(deleteid[0]==null&&deleteid[1]==null&&deleteid[2]==null ){
+	// 	let conf = confirm("정말로 삭제하시겠습니까?");
+	// 	if(conf){
+	// 		$.ajax({
+	// 			url : '/hotel/manage/delete' ,
+	// 			data : {'str':'str2'},
+	// 			type : 'post',
+	// 			dataType : 'json',
+	// 			success : function(respond){
+					
+	// 				window.location.href="/hotel/manage/delete";
+	// 				}
+	// 			}); 
+		
+	// 	}
+	// }
+};
 
+$(document).ready(function () {
+	const urlParams = new URL(location.href).searchParams;
+	let page = urlParams.get('page');
+	if(page==null){
+		page=1;
+	}
+	const makepage=function(e){
+		//<li class='manage_hotel_list_page'><a href=/hotel/manage?page=1>1</a></li>
+		var i =document.createElement('li');
+		i.setAttribute("class",'manage_hotel_list_page');
+		i.innerHTML='<a href=/hotel/manage/delete?page='+e+'>'+e+'</a>';
+		var addressContainer = document.getElementById("manage_hotel_list_pages");
+		addressContainer.appendChild(i);
+	}
+	$.ajax({
+		url : '/hotel/manage/getcount' ,
+		data : {'page':1},
+		type : 'post',
+		dataType : 'json',
+		success : function(respond){
+		   for(let i=1;i<= parseInt(respond.count/3+1);i++){
+				makepage(i);
+
+		   } 
+		   
+		}
+}); 
+	
 	$.ajax({
 		url : '/hotel/manage' ,
-		data : {'str':'str2'},
+		data : {'page':page},
 		type : 'post',
 		dataType : 'json',
 		success : function(respond){
@@ -46,21 +117,25 @@ $(document).ready(function () {
 				   const hotelname= document.getElementsByClassName("manage_hotel_list_infor_name")[i];
 				   const pic_url= document.getElementsByClassName("manage_hotel_list_infor_pic")[i];
 				   const contents= document.getElementsByClassName("manage_hotel_list_infor_detail")[i];
+				   const sethid = document.getElementById("hid"+i);
 				   hotelname.innerHTML = respond[i].hotelname;
 				   pic_url.style.backgroundImage='url("'+respond[i].pic_url +'")';
 				   contents.innerHTML = respond[i].contents;
 				   listarr[i]=document.getElementById('list_infor'+i+'"');
-				   document.getElementById('list_infor'+i).onclick=function(){
-					   if(document.getElementById('checkbox_infor'+i).getAttribute("checked")=="checked"){
-						   document.getElementById('checkbox_infor'+i).removeAttribute("checked");
-						   document.getElementById('list_infor'+i).setAttribute("class","manage_hotel_list_infor");
+				   sethid.innerHTML=respond[i].hotel_id;
+				   console.log(sethid);
+				   document.getElementsByClassName('delete_list')[i].onclick=function(){
+					   if(document.getElementById('goedit'+i).getAttribute("checked")=="checked"){
+						   document.getElementById('goedit'+i).removeAttribute("checked");
+						   document.getElementById('goedit'+i).setAttribute("class","manage_hotel_list_infor");
 						}
 						else{
-						   document.getElementById('checkbox_infor'+i).setAttribute("checked","checked");
-						   document.getElementById('list_infor'+i).setAttribute("class","manage_hotel_list_infor checked");
+						   document.getElementById('goedit'+i).setAttribute("checked","checked");
+						   document.getElementById('goedit'+i).setAttribute("class","manage_hotel_list_infor checked delete_member");
 					   }
 					};
-					deleteChk[i] = document.getElementById('checkbox_infor'+i);
+
+
 				}
             }
 		}); 

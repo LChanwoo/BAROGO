@@ -82,11 +82,53 @@ $(document).ready(function () {
 
             reader.onload = function (e) {
                 $('.profile-pic').attr('src', e.target.result);
+				var form = new FormData();
+				form.append( "file1", input.files[0] );
+
+				jQuery.ajax({
+					url : "/hotel/manage/upload"
+				  , type : "post"
+				  , processData : false
+				  , contentType : false
+				  , data : form
+				  , dataType : 'json'
+				  , enctype :'multipart/form-data'	   
+				  , success:function(response) {
+					  console.log(response.path);
+					  document.querySelectorAll('.profile-pic')[0].setAttribute("id",response.path);
+				  }
+			  });
             }
     
             reader.readAsDataURL(input.files[0]);
         }
     }
+
+	var readURLBR = function(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function (e) {
+					var form = new FormData();
+					form.append( "file1", input.files[0] );
+					jQuery.ajax({
+						url : "/hotel/manage/upload"
+					  , type : "post"
+					  , processData : false
+					  , contentType : false
+					  , data : form
+					  , dataType : 'json'
+					  , enctype :'multipart/form-data'	   
+					  , success:function(response) {
+						  console.log(response.path);
+						  document.querySelectorAll('.brid')[0].setAttribute("id",response.path);
+					  }
+				  });
+				}
+		
+				reader.readAsDataURL(input.files[0]);
+			}
+	};
+
 	document.getElementById("brup").onchange =function(){
 		let x=(String)(document.getElementById("brup").value);
 		const s = x.lastIndexOf("\\");
@@ -96,6 +138,10 @@ $(document).ready(function () {
 
 	}
 
+	$("#brup").on('change', function(){
+		readURLBR(this);		
+	});
+
     $(".file-upload").on('change', function(){
         readURL(this);
     });
@@ -104,9 +150,25 @@ $(document).ready(function () {
        $(".file-upload").click();
     });
 	document.getElementById("manage_add_ceo").onclick=function(){
-		if(cert_ok&&business_reg_ok){
-			alert("등록이 완료되었습니다.");
-			window.location.href="/hotel/manage";
+		 if(cert_ok&&business_reg_ok){
+			const business_id=document.getElementById("business_id").innerHTML;
+			const profile_picture=document.getElementsByClassName("profile-pic")[0].getAttribute("id");
+			const profile_text=document.getElementById("self-introduce_text").value;
+			const business_registration = document.getElementsByClassName('brid')[0].getAttribute("id");
+				$.ajax({
+					url : '/hotel/manage/joinceo' ,
+					data : {'business_id':business_id
+							,'profile_picture':profile_picture
+							,'profile_text':profile_text
+							,'business_registration':business_registration
+						},
+					type : 'post',
+					dataType : 'json',
+					success : function(respond){
+						alert("사업자 등록이 완료되었습니다.");
+						window.location.href="/hotel/manage";
+						}
+					}); 
 		}
 		else{
 			alert("모든 항목을 입력해 주세요.");
@@ -115,3 +177,4 @@ $(document).ready(function () {
 
 			
 });
+

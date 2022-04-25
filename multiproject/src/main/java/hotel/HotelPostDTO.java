@@ -19,6 +19,19 @@ public class HotelPostDTO {
 
 	
 
+	@Override
+	public String toString() {
+		return "HotelPostDTO [hotel_id=" + hotel_id + ", business_id=" + business_id + ", hotel_name=" + hotel_name
+				+ ", hotel_category=" + hotel_category + ", hotel_address1=" + hotel_address1 + ", hotel_address2="
+				+ hotel_address2 + ", hotel_phone=" + hotel_phone + ", hotel_animal=" + hotel_animal
+				+ ", hotel_convenience=" + hotel_convenience + ", hotel_room=" + hotel_room + ", hotel_rule="
+				+ hotel_rule + ", hotel_detail_account=" + hotel_detail_account + ", hotel_picture=" + hotel_picture
+				+ ", page=" + page + "]";
+	}
+
+
+
+
 	public int getPage() {
 		return page;
 	}

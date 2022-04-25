@@ -2,6 +2,7 @@ package upload;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
@@ -9,6 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -21,14 +23,18 @@ import org.springframework.web.multipart.MultipartFile;
 public class UploadController {
 	@ResponseBody
 	@RequestMapping(value="/hotel/manage/upload", method = RequestMethod.POST)
-	public ImageDTO uploadresult(MultipartFile file1, HttpSession session) throws IOException{
+	public ImageDTO uploadresult(MultipartFile file1, HttpSession session , HttpServletResponse response) throws Exception{
 		System.out.println("upload");
 		MultipartFile mf1 = file1;
 		String loginid = (String)session.getAttribute("loginid");
+		try {
 		System.out.println(mf1.getOriginalFilename());
 		System.out.println(mf1.getSize()); 
 		System.out.println(mf1.isEmpty());
-
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 		String savePath = "c:/upload/hotel/"+loginid;
 		try {
 		Path hotelPath = Paths.get("c:/upload/hotel/");
@@ -62,5 +68,17 @@ public class UploadController {
 		
 		return img;
 	}
-
+	private void logincheker(HttpSession session, HttpServletResponse response){
+		if(session.getAttribute("loginid")==null) {
+			try {
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('잘못된 접근입니다.'); location.href='/main/';</script>");
+			out.flush();
+			}catch (Exception e) {}
+			
+		}else {
+			session.setAttribute("loginid", session.getAttribute("loginid"));
+		}
+	}
 }

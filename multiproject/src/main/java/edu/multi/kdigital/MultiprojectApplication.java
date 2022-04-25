@@ -6,13 +6,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 import hotel.HotelDAO;
-import hotel.hotelController;
+import hotel.HotelController;
 import upload.UploadController;
 
 @SpringBootApplication
 @ComponentScan
 @ComponentScan(basePackageClasses = mainController.class)
-@ComponentScan(basePackageClasses = hotelController.class)
+@ComponentScan(basePackageClasses = HotelController.class)
 @ComponentScan(basePackageClasses = UploadController.class)
 @MapperScan(basePackageClasses = HotelDAO.class)
 public class MultiprojectApplication {

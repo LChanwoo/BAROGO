@@ -1,5 +1,6 @@
 	let hotel_category="호텔";
 	let hotel_animal = 0;
+	let loginid ;
 
 	function getcategory(event) {
 		hotel_category = event.target.value;
@@ -22,6 +23,7 @@
 		document.getElementById('roadAddrPart').append = " "+roadAddrPart2;
 		document.getElementById('addrDetail').value = addrDetail;
 		document.getElementById('zipNo').value = zipNo;
+
 	}
 	const abs_add =function(){
 			var i =document.createElement('div');
@@ -44,9 +46,36 @@
 
 
 $(document).ready(function () {
-	document.getElementById("roadAddrPart").onclick=function(){	goPopup();};  
+	function detectBottom() {
+		var scrollTop = $(window).scrollTop();
+		var innerHeight = $(window).innerHeight();
+		var scrollHeight = $('body').prop('scrollHeight');
+		if (scrollTop + innerHeight >= scrollHeight) {
+			alert("wgo");
+		return true;
+		} else {
+		return false;
+		}
+		}
+
+	console.log(loginid);
+	document.getElementById("roadAddrPart").onclick=function(){	
+		goPopup(); 
+		loginid = document.getElementById("sessionid").innerHTML; 
+		console.log(loginid);
+		$.ajax({
+			url : '/loginconsist' ,
+			data : {'id':loginid},
+			type : 'post',
+			dataType : 'json',
+			success : function(respond){
+				console.log("loginconsist");
+			}
+	}); 	
+	};  
 	document.getElementById("add_abs_infor").onclick=function(){ abs_add();};  
 	document.getElementById("delete_abs_infor").onclick=function(){ abs_delete();};  
+
 
 	
 	document.getElementById("manage_add_hotel").onclick=function(){
@@ -55,6 +84,10 @@ $(document).ready(function () {
 		const hotel_address2=document.getElementById('addrDetail').value+"";
 		if(hotel_address1==null || hotel_address2==null || hotel_address1=='주소를 입력해주세요.'|| hotel_address2=='상세주소를 입력해주세요.'){
 			alert('주소를 확인해주세요');
+			return;
+		}
+		if(document.getElementById("hotel_phone1").value==null||document.getElementById("hotel_phone2").value==null||document.getElementById("hotel_phone3").value==null){
+			alert("전화번호를 확인해 주세요");
 			return;
 		}
 		console.log(hotel_address2);
@@ -116,6 +149,7 @@ $(document).ready(function () {
 		$.ajax({
 				url : '/hotel/manage/post' ,
 				data : {'hotel_name':hotel_name,
+						'business_id':loginid,
 						'hotel_category':hotel_category,
 						'hotel_address1':hotel_address1,
 						'hotel_address2':hotel_address2+"",
