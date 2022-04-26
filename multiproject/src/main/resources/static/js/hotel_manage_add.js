@@ -165,7 +165,7 @@ $(document).ready(function () {
 				dataType : 'json',
 				traditional:true,
 				success : function(respond){
-				   alert("등록이 완료되었습니다");
+				    alert("등록이 완료되었습니다");
 					window.location.href="/hotel/manage?page=1";
 				}
 		}); 

@@ -37,7 +37,7 @@ function CheckForm() {
 		dataType : 'json',
 		success : function(respond){
 				cert_num=respond.randomNumber;
-				alert(cert_num);
+				// alert(cert_num);
 				document.getElementById("check_cert_number_form").innerHTML="";
 				makecertform();
         }
