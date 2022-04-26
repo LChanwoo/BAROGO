@@ -9,7 +9,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 
+import javax.annotation.CheckForSigned;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -22,6 +24,7 @@ import org.springframework.format.datetime.DateFormatter;
 import org.springframework.format.datetime.joda.LocalDateTimeParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,6 +33,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.fasterxml.jackson.databind.JsonNode;
 
 
@@ -57,10 +61,43 @@ public class HotelController {
 	public String main2(){ 
 		return "Hotel"; 
 	}
+	
+	@RequestMapping("/hotel/search")
+	public ModelAndView search(@RequestParam(required = true, defaultValue = " ")String text,@RequestParam(defaultValue = "1",required = true) int page){ 
+		ModelAndView mv= new ModelAndView();
+		System.out.println(text);
+		System.err.println(page);
+		mv.setViewName("/hotel/search");
+		return mv; 
+	}
+	@ResponseBody
+	@RequestMapping(value="/hotel/search" ,method=RequestMethod.POST)
+	public ArrayList<HotelPostDTO> searchs(String text,int page){ 
+		
+		System.out.println(text);
+		String[] new_str = text.split(" ");
+		int new_page = (page-1)*15;
+		for(int i=0; i<new_str.length;i++) {
+			new_str[i] = "%"+new_str[i]+"%";
+			System.out.println(new_str[i]);
+		}
+		ArrayList<HotelPostDTO> alist=null;
+		try {
+			alist= hotelservice.selecthotelsearch(new_str,new_page);
+//			for (Iterator iterator = alist.iterator(); iterator.hasNext();) {
+//				HotelPostDTO hotelPostDTO = (HotelPostDTO) iterator.next();
+//				System.out.println(hotelPostDTO);
+//			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return alist; 
+	}
 	@RequestMapping("/reservation")
 	public ModelAndView reservation(HttpSession session){ 
 		ModelAndView mv= new ModelAndView();
-		String loginid=(String)session.getAttribute("loginid");
+		String loginid=(String)session.getAttribute("userId");
 
 		mv.setViewName("/hotel/reservation");
 
@@ -70,7 +107,7 @@ public class HotelController {
 	@RequestMapping(value="/reservation",method=RequestMethod.POST)
 	public ArrayList<HotelReservationDTO> reservationpost(String user_id,HttpSession session){ 
 		System.out.println("s");
-		String loginid=(String)session.getAttribute("loginid");
+		String loginid=(String)session.getAttribute("userId");
 		ArrayList<HotelReservationDTO> hrdtos= hotelservice.selectReservationsbyuids(loginid);
 
 		return hrdtos; 
@@ -79,7 +116,7 @@ public class HotelController {
 	@RequestMapping(value="/reservation/confirm",method=RequestMethod.POST)
 	public String reservationconfirm(String reservation_id,HttpSession session){ 
 		System.out.println(reservation_id);
-		String user_id=(String)session.getAttribute("loginid");
+		String user_id=(String)session.getAttribute("userId");
 		int result=0;
 		String res=null;
 		try {
@@ -96,7 +133,7 @@ public class HotelController {
 	@RequestMapping(value="/reservation/cancel",method=RequestMethod.POST)
 	public String reservationcancel(String reservation_id,HttpSession session){ 
 		System.out.println(reservation_id);
-		String user_id=(String)session.getAttribute("loginid");
+		String user_id=(String)session.getAttribute("userId");
 		int result=0;
 		String res=null;
 		try {
@@ -117,12 +154,15 @@ public class HotelController {
 		ArrayList<HotelPostDTO> hotel_list=null;
 		try {
 		hotel_list=hotelservice.selectHotelpagelist(new_page);
+		hotel_list.get(0).setPage(Integer.parseInt( page));
+		System.out.println(hotel_list.get(0).getPage());
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		return hotel_list; 
 	}
+	
 	@RequestMapping("/hotel/{id}")
 	public ModelAndView hoteldetail(
 			@PathVariable(required=false)String id,HttpSession session, HttpServletResponse response){ 
@@ -276,7 +316,7 @@ public class HotelController {
 	public String hotelpay( HttpServletResponse response,
 			@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
 			HotelReservationDTO dto, HttpSession session){ 
-		String login_id= (String)session.getAttribute("loginid");
+		String login_id= (String)session.getAttribute("userId");
 		SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		Date now_date=	new Date();
 		String now= sdf.format(now_date);
@@ -333,7 +373,7 @@ public class HotelController {
 	public ModelAndView hotelmanage( 
 			@RequestParam(value = "page", required = false, defaultValue = "1")int page,HttpSession session, HttpServletResponse response ){
 		logincheker(session, response);
-		String loginid=(String)session.getAttribute("loginid");
+		String loginid=(String)session.getAttribute("userId");
 		int abd=businesscheker(loginid, session, response);
 		if(abd==0) {
 			try {
@@ -361,7 +401,7 @@ public class HotelController {
 	@RequestMapping(value="/hotel/manage", method= RequestMethod.POST)
 	public ArrayList< hotelmanagelistDTO> hotelmanagelist(HttpSession session, HotelPostDTO dto){ 
 		System.out.println("hotel/manage  -  post요청");
-		String loginid = (String)session.getAttribute("loginid");
+		String loginid = (String)session.getAttribute("userId");
 		dto.setBusiness_id(loginid);
 		ArrayList<HotelPostDTO> hpdtos=hotelservice.selectHotelManageList(dto);
 		ArrayList<hotelmanagelistDTO> hmdtos= new ArrayList<hotelmanagelistDTO>();
@@ -395,7 +435,7 @@ public class HotelController {
 	@RequestMapping(value="/hotel/manage/reservation",method=RequestMethod.POST)
 	public ArrayList<HotelReservationDTO> managereservation(String user_id,HttpSession session){ 
 		System.out.println("s");
-		String loginid=(String)session.getAttribute("loginid");
+		String loginid=(String)session.getAttribute("userId");
 		ArrayList<HotelReservationDTO> hrdtos= hotelservice.selectReservationsbybids(loginid);
 
 		return hrdtos; 
@@ -403,11 +443,11 @@ public class HotelController {
 	@RequestMapping("/hotel/manage/post")
 	public ModelAndView add(HttpSession session, HttpServletResponse response){ 
 		logincheker(session, response);
-		String loginid=(String)session.getAttribute("loginid");
+		String loginid=(String)session.getAttribute("userId");
 		businesscheker(loginid, session, response);
 		ModelAndView mv= new ModelAndView();
-		mv.addObject("id", session.getAttribute("loginid"));
-		System.out.println(session.getAttribute("loginid"));
+		mv.addObject("id", session.getAttribute("userId"));
+		System.out.println(session.getAttribute("userId"));
 		mv.setViewName("/hotel/manage/post");
 		return mv; 
 	}
@@ -416,7 +456,7 @@ public class HotelController {
 	@RequestMapping(value="/hotel/manage/post", method=RequestMethod.POST)	
 	public String post(HotelPostDTO dto, HttpSession session){
 		System.out.println(dto.getBusiness_id());
-		String loginid= (String)session.getAttribute("loginid");
+		String loginid= (String)session.getAttribute("userId");
 		if(loginid==null) {
 			loginconsist(dto.getBusiness_id(), session);
 		}
@@ -479,7 +519,7 @@ public class HotelController {
 	public ModelAndView edit(
 			@PathVariable(required=false)Integer id, HttpSession session, HttpServletResponse response){ 
 		logincheker(session, response);
-		String loginid=(String)session.getAttribute("loginid");
+		String loginid=(String)session.getAttribute("userId");
 		businesscheker(loginid, session, response);
 		ModelAndView mv= new ModelAndView();
 		HotelPostDTO dto= new HotelPostDTO();
@@ -510,7 +550,7 @@ public class HotelController {
 	@RequestMapping(value="/hotel/manage/editpost" , method = RequestMethod.POST)
 	public String editpost(HotelPostDTO dto, HttpSession session, HttpServletResponse response){ 
 		System.out.println(dto.getBusiness_id());
-		String loginid= (String)session.getAttribute("loginid");
+		String loginid= (String)session.getAttribute("userId");
 		String hotel_id=dto.getHotel_id();
 		if(loginid==null) {
 			loginconsist(dto.getBusiness_id(), session);
@@ -600,7 +640,7 @@ public class HotelController {
 	public ModelAndView delete(@RequestParam(value = "page", required = false, defaultValue = "1")int page,HttpSession session, HttpServletResponse response){ 
 		logincheker(session, response);
 	//	businesscheker((String)session.getAttribute("loginid"), session, response);
-		String loginid=(String)session.getAttribute("loginid");
+		String loginid=(String)session.getAttribute("userId");
 		int abd=businesscheker(loginid, session, response);
 		if(abd==0) {
 			try {
@@ -644,7 +684,7 @@ public class HotelController {
 	@RequestMapping("/hotel/manage/agree")
 	public String agree(HttpSession session, HttpServletResponse response){ 
 		logincheker(session, response);
-		String loginid=(String)session.getAttribute("loginid");
+		String loginid=(String)session.getAttribute("userId");
 		int b=businesscheker(loginid, session, response);
 		if(b==1) {
 			try {
@@ -670,7 +710,7 @@ public class HotelController {
 	@RequestMapping("/hotel/manage/joinceo")
 	public ModelAndView joinceo1(HttpSession session, HttpServletResponse response){ 
 		logincheker(session, response);
-		String loginid=(String)session.getAttribute("loginid");
+		String loginid=(String)session.getAttribute("userId");
 		int x= businesscheker(loginid, session, response);
 		if(x==1) {
 			try {
@@ -681,8 +721,8 @@ public class HotelController {
 			}catch (Exception e) {}
 		}
 		ModelAndView mv= new ModelAndView();
-		mv.addObject("id", session.getAttribute("loginid"));
-		System.out.println(session.getAttribute("loginid"));
+		mv.addObject("id", session.getAttribute("userId"));
+		System.out.println(session.getAttribute("userId"));
 		mv.setViewName("/hotel/manage/joinceo");
 		return mv; 
 	}
@@ -722,6 +762,7 @@ public class HotelController {
 		 DecimalFormat df= new DecimalFormat("0000");
 		 String randomNumber = df.format((int)(Math.random()*9999));
 		 	result.setRandomNumber(randomNumber);
+		 	mservice.sendMessage(dto.getPhone_number(), randomNumber);
 		 }catch (Exception e) {
 			 e.printStackTrace(); 
 		 } 
@@ -732,36 +773,36 @@ public class HotelController {
 	@RequestMapping("/hotellogin")
 	public String sss2(HttpSession session){ 
 		session.setMaxInactiveInterval(1800);
-		session.setAttribute("loginid", "example"  );
+		session.setAttribute("userId", "example"  );
 		return "hotellogin"; 
 	}
 	@RequestMapping("/hotellogin2")
 	public String hotellogin(HttpSession session){ 
 		session.setMaxInactiveInterval(1800);
-		session.setAttribute("loginid", "example2"  );
+		session.setAttribute("userId", "example2"  );
 		return "hotellogin"; 
 	}
 	@RequestMapping("/hotellogin3")
 	public String hotellogin3(HttpSession session){ 
 		session.setMaxInactiveInterval(1800);
-		session.setAttribute("loginid", "example3"  );
+		session.setAttribute("userId", "example3"  );
 		return "hotellogin"; 
 	}
 	@RequestMapping("/hotellogin4")
 	public String hotellogin4(HttpSession session){ 
 		session.setMaxInactiveInterval(1800);
-		session.setAttribute("loginid", "hotelKing"  );
+		session.setAttribute("userId", "hotelKing"  );
 		return "hotellogin"; 
 	}
 	@RequestMapping("/testjsp")
 	public String testjsp(HttpSession session){ 
 		session.setMaxInactiveInterval(1800);
-		session.setAttribute("loginid", "example3"  );
+		session.setAttribute("userId", "example3"  );
 		return "boot"; 
 	}
 
 	private void logincheker(HttpSession session, HttpServletResponse response){
-		if(session.getAttribute("loginid")==null) {
+		if(session.getAttribute("userId")==null) {
 			try {
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
@@ -770,7 +811,7 @@ public class HotelController {
 			}catch (Exception e) {}
 			
 		}else {
-			session.setAttribute("loginid", session.getAttribute("loginid"));
+			session.setAttribute("userId", session.getAttribute("userId"));
 		}
 	}
 	private int businesscheker(String business_id,HttpSession session, HttpServletResponse response){
@@ -806,7 +847,7 @@ public class HotelController {
 			return 1;}
 	}
 	private void writercheker(String writer,HttpSession session, HttpServletResponse response){
-		String loginid=(String)session.getAttribute("loginid");
+		String loginid=(String)session.getAttribute("userId");
 		if(!writer.equals(loginid)) {
 			try {
 			response.setContentType("text/html; charset=utf-8");
@@ -831,7 +872,7 @@ public class HotelController {
 	@RequestMapping(value="/hotel/manage/getcount", method= RequestMethod.POST)
 	public String hotelmanagelist(HttpSession session){ 
 		System.out.println("hotel/manage/getcount  -  post요청");
-		String loginid = (String)session.getAttribute("loginid");
+		String loginid = (String)session.getAttribute("userId");
 		HotelPostDTO dto = new HotelPostDTO();
 		dto.setBusiness_id(loginid);
 		int count = hotelservice.selectHotelcount(dto);
@@ -841,7 +882,7 @@ public class HotelController {
 	@ResponseBody
 	@RequestMapping(value="/loginconsist", method= RequestMethod.POST)
 	public String loginconsist(String id,HttpSession session){ 
-		session.setAttribute("loginid", id);
+		session.setAttribute("userId", id);
 		System.out.println("loginconsist:success");
 		return "{\"result\":\"success\"}";
 	}	

@@ -47,6 +47,18 @@
 	<select id="isBusinessId" parameterType="String" resultType="int">
 		select count(*) from is_business_id where business_id = #{business_id};
 	</select>
+	<select id="selecthotelsearch" parameterType="String" resultType="hotelpostdto">
+	
+		select * from hotel_table where 
+		<foreach collection="str" item="str"   separator="or">
+ 			hotel_address1 like	#{str} 
+		</foreach>
+		or
+		<foreach collection="str" item="str"   separator="or">
+ 			hotel_name like	#{str} 
+		</foreach>
+		order by hotel_id desc limit #{page} ,15
+	</select>
 	
 	
 	<insert id="postHotel" parameterType="hotelpostdto" >

@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="jquery-3.6.0.min.js"></script>
-<script src="js/chatbot.js"></script>
+<script src="/jquery-3.6.0.min.js"></script>
+<script src="/js/chatbot.js"></script>
 <link rel="stylesheet" href="/css/hotelheader.css" />
 <link rel="stylesheet" href="/css/hotel.css" />
 <script>
@@ -51,7 +51,7 @@
   });
 </script>
 </head>
-<body style="background-image: URL(images/hotel.png); 
+<body style="background-image: URL(/images/hotel.png); 
 background-repeat: no-repeat;
 background-size: 100% 250px; 
  background-blend-mode: multiply;">
@@ -81,21 +81,20 @@ background-size: 100% 250px;
 	<!-- end of header import -->
 	<hr />
 	<section id="hotel_lists_section">
+
 		<div class="search_bar">
 			<div id="search_bars">
 				<input type="text" class="searchtextbox"><button class="search_btns1">검색</button>
 			</div>
 		</div>
-
 		<div id="search_list">
-		
-			<div class="hotel_list"></div>
+
 		</div>
 	</section>
 
 	<!-- footer import -->
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
-	<script src="/js/hotel_list.js"></script>
+<!-- 	<script src="/js/hotel_list.js"></script> -->
 	<script src="/js/hotel_search.js"></script>
 	<!-- end of footer import -->
 </body>

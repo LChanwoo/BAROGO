@@ -26,7 +26,7 @@ public class UploadController {
 	public ImageDTO uploadresult(MultipartFile file1, HttpSession session , HttpServletResponse response) throws Exception{
 		System.out.println("upload");
 		MultipartFile mf1 = file1;
-		String loginid = (String)session.getAttribute("loginid");
+		String loginid = (String)session.getAttribute("userId");
 		try {
 		System.out.println(mf1.getOriginalFilename());
 		System.out.println(mf1.getSize()); 
@@ -69,7 +69,7 @@ public class UploadController {
 		return img;
 	}
 	private void logincheker(HttpSession session, HttpServletResponse response){
-		if(session.getAttribute("loginid")==null) {
+		if(session.getAttribute("userId")==null) {
 			try {
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
@@ -78,7 +78,7 @@ public class UploadController {
 			}catch (Exception e) {}
 			
 		}else {
-			session.setAttribute("loginid", session.getAttribute("loginid"));
+			session.setAttribute("loginid", session.getAttribute("userId"));
 		}
 	}
 }

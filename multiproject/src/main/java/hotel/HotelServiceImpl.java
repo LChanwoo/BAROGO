@@ -60,6 +60,9 @@ public class HotelServiceImpl implements HotelService {
 		return dao.isBusinessId(business_id);
 		
 	}
+	public ArrayList<HotelPostDTO> selecthotelsearch(String[] str,int page) {
+		return dao.selecthotelsearch(str,page);
+	}
 	public ArrayList<HotelReservationDTO> selectReservationsbybids(String business_id){
 		return dao.selectReservationsbybids(business_id);
 	}

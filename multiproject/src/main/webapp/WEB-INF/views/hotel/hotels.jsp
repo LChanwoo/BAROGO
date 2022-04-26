@@ -10,10 +10,6 @@
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=hb8r593xf9"></script>
 <script src="/jquery-3.6.0.min.js"></script>
 <script src="/js/chatbot.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-	});
-</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ko.min.js" integrity="sha512-L4qpL1ZotXZLLe8Oo0ZyHrj/SweV7CieswUODAAPN/tnqN3PA1P+4qPu5vIryNor6HQ5o22NujIcAZIfyVXwbQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -28,12 +24,7 @@ background-size: 100% 250px;
 	<!-- end of header import -->
 	<hr />
 	<section>
-
-		<div class="search_bar">
-		
-			<h1>세션태그부터 입력하시면 됩니다</h1>
-			
-		</div>
+	
 		<div class="hotel_listss">
 		<div id= "hotel_namess" >${title }</div>
 		<div id="h_d_infors"> 유형: <span class="h_d_infor">${hotel_category }</span> &ensp; 반려동물동반 :<span class="h_d_infor"> ${hotel_animal }</span>  &ensp; 위치 :<span class="h_d_infor"> ${hotel_address }</span> </div>

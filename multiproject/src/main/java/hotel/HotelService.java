@@ -19,6 +19,7 @@ public interface HotelService {
 	public int updateReservationConfirm(String reservation_id);
 	
 	public int isBusinessId(String business_id);
+	public ArrayList<HotelPostDTO> selecthotelsearch(String[] str,int page) ;
 	public int selectHotelcount(HotelPostDTO dto);
 	public ArrayList<HotelReservationDTO> selectReservationsbybids(String business_id);
 	public ArrayList<HotelReservationDTO> selectReservationsbyuids(String user_id);

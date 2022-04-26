@@ -26,7 +26,7 @@ background-size: 100% 250px;
 
 		<div class="search_bar">
 		
-			<h1>세션태그부터 입력하시면 됩니다</h1>
+			<input type="text" class="searchtextbox"><button id="reserv_btns1">검색</button>
 			
 		</div>
 		<div class="hotel_list">

@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="/css/hotelheader.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<!-- header -->
 <script>
   $(document).ready(function () {
     $("#logoimg").css({
@@ -47,7 +46,6 @@
 
   });
 </script>
-<!-- end of header -->
 </head>
 
 <header >
