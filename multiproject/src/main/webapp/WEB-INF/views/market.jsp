@@ -7,10 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="css/market.css" rel="stylesheet">
-<script src="jquery-3.6.0.min.js"></script>
-<script src="js/chatbot.js"></script>
-<script src="js/market.js"></script>
+<link href="/css/market.css" rel="stylesheet">
+<script src="/jquery-3.6.0.min.js"></script>
+<script src="/js/chatbot.js"></script>
+<script src="/js/market.js"></script>
 <script type="text/javascript">
 function numchange(i){
 	var total1= $('#changenum'+i).val()*$('#changeprice'+i).text()
