@@ -317,6 +317,9 @@ public class HotelController {
 			@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
 			HotelReservationDTO dto, HttpSession session){ 
 		String login_id= (String)session.getAttribute("userId");
+		if(login_id==null) {
+			return "{\"pay\":"+0+"}"; 
+		}
 		SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		Date now_date=	new Date();
 		String now= sdf.format(now_date);
@@ -336,9 +339,7 @@ public class HotelController {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}			
-		try {
-		}catch (Exception e) {}
-		 
+		
 		return "{\"pay\":"+s+"}"; 
 	}
 //	@ResponseBody
