@@ -36,6 +36,7 @@ function startDate(e){
 			const DateA= moment(startdate);
 			const DateB= moment(enddate);
 			document.getElementById("total_payment").innerText = ((DateB.diff(DateA,'days'))*price).toLocaleString() +"원";
+			document.getElementById("total_payment2").value = ((DateB.diff(DateA,'days'))*price)
         }
 	});
 };
@@ -60,6 +61,7 @@ function endDate(e){
 					const DateA= moment(startdate);
 					const DateB= moment(enddate);
 					document.getElementById("total_payment").innerText = ((DateB.diff(DateA,'days'))*price).toLocaleString() +"원";
+					document.getElementById("total_payment2").value = ((DateB.diff(DateA,'days'))*price)
 
 			
 		}

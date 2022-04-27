@@ -71,6 +71,5 @@ IMP.request_pay({
         alert(msg);
     }
     // document.getElementById('payform').submit();
-    location.href="/";
-});
+  });
 }
