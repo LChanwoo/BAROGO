@@ -213,6 +213,7 @@ $(document).ready(function () {
 						const DateB= moment(enddate);
 						amount=((DateB.diff(DateA,'days'))*price);
 						document.getElementById("total_payment").innerText = amount.toLocaleString() +"원";
+						document.getElementById("total_payment2").value = amount;
 					};
 				}
 				document.getElementById("total_payment").innerText = respond[0].room_price.toLocaleString()+"원";
