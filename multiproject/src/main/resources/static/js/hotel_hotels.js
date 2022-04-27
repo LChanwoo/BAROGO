@@ -132,45 +132,27 @@ infoWindows.push(infoWindow);
 
 
 document.getElementById("pay_btn").onclick=function(){
-	const url = location.href;
-	const urlsplit=url.split('/');
-	const hotelid =urlsplit[urlsplit.length-1];
-	const business_id= document.getElementById("business_id").innerHTML;
-	const hotel_name= document.getElementById("hotel_namess").innerHTML;
-	startdate=document.getElementById("start_date").value;
-	enddate=document.getElementById("end_date").value;
-	let price=document.querySelector('input[name="ghost"]:checked').value; 
-	const DateA= moment(startdate).format("YYYY-MM-DD HH:mm:ss");
-	const DateB= moment(enddate).format("YYYY-MM-DD HH:mm:ss");
-	const DateA2= moment(startdate);
-	const DateB2= moment(enddate);
-	const hotel_price=((DateB2.diff(DateA2,'days'))*price);
-
-
-
-	$.ajax({
-		url : '/hotel/getpay' ,
-		data : {'hotel_id': hotelid,
-				'hotel_name': hotel_name,
-				'business_id': business_id,
-				'start_date':DateA,
-				'end_date': DateB,
-				'payment': hotel_price,
-				},
-		type : 'post',
-		dataType : 'json',
-		success : function(respond){
-
-			if(respond.pay==1){
-				alert('예약 신청이 완료되었습니다.');
-				window.location.href="/reservation";
-			}
-			else{
-				alert('로그인 후 이용바랍니다.');
-				window.location.href="/login";
-			}
-        }
-	});  
+	function getData() {
+		return new Promise((resolve,reject)=>{
+			$.ajax({
+				url : '/islogined' ,
+				type : 'post',
+				dataType : 'json',
+				success : function(respond){
+					if(respond.pay==1){	}
+					else{
+						alert('로그인 후 이용바랍니다.');
+						window.location.href="/login";
+					}
+				}
+			});
+		});
+	}
+	getData()
+	.then(function(data) {
+		payment();
+	})
+  
 }
 
 

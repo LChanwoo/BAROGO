@@ -344,6 +344,16 @@ public class HotelController {
 		
 		return "{\"pay\":"+s+"}"; 
 	}
+	@ResponseBody
+	@RequestMapping(value="/islogined",method = RequestMethod.POST )
+	public String islogined( HttpServletResponse response, HttpSession session){ 
+		String login_id= (String)session.getAttribute("userId");
+		try {
+			if(login_id==null) {return "{\"pay\": 0 }"; }
+		}catch (Exception e) {}
+		
+		return "{\"pay\":"+1+"}"; 
+	}
 //	@ResponseBody
 //	@RequestMapping(value="/hotel/getpay",method = RequestMethod.POST )
 //	public String hotelpay(

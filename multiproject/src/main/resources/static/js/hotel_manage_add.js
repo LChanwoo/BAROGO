@@ -99,11 +99,11 @@ $(document).ready(function () {
 		if(document.getElementById("hotel_names").value==''){alert('호텔명을 입력하세요.');return;}
 		const hotel_address1=document.getElementById('roadAddrPart').value+"";
 		const hotel_address2=document.getElementById('addrDetail').value+"";
-		if(hotel_address1==null || hotel_address2==null || hotel_address1=='주소를 입력해주세요.'|| hotel_address2=='상세주소를 입력해주세요.'){
+		if(hotel_address1=='' || hotel_address1=='주소를 입력해주세요.'|| hotel_address2=='상세주소를 입력해주세요.'){
 			alert('주소를 확인해주세요');
 			return;
 		}
-		if(document.getElementById("hotel_phone1").value==null||document.getElementById("hotel_phone2").value==null||document.getElementById("hotel_phone3").value==null){
+		if(document.getElementById("hotel_phone1").value==''||document.getElementById('hotel_phone2').value==''||document.getElementById("hotel_phone3").value==''){
 			alert("전화번호를 확인해 주세요");
 			return;
 		}
