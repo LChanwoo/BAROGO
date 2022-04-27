@@ -2,6 +2,26 @@
 	let hotel_animal = 0;
 	let loginid ;
 
+	function isCheckNum(str){
+		//var checkReg=/^[0-9]{3,4}$/;
+		var checkReg=/^[0-9]{3,4}$/;
+		console.log(str.value);
+		if(checkReg.test(str.value)==false){
+			alert("3~4자리 숫자만 입력해 주세요");
+			str.value=null;
+		}else{
+		}
+		return checkReg.test(str);
+	}
+	function isnumpress(event,type){
+		if(type=="numbers"){
+			if(event.keyCode <48|| event.keyCode >57)return false;
+		}
+	}
+	function ischar(obj){
+		if(event.keyCode==8||event.keyCode==9||event.keyCode==37||event.keyCode==39||event.keyCode==46)return;
+		obj.value= obj.value.replace(/[\a-zㄱ-하-ㅣ가-힣]/g,'');
+	}
 	function getcategory(event) {
 		hotel_category = event.target.value;
 	}
@@ -29,9 +49,9 @@
 			var i =document.createElement('div');
 			i.setAttribute('class','abs_infor_room_infors')
 			i.innerHTML='<div class="abs_infor_room_infors_inner spacingtb10">'
-			+'	<div>룸 이름 : <input text=text class="room_name spacingtb10 roomtxt"></div>'
-			+'	<div>침대 크기/수량 : <input text=text class="room_bed_size spacingtb10 roomtxt" >/<input text=text class="room_bed_qty roomtxt" ></div>'
-			+'	<div>가격 : <input text=text class="room_price spacingtb10 roomtxt" >'
+			+'	<div>룸 이름 : <input text=text class="room_name spacingtb10 roomtxt" maxlength="7" size=7 ></div>'
+			+'	<div>침대 크기/수량 : <input text=text class="room_bed_size spacingtb10 roomtxt" maxlength="6" size=6 >/<input text=text class="room_bed_qty roomtxt" maxlength="6" size=6 ></div>'
+			+'	<div>가격 : <input text=text class="room_price spacingtb10 roomtxt" maxlength="11" size=11 >'
 			+'	<div>기타 사항 : <input text=text class="room_etc spacingtb10 roomtxt" ></div>'
 			+'</div>';
 			var addressContainer = document.getElementsByClassName("abs_infor")[0];
@@ -73,7 +93,7 @@ $(document).ready(function () {
 			}
 	}); 	
 	};  
-	document.getElementById("add_abs_infor").onclick=function(){ abs_add();};  
+	document.getElementById("add_abs_infor").onclick=function(){if(document.querySelectorAll(".abs_infor_room_infors").length>=3){return;}; abs_add();};  
 	document.getElementById("delete_abs_infor").onclick=function(){ abs_delete();};  
 
 

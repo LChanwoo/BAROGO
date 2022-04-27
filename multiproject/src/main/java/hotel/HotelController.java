@@ -422,6 +422,18 @@ public class HotelController {
 	@RequestMapping(value="/hotel/manage/reservation", method= RequestMethod.GET)
 	public ModelAndView hotelreservation( 
 			@RequestParam(value = "page", required = false, defaultValue = "1")int page,HttpSession session, HttpServletResponse response ){
+		logincheker(session, response);
+		String loginid=(String)session.getAttribute("userId");
+		int abd=businesscheker(loginid, session, response);
+		if(abd==0) {
+			try {
+				response.setContentType("text/html; charset=utf-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('사업자등록 후 이용 바랍니다.'); location.href='/hotel/manage/agree';</script>");
+				out.flush();
+			}catch (Exception e) {}
+			
+		}else {}
 		ModelAndView mv= new ModelAndView();
 //		String loginid=(String)session.getAttribute("loginid");
 //		ArrayList<HotelReservationDTO> hrdtos= hotelservice.selectReservationsbyuids(loginid);
@@ -489,7 +501,7 @@ public class HotelController {
 				JSONObject tmp=(JSONObject)picarr.get(i);
 				String pathtmp = (String)tmp.get("path");
 				System.out.println(pathtmp);
-				String pathtmp2 = pathtmp.substring(2, pathtmp.length());
+				String pathtmp2 = pathtmp.substring(17, pathtmp.length());
 				System.out.println(pathtmp2);
 				String path = pathtmp2.replaceAll("\\\\","/");
 				System.out.println(path);

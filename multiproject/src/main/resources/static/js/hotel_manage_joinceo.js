@@ -2,9 +2,30 @@ let phonetmp;
 let cert_num;
 let cert_ok=false;
 let business_reg_ok=false;
+// function isCheckNum(str){
+// 	var checkReg=/^[0-9]{3,4}$/;
+// 	return checkReg.test(str);
+// }
+
 function isCheckNum(str){
+	//var checkReg=/^[0-9]{3,4}$/;
 	var checkReg=/^[0-9]{3,4}$/;
+	console.log(str.value);
+	if(checkReg.test(str.value)==false){
+		alert("3~4자리 숫자만 입력해 주세요");
+		str.value=null;
+	}else{
+	}
 	return checkReg.test(str);
+}
+function isnumpress(event,type){
+	if(type=="numbers"){
+		if(event.keyCode <48|| event.keyCode >57)return false;
+	}
+}
+function ischar(obj){
+	if(event.keyCode==8||event.keyCode==9||event.keyCode==37||event.keyCode==39||event.keyCode==46)return;
+	obj.value= obj.value.replace(/[\a-zㄱ-하-ㅣ가-힣]/g,'');
 }
 const makecertform=function(e){
 	var i =document.createElement('div');
@@ -37,7 +58,7 @@ function CheckForm() {
 		dataType : 'json',
 		success : function(respond){
 				cert_num=respond.randomNumber;
-				// alert(cert_num);
+				alert("문자가 전송되었습니다. 잠시만 기다려주세요");
 				document.getElementById("check_cert_number_form").innerHTML="";
 				makecertform();
         }
@@ -51,7 +72,7 @@ function retry(){
 		dataType : 'json',
 		success : function(respond){
 			cert_num=respond.randomNumber;
-			alert(cert_num);
+			alert("문자가 재전송 되었습니다.");
         }
 	}); 
 }

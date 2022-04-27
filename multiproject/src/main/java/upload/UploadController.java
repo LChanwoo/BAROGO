@@ -35,9 +35,9 @@ public class UploadController {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		String savePath = "c:/upload/hotel/"+loginid;
+		String savePath = "/usr/mydir/upload/hotel/"+loginid;
 		try {
-		Path hotelPath = Paths.get("c:/upload/hotel/");
+		Path hotelPath = Paths.get("/usr/mydir/upload/hotel/");
 		Files.createDirectory(hotelPath);
 		}catch(Exception e) {}
 		try {

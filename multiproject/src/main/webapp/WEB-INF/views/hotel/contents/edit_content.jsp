@@ -43,7 +43,7 @@
 				<div class="manage_hotel_add_form mt8 mb4 hp_hp">
 					<span class="manage_hotel_add_question">호텔 전화번호</span> 
 					<div class="mb20 mt20 f-s16">
-						<input type="text"  id="hotel_phone1"class="phone" name="hotel_phone1"  value="${hotel_phone1 }"> - <input type="text"  id="hotel_phone2"class="phone " name="hotel_phone2"  value="${hotel_phone2 }"> - <input type="text"  id="hotel_phone3"class="phone" name="hotel_phone3"   value="${hotel_phone3 }">
+						<input type="text"  id="hotel_phone1"class="phone" name="hotel_phone1"  value="${hotel_phone1 }" maxlength="3" size=3 onblur="isCheckNum(this)" onkeydown="ischar(this)" onkeypress="return isnumpress(event,'numbers')" > - <input type="text"  id="hotel_phone2"class="phone " name="hotel_phone2"  value="${hotel_phone2 }" maxlength="4" size=4 onblur="isCheckNum(this)" onkeydown="ischar(this)" onkeypress="return isnumpress(event,'numbers')"> - <input type="text"  id="hotel_phone3"class="phone" name="hotel_phone3"   value="${hotel_phone3 }" maxlength="4" size=4 onblur="isCheckNum(this)" onkeydown="ischar(this)" onkeypress="return isnumpress(event,'numbers')" >
 					</div>
 				</div>
 				<div class="manage_hotel_add_form textbox">
@@ -97,7 +97,7 @@
 					</div>
 				</div>
 				<div class="manage_hotel_add_form textbox">
-					<span class="manage_hotel_add_question">ROOM 정보</span><button id="add_abs_infor" class="ml20 mr20" >+</button><button id="delete_abs_infor" class=" mr20" >-</button><span class="yet">Room 정보를 입력해주세요.</span>
+					<span class="manage_hotel_add_question">객실 정보</span><button id="add_abs_infor" class="ml20 mr20" >+</button><button id="delete_abs_infor" class=" mr20" >-</button><span class="yet">객실 정보를 입력해주세요.(최대 3개)</span>
 					<div class="abs_infor" id="abs_infor">
 
 					</div>

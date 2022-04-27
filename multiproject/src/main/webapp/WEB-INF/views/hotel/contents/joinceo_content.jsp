@@ -33,7 +33,7 @@
 								<div id="self-introduce"> <textarea id="self-introduce_text"></textarea></div>
 							</div>
 							<div id="phone-cert" class="mt20">
-								<div class="title"><span class="ml10 fw800 font-sans-serif">개인인증</span><span class="yet ml20 fw200 f-s16">휴대폰 번호를 입력해주세요 (이거 할때마다 돈나가니까 제발 누르지 말아주세요)</span></div>
+								<div class="title"><span class="ml10 fw800 font-sans-serif">개인인증</span><span class="yet ml20 fw200 f-s16">휴대폰 번호를 입력해주세요</span></div>
 								<div id="phone-cert-form" class="mt20"> <select id="txtMobile1" >
 								    <option value=""> &ensp;선택&ensp;</option>
 								    <option value="011">011</option>
@@ -42,10 +42,10 @@
 								    <option value="019">019</option>
 								    <option value="010">010</option>
 								</select>
-								<input type="text" id="txtMobile2" maxlength="4" size=4 onkeypress="isCheckNum();" />
-								<input type="text" id="txtMobile3" maxlength="4" size=4 onkeypress="isCheckNum();"/>
+								<input type="text" id="txtMobile2" maxlength="4" size=4 onblur="isCheckNum(this);"  onkeydown="ischar(this)" onkeypress="return isnumpress(event,'numbers')"/>
+								<input type="text" id="txtMobile3" maxlength="4" size=4 onblur="isCheckNum(this);" onkeydown="ischar(this)" onkeypress="return isnumpress(event,'numbers')"/>
 								
-								<input type="button" value="인증요청" class="cert_freeze" onclick="CheckForm();" />
+								<input type="button" value="인증요청" class="cert_freeze" onclick="CheckForm();"  />
                                <div id="check_cert_number_form"></div>
                                </div>
 							</div>
