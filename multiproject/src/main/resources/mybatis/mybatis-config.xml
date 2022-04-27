@@ -13,7 +13,9 @@
 	
 	<typeAlias type="edu.multi.kdigital.dto.UserDto" alias="user"/>
 	<typeAlias type="edu.multi.kdigital.dto.UserDto" alias="UserDto"/>
-	<typeAlias type="edu.multi.kdigital.dto.PaymentDto" alias="payment"/>	
+	<typeAlias type="edu.multi.kdigital.dto.PaymentDto" alias="payment"/>
+		
+	<typeAlias type="market.MarketDTO" alias="marketdto"/>	
 </typeAliases>
 
 
