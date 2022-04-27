@@ -35,6 +35,7 @@ const makepicbtn=function(e){
 
 const makeConvenince=function(tagname){
 	const makeicon=function(category,tagname,icon){
+		try{
 		var i =document.createElement('div');
 		i.setAttribute("class","conveniences_list");
 		var addressContainer = document.getElementById(category);
@@ -47,6 +48,7 @@ const makeConvenince=function(tagname){
 
 		addressContainer2.appendChild(j);
 		i.innerHTML+=tagname;
+		}catch{}
 	};
 	let category;
 	let icon;
