@@ -175,11 +175,13 @@ $(document).ready(function () {
 					document.querySelectorAll(".carousel-item img")[i].setAttribute("src",respond[i]);
 					}catch{}
 				}			
+				try{
 				document.querySelectorAll(".carousel-item")[0].setAttribute("class","carousel-item active");
 				const carobtn = document.querySelectorAll("button[ data-bs-target=\"#carouselExampleIndicators\"]")[0];
 					carobtn.setAttribute("class","active");
 					carobtn.setAttribute("aria-current","true");
 					carobtn.setAttribute("aria-label","Slide 1");
+				}catch{}
         }
 	});
 	$.ajax({
