@@ -131,43 +131,21 @@ markers.push(marker);
 infoWindows.push(infoWindow);
 
 
-// function getClickHandler(seq) {
-// 	resize(obj)
-// 	return function(e) {
-// 		var marker = markers[seq], 
-// 			infoWindow = infoWindows[seq]; 
-
-// 		if (infoWindow.getMap()) {
-// 			infoWindow.close();
-// 		} else {
-// 			infoWindow.open(map, marker); 
-// 		}
-// 	}
-// }
-
-// for (var i=0, ii=markers.length; i<ii; i++) {
-// console.log(markers[i] , getClickHandler(i));
-// naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
-// }
 document.getElementById("pay_btn").onclick=function(){
 	const url = location.href;
 	const urlsplit=url.split('/');
 	const hotelid =urlsplit[urlsplit.length-1];
-	console.log(hotelid);
 	const business_id= document.getElementById("business_id").innerHTML;
-	console.log(business_id);
 	const hotel_name= document.getElementById("hotel_namess").innerHTML;
 	startdate=document.getElementById("start_date").value;
 	enddate=document.getElementById("end_date").value;
 	let price=document.querySelector('input[name="ghost"]:checked').value; 
 	const DateA= moment(startdate).format("YYYY-MM-DD HH:mm:ss");
-	console.log(DateA);
 	const DateB= moment(enddate).format("YYYY-MM-DD HH:mm:ss");
-	console.log(DateB);
 	const DateA2= moment(startdate);
 	const DateB2= moment(enddate);
 	const hotel_price=((DateB2.diff(DateA2,'days'))*price);
-	console.log(hotel_price);
+
 
 
 	$.ajax({
@@ -201,11 +179,7 @@ $(document).ready(function () {
 	const url = location.href;
 	const urlsplit=url.split('/');
 	const hotelid =urlsplit[urlsplit.length-1];
-	// let div1 = document.querySelector('#hotel_detail_information');
-    // let div2 = document.querySelector('#hotel_payment_box');
-	// console.log(div1.clientHeight);
-	// console.log(div2.clientHeight);
-	// div2.offsetHeight = div1.offsetHeight;
+
 	$.ajax({
 		url : '/hotel/getpictures' ,
 		data : {'hotelId': hotelid},

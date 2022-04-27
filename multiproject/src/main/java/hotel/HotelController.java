@@ -323,7 +323,7 @@ public class HotelController {
 			PrintWriter out = response.getWriter();
 			out.println("<script>alert('로그인 후 이용하시기 바랍니다'); location.href='/login';</script>");
 			out.flush();
-			return "{\"pay\":"+0+"}"; 
+			return "{\"pay\": 0 }"; 
 		}
 		}catch (Exception e) {}
 		SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
