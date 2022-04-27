@@ -821,7 +821,7 @@ public class HotelController {
 			try {
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('잘못된 접근입니다.'); location.href='/main/';</script>");
+			out.println("<script>alert('잘못된 접근입니다.'); location.href='/';</script>");
 			out.flush();
 			}catch (Exception e) {}
 			
@@ -832,12 +832,6 @@ public class HotelController {
 	private int businesscheker(String business_id,HttpSession session, HttpServletResponse response){
 		int check= hotelservice.isBusinessId(business_id);
 		if(check==0) {
-//			try {
-//				response.setContentType("text/html; charset=utf-8");
-//				PrintWriter out = response.getWriter();
-//				out.println("<script>alert('사업자등록 후 이용 바랍니다.'); location.href='/hotel/manage/agree';</script>");
-//				out.flush();
-//			}catch (Exception e) {}
 			return 0;
 			
 		}else {return 1;}
@@ -867,7 +861,7 @@ public class HotelController {
 			try {
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('잘못된 접근입니다.'); location.href='/main/';</script>");
+			out.println("<script>alert('잘못된 접근입니다.'); location.href='/';</script>");
 			out.flush();
 			}catch (Exception e) {}
 		}
@@ -877,7 +871,7 @@ public class HotelController {
 			try {
 				response.setContentType("text/html; charset=utf-8");
 				PrintWriter out = response.getWriter();
-				out.println("<script>alert('잘못된 접근입니다.'); location.href='/main/';</script>");
+				out.println("<script>alert('잘못된 접근입니다.'); location.href='/';</script>");
 				out.flush();
 			}catch(Exception e){}
 			
