@@ -504,7 +504,7 @@ public class HotelController {
 				JSONObject tmp=(JSONObject)picarr.get(i);
 				String pathtmp = (String)tmp.get("path");
 				System.out.println(pathtmp);
-				String pathtmp2 = pathtmp.substring(18, pathtmp.length());
+				String pathtmp2 = pathtmp.substring(10, pathtmp.length());
 				System.out.println(pathtmp2);
 				String path = pathtmp2.replaceAll("\\\\","/");
 				System.out.println(path);
@@ -514,7 +514,7 @@ public class HotelController {
 			}
 			JSONObject tmp=(JSONObject)picarr.get(picarr.length()-1);
 			String pathtmp = (String)tmp.get("path");
-			String pathtmp2 = pathtmp.substring(18, pathtmp.length());
+			String pathtmp2 = pathtmp.substring(10, pathtmp.length());
 			String path = pathtmp2.replaceAll("\\\\","/");
 			System.out.println(path);
 			dto.setHotel_picture(path);
@@ -603,7 +603,7 @@ public class HotelController {
 				JSONObject tmp=(JSONObject)picarr.get(i);
 				String pathtmp = (String)tmp.get("path");
 				System.out.println(pathtmp);
-				String pathtmp2 = pathtmp.substring(2, pathtmp.length());
+				String pathtmp2 = pathtmp.substring(10, pathtmp.length());
 				System.out.println(pathtmp2);
 				String path = pathtmp2.replaceAll("\\\\","/");
 				System.out.println(path);
@@ -613,7 +613,7 @@ public class HotelController {
 			}
 			JSONObject tmp=(JSONObject)picarr.get(picarr.length()-1);
 			String pathtmp = (String)tmp.get("path");
-			String pathtmp2 = pathtmp.substring(2, pathtmp.length());
+			String pathtmp2 = pathtmp.substring(10, pathtmp.length());
 			String path = pathtmp2.replaceAll("\\\\","/");
 			System.out.println(path);
 			dto.setHotel_picture(path);
