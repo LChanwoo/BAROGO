@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" href="css/hotelheader.css" />
+<link rel="stylesheet" href="/css/hotelheader.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <!-- header -->
@@ -53,8 +53,8 @@ $(document).ready(function () {
 	
 <div id="header" >
 	<h1 id="logo_font">
-		<a class="logo_font" href="<c:url value='/main' />"> <img
-			src="<c:url value='images/barogo_logo2.png' />" alt=" " id="logoimg" />
+		<a class="logo_font" href="<c:url value='/' />"> <img
+			src="<c:url value='/images/barogo_logo2.png' />" alt=" " id="logoimg" />
 		</a>
 	</h1>
 	<div id="headerlogin">

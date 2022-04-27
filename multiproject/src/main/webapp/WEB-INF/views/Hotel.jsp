@@ -55,11 +55,9 @@
 background-repeat: no-repeat;
 background-size: 100% 250px; 
  background-blend-mode: multiply;">
- <header >
-	
 <div id="header" >
 	<h1 id="logo_font">
-		<a class="logo_font" href="<c:url value='/main' />"> <img
+		<a class="logo_font" href="<c:url value='/' />"> <img
 			src="<c:url value='/images/barogo_logo2.png' />" alt=" " id="logoimg" />
 		</a>
 	</h1>
@@ -67,9 +65,23 @@ background-size: 100% 250px;
 		<ul>
 			<li><a href="<c:url value='/Hotel' />" style="font-size: 30px;">Hotel</a></li>
 			<li><a href="<c:url value='/Market' />" style="font-size: 30px;">Market</a></li>
-			<li><a href="<c:url value='/login' />" style="font-size: 15px;">Login</a></li>
-			<li><a href="<c:url value='/agreement' />
-			"style="font-size: 15px; border: 1px solid gray;">Sign Up</a></li>
+		
+
+		<c:if test="${userId == null }">
+			
+
+				<li><a href="<c:url value='/login' />" style="font-size: 15px;">Login</a></li>
+				<li><a href="<c:url value='/Agreement' />
+					"
+					style="font-size: 15px; border: 1px solid gray;">Sign Up</a></li>
+		
+		</c:if>
+		<c:if test="${userId != null }">
+			
+				<li><a href="<c:url value='/logout' />" style="font-size: 15px;">Logout</a></li>
+				<li><a href="<c:url value='/mypagepw_form' />" style="font-size: 15px;">Mypage</a></li>
+			
+		</c:if>
 		</ul>
 	</div>
 
