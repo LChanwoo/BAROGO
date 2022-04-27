@@ -182,9 +182,14 @@ document.getElementById("pay_btn").onclick=function(){
 		type : 'post',
 		dataType : 'json',
 		success : function(respond){
+
 			if(respond.pay==1){
 				alert('예약 신청이 완료되었습니다.');
 				window.location.href="/reservation";
+			}
+			else{
+				alert('로그인 후 이용바랍니다.');
+				window.location.href="/login";
 			}
         }
 	});  

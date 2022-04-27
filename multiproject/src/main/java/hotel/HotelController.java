@@ -317,9 +317,15 @@ public class HotelController {
 			@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
 			HotelReservationDTO dto, HttpSession session){ 
 		String login_id= (String)session.getAttribute("userId");
+		try {
 		if(login_id==null) {
+			response.setContentType("text/html; charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('로그인 후 이용하시기 바랍니다'); location.href='/login';</script>");
+			out.flush();
 			return "{\"pay\":"+0+"}"; 
 		}
+		}catch (Exception e) {}
 		SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		Date now_date=	new Date();
 		String now= sdf.format(now_date);
