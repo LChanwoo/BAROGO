@@ -22,9 +22,6 @@
 		</style>
   </head>
   <body>
-    <h3>Checkbox</h3>
-    <input type="checkbox" id="cb1">
-    <label for="cb1"></label>
     로그인됨
   </body>
 </html>

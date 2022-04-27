@@ -15,12 +15,14 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="css/styles.css" rel="stylesheet" />
+<link href="/css/styles.css" rel="stylesheet" />
+<link href="/css/hotel.css" rel="stylesheet" />
 
+<link rel="stylesheet" href="/css/hotel.css" />
     <!-- JAVASCRIPT -->
-<script src="jquery-3.6.0.min.js"></script>
-<script src="js/sweetalert.min.js"></script>
-<script src="js/chatbot.js"></script>
+<script src="/jquery-3.6.0.min.js"></script>
+<script src="/js/sweetalert.min.js"></script>
+<script src="/js/chatbot.js"></script>
 <style>
 .mypagelist{
 padding-left: 40px;
@@ -39,14 +41,17 @@ text-align: right;
 			<!-- Sidebar-->
 			<div class="border-end bg-white" id="sidebar-wrapper">
 				<div class="list-group list-group-flush">
-					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="mypage">회원가입</a> 
-					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="#!">수정/탈퇴</a> 
-					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="#!">장바구니</a> 
-					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="#!">예약 내역</a>
+					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="/mypage">회원 수정</a> 
+					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="/deletemember">회원 탈퇴</a> 
+					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="/reservation">예약 내역</a>
 					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="/hotel/manage">호텔관리</a>
-					<a class=" list-group-item-action list-group-item-light p-1 mypagelist"	href="/hotel/manage/reservation">호텔예약관리</a>
-					<a class=" list-group-item-action list-group-item-light p-1 mypagelist"	href="/hotel/manage">호텔등록/수정</a>
-					<a class=" list-group-item-action list-group-item-light p-1 mypagelist"	href="/hotel/manage/delete">호텔삭제</a>
+					<a class=" list-group-item-action list-group-item-light p-1 mypagelists"	href="/hotel/manage/reservation">호텔예약관리</a>
+					<a class=" list-group-item-action list-group-item-light p-1 mypagelists"	href="/hotel/manage">호텔등록/수정</a>
+					<a class=" list-group-item  list-group-item-action list-group-item-light p-1 mypagelists"	href="/hotel/manage/delete">호텔삭제</a>
+						<a class="list-group-item list-group-item-action list-group-item-light p-3" href="/marketceo">마켓 관리</a>
+						<a class="list-group-item-action list-group-item-light p-1 mypagelists" href="#!">마켓 예약등록</a> 
+						<a class="list-group-item-action list-group-item-light p-1 mypagelists" href="#!">마켓 등록/수정</a>
+						<a class="list-group-item list-group-item-action list-group-item-light p-1 mypagelists" href="#!">마켓 삭제</a>
 				</div>
 			</div>
 			<!-- Page content-->

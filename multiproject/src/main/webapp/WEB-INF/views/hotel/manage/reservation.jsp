@@ -35,14 +35,17 @@
 			<!-- Sidebar-->
 			<div class="border-end bg-white" id="sidebar-wrapper">
 				<div class="list-group list-group-flush">
-					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="mypage">회원가입</a> 
-					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="#!">수정/탈퇴</a> 
-					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="#!">장바구니</a> 
+					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="/mypage">회원 수정</a> 
+					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="/deletemember">회원 탈퇴</a> 
 					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="/reservation">예약 내역</a>
 					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="/hotel/manage">호텔관리</a>
 					<a class=" list-group-item-action list-group-item-light p-1 mypagelists"	href="/hotel/manage/reservation">호텔예약관리</a>
 					<a class=" list-group-item-action list-group-item-light p-1 mypagelists"	href="/hotel/manage">호텔등록/수정</a>
-					<a class=" list-group-item-action list-group-item-light p-1 mypagelists"	href="/hotel/manage/delete">호텔삭제</a>
+					<a class=" list-group-item  list-group-item-action list-group-item-light p-1 mypagelists"	href="/hotel/manage/delete">호텔삭제</a>
+						<a class="list-group-item list-group-item-action list-group-item-light p-3" href="/marketceo">마켓 관리</a>
+						<a class="list-group-item-action list-group-item-light p-1 mypagelists" href="#!">마켓 예약등록</a> 
+						<a class="list-group-item-action list-group-item-light p-1 mypagelists" href="#!">마켓 등록/수정</a>
+						<a class="list-group-item list-group-item-action list-group-item-light p-1 mypagelists" href="#!">마켓 삭제</a>
 				</div>
 			</div>
 				<%@ include file="/WEB-INF/views/hotel/contents/reservation_manage_contents.jsp"%>
@@ -53,7 +56,7 @@
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
-	<script src="js/scripts.js"></script>
+	<script src="/js/scripts.js"></script>
 	<script src="/js/hotel_alert.js"></script>
 	<!-- footer import -->
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>

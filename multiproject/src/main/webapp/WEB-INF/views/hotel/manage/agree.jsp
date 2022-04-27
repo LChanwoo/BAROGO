@@ -35,14 +35,17 @@
 			<!-- Sidebar-->
 			<div class="border-end bg-white" id="sidebar-wrapper">
 				<div class="list-group list-group-flush">
-					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="mypage">회원가입</a> 
-					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="#!">수정/탈퇴</a> 
-					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="#!">장바구니</a> 
+					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="/mypage">회원 수정</a> 
+					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="/deletemember">회원 탈퇴</a> 
 					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="/reservation">예약 내역</a>
 					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="/hotel/manage">호텔관리</a>
 					<a class=" list-group-item-action list-group-item-light p-1 mypagelists"	href="/hotel/manage/reservation">호텔예약관리</a>
 					<a class=" list-group-item-action list-group-item-light p-1 mypagelists"	href="/hotel/manage">호텔등록/수정</a>
-					<a class=" list-group-item-action list-group-item-light p-1 mypagelists"	href="/hotel/manage/delete">호텔삭제</a>
+					<a class=" list-group-item  list-group-item-action list-group-item-light p-1 mypagelists"	href="/hotel/manage/delete">호텔삭제</a>
+						<a class="list-group-item list-group-item-action list-group-item-light p-3" href="/marketceo">마켓 관리</a>
+						<a class="list-group-item-action list-group-item-light p-1 mypagelists" href="#!">마켓 예약등록</a> 
+						<a class="list-group-item-action list-group-item-light p-1 mypagelists" href="#!">마켓 등록/수정</a>
+						<a class="list-group-item list-group-item-action list-group-item-light p-1 mypagelists" href="#!">마켓 삭제</a>
 				</div>
 			</div>
 
