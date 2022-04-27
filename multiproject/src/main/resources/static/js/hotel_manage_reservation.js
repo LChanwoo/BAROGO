@@ -1,6 +1,5 @@
 
 	const res_list =function(){
-		console.log(10);
 			var i =document.createElement('tr');
 			i.setAttribute('id','reservation_list')
 			i.innerHTML='<td class="reservation_id"></td>'
@@ -11,8 +10,6 @@
 			+'<td  class="res_payment"></td>'
 			+'<td class="res_regitime" ></td>'
 			+'<td class="res_confirm">'
-		//	+'	<button class="reserv_btns1"></button>'
-		//	+'	<button class="reserv_btns2">예약취소</button>
 			+'</td>';			
 			var addressContainer = document.getElementById("reservation_list_table");
 			addressContainer.appendChild(i);

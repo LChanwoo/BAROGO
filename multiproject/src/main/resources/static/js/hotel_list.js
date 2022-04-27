@@ -35,20 +35,9 @@ const makeinvisible=function(page){
 	var addressContainer = document.getElementById("hotel_lists_section");
 	addressContainer.appendChild(i);
 }
-// function detectBottom() {
-//     scrollTop = $(window).scrollTop();
-//     innerHeight = $(window).innerHeight();
-	
-//      scrollHeight = $('body').prop('scrollHeight');
-//     if (scrollTop + innerHeight >= scrollHeight) {
-//         return true;
-//     } else {
-//         return false;
-//     }
-// }
-// setTimeout(detectBottom(), 1000);
+
 const getAjax = function() {
-	return new Promise((resolve, reject) => { // 1.
+	return new Promise((resolve, reject) => { 
 	  $.ajax({
 		url: "/hotel",
 		type: "post",
@@ -58,31 +47,15 @@ const getAjax = function() {
 			resolve(respond);
 		},
 		error: (e) => {
-		  reject(e);  // 3.
+		  reject(e);
 		}
 	  });
 	});
   }
-//   const makedivasync = function(respond) {
-// 	return new Promise((resolve, reject) => { // 1.
-// 		if(respond.length==0){return;}
-// 				else{				
-// 					console.log(respond.length);
-// 					makesection();
-// 					page++;
-// 					for(let i=0;i<respond.length;i++){
-// 						makediv();
-// 						inserttodiv(i,respond);
-// 					} 
-					
-// 				}
 
-// 	});
-//   }
   const inserttodiv = function(i,respond) {
 	return new Promise((resolve, reject) => {
-		console.log("i : "+i);
-		console.log("respond : "+respond[i].hotel_id);
+
 	const hotelname= document.getElementsByClassName("hotel_list_infor_name")[i+15*(page-2)];
 	const pic_url= document.getElementsByClassName("hotel_list_infor_pic_img")[i+15*(page-2)];
 	const contents= document.getElementsByClassName("hotel_list_infor_detail")[i+15*(page-2)];
@@ -100,13 +73,9 @@ const getAjax = function() {
 		 innerHeight = $(window).innerHeight();
 		 scrollHeight = $('html').prop('scrollHeight')
 		if( scrollTop+innerHeight>=scrollHeight){
-			console.log(page);
 			 const respond=await getAjax()
-			 if(respond.length==0){
-				 console.log("respond.length==0")
-				 return;}
+			 if(respond.length==0){ return;}
 			 else{				
-				 console.log("respond.length :"+respond.length);
 				 makesection();
 				 page++;
 				 for(let i=0;i<respond.length;i++){
@@ -134,9 +103,6 @@ $(document).ready(function () {
 	scrollTop = $(window).scrollTop();
 	innerHeight = $(window).innerHeight();
 	scrollHeight = $('body').prop('scrollHeight');
-	console.log( $(window).scrollTop());
-	console.log(  $(window).innerHeight());
-	console.log($('body').prop('scrollHeight'));
 	window.scrollTo(0, 0)
 	$.ajax({
 		url : '/hotel' ,
@@ -152,46 +118,12 @@ $(document).ready(function () {
 				const edithref = document.getElementsByClassName("goedit")[i];
 				edithref.setAttribute("href","/hotel/"+respond[i].hotel_id);
 				hotelname.innerHTML = respond[i].hotel_name;
-				// pic_url.style.backgroundImage='url("'+ '/upload/hotel/example/example+(554e08ba-4ce8-4041-b186-62bfb7af7485).jpg'+'")';
 				pic_url.setAttribute("src",respond[i].hotel_picture);
 				contents.innerHTML = respond[i].hotel_phone+"<br>"+respond[i].hotel_address1+" "+respond[i].hotel_address2+"<br>";
 		   } 
 		   location.href="#";
 		   page++;
-		   
-		//    const scrolll = window.addEventListener('scroll', () => { 
-		// 	if(detectBottom()){
-		// 		console.log($(window).scrollTop()+$(window).innerHeight());
-		// 		$.ajax({
-		// 			url : '/hotel' ,
-		// 			data : {'page':page},
-		// 			type : 'post',
-		// 			dataType : 'json',
-		// 			success : function(respond){
-		// 				if(respond.length==0){return;};
-		// 				console.log("page : "+page);
-		// 				makesection();
-		// 				for(let i=0;i<respond.length;i++){
-		// 					makediv();
-		// 					const hotelname= document.getElementsByClassName("hotel_list_infor_name")[i+15*(page-1)];
-		// 					const pic_url= document.getElementsByClassName("hotel_list_infor_pic_img")[i+15*(page-1)];
-		// 					const contents= document.getElementsByClassName("hotel_list_infor_detail")[i+15*(page-1)];
-		// 					const edithref = document.getElementsByClassName("goedit")[i+15*(page-1)];
-		// 					edithref.setAttribute("href","/hotel/"+respond[i].hotel_id);
-		// 					hotelname.innerHTML = respond[i].hotel_name;
-		// 					// pic_url.style.backgroundImage='url("'+ '/upload/hotel/example/example+(554e08ba-4ce8-4041-b186-62bfb7af7485).jpg'+'")';
-		// 					pic_url.setAttribute("src",respond[i].hotel_picture);
-		// 					contents.innerHTML = respond[i].hotel_phone+"<br>"+respond[i].hotel_address1+" "+respond[i].hotel_address2+"<br>";
-		// 				} 
-		// 				page++;
-					   		   
-					   					   
-		// 			}
-		// 		});
-		// 	}
-		//   	});
-		//	  setTimeout(scrolll, 1000);
-		   
+	
 		}
 		
 }); 

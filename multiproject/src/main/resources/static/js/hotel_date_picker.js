@@ -43,7 +43,6 @@ function startDate(e){
 function endDate(e){
 	const day=moment(e).format("YYYY-MM-DD HH:mm:ss");
 	const start_day=moment(document.getElementById("start_date").value).format("YYYY-MM-DD HH:mm:ss");
-	console.log(start_day);
 	$.ajax({
 		url : '/hotel/gettomorrow' ,
 		data : {

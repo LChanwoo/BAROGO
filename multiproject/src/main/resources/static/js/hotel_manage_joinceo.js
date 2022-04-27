@@ -2,15 +2,11 @@ let phonetmp;
 let cert_num;
 let cert_ok=false;
 let business_reg_ok=false;
-// function isCheckNum(str){
-// 	var checkReg=/^[0-9]{3,4}$/;
-// 	return checkReg.test(str);
-// }
+
 
 function isCheckNum(str){
-	//var checkReg=/^[0-9]{3,4}$/;
+
 	var checkReg=/^[0-9]{3,4}$/;
-	console.log(str.value);
 	if(checkReg.test(str.value)==false){
 		alert("3~4자리 숫자만 입력해 주세요");
 		str.value=null;
@@ -115,7 +111,6 @@ $(document).ready(function () {
 				  , dataType : 'json'
 				  , enctype :'multipart/form-data'	   
 				  , success:function(response) {
-					  console.log(response.path);
 					  document.querySelectorAll('.profile-pic')[0].setAttribute("id",response.path);
 				  }
 			  });
@@ -140,7 +135,6 @@ $(document).ready(function () {
 					  , dataType : 'json'
 					  , enctype :'multipart/form-data'	   
 					  , success:function(response) {
-						  console.log(response.path);
 						  document.querySelectorAll('.brid')[0].setAttribute("id",response.path);
 					  }
 				  });

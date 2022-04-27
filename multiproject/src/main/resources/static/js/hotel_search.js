@@ -1,8 +1,7 @@
 let page= 2;
 document.getElementsByClassName("search_btns1")[0].onclick=function(){
 	const val= document.getElementsByClassName("searchtextbox")[0];
-	console.log(val.value)
-	
+
 	window.location.href="/hotel/search?text="+val.value+"?page=";
 
 }
@@ -50,8 +49,6 @@ const makesection=function(){
 }
 const inserttodiv = function(i,respond) {
 	return new Promise((resolve, reject) => {
-		console.log("i : "+i);
-		console.log("respond : "+respond[i].hotel_id);
 	const hotelname= document.getElementsByClassName("hotel_list_infor_name")[i+15*(page-2)];
 	const pic_url= document.getElementsByClassName("hotel_list_infor_pic_img")[i+15*(page-2)];
 	const contents= document.getElementsByClassName("hotel_list_infor_detail")[i+15*(page-2)];
@@ -69,13 +66,9 @@ const inserttodiv = function(i,respond) {
 		 innerHeight = $(window).innerHeight();
 		 scrollHeight = $('html').prop('scrollHeight')
 		if( scrollTop+innerHeight>=scrollHeight){
-			console.log(page);
 			 const respond=await getAjax()
-			 if(respond.length==0){
-				 console.log("respond.length==0")
-				 return;}
+			 if(respond.length==0){return;}
 			 else{				
-				 console.log("respond.length :"+respond.length);
 				 makesection();
 				 page++;
 				 for(let i=0;i<respond.length;i++){
@@ -97,9 +90,6 @@ $(document).ready(function () {
 	const txt1=txt.split('?')[1];
 	const txt2=txt1.split('=')[1].split('?')[0];
 	const text=txt2.split('?')[0];
-	console.log(text)
-	// const page= txt.split('=')[txt.split('=').length-1];
-	// console.log(page)
 
 	$.ajax({
 		url : '/hotel/search' ,

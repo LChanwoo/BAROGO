@@ -1,6 +1,5 @@
 
 	const res_list =function(){
-		console.log(10);
 			var i =document.createElement('tr');
 			i.setAttribute('id','reservation_list')
 			i.innerHTML='<td class="reservation_id"></td>'
@@ -11,8 +10,6 @@
 			+'<td  class="res_payment"></td>'
 			+'<td class="res_regitime" ></td>'
 			+'<td class="res_confirm">'
-		//	+'	<button class="reserv_btns1"></button>'
-		//	+'	<button class="reserv_btns2">예약취소</button>
 			+'</td>';			
 			var addressContainer = document.getElementById("reservation_list_table");
 			addressContainer.appendChild(i);
@@ -46,7 +43,6 @@ $(document).ready(function () {
 				res_btn2(i+1);
 				if(respond[i].confirm=="대기중"||respond[i].confirm=="예약승인"){
 					document.getElementsByClassName('res_hotel_confirm')[i+1].innerHTML=respond[i].confirm
-					console.log(i);
 					document.getElementsByClassName('reserv_btns2')[i].onclick= function(){
 						let con=confirm("정말로 취소하시겠습니까?")
 						if(con){

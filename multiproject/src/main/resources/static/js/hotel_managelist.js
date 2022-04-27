@@ -6,7 +6,7 @@ $(document).ready(function () {
 	if(page==null){
 		page=1;
 	}
-	console.log(page);
+
 	const makelist=function(){
 		var i =document.createElement('li');
 		i.innerHTML='<a class="manage_hotel_list_infor goedit" >'
@@ -58,11 +58,8 @@ $(document).ready(function () {
 				const pic_url= document.getElementsByClassName("manage_hotel_list_infor_pic")[i];
 				const contents= document.getElementsByClassName("manage_hotel_list_infor_detail")[i];
 				const edithref = document.getElementsByClassName("goedit")[i];
-				console.log(respond[i].hotel_id);
 				edithref.setAttribute("href","/hotel/manage/edit/"+respond[i].hotel_id);
-				
 				hotelname.innerHTML = respond[i].hotelname;
-				console.log(respond[i].pic_url);
 				pic_url.setAttribute("src",respond[i].pic_url);
 				contents.innerHTML = respond[i].contents;
 		   } 

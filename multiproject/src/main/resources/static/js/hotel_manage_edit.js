@@ -4,9 +4,7 @@ let loginid ;
 
 
 function isCheckNum(str){
-	//var checkReg=/^[0-9]{3,4}$/;
 	var checkReg=/^[0-9]{3,4}$/;
-	console.log(str.value);
 	if(checkReg.test(str.value)==false){
 		alert("3~4자리 숫자만 입력해 주세요");
 		str.value=null;
@@ -69,19 +67,15 @@ const abs_add =function(){
 
 $(document).ready(function () {
 
-console.log(loginid);
 document.getElementById("roadAddrPart").onclick=function(){	
 	goPopup(); 
 	loginid = document.getElementById("sessionid").innerHTML; 
-	console.log(loginid);
 	$.ajax({
 		url : '/loginconsist' ,
 		data : {'id':loginid},
 		type : 'post',
 		dataType : 'json',
-		success : function(respond){
-			console.log("loginconsist");
-		}
+		success : function(respond){}
 }); 	
 };  
 document.getElementById("add_abs_infor").onclick=function(){if(document.querySelectorAll(".abs_infor_room_infors").length>=3){return;};abs_add();};  
@@ -100,7 +94,7 @@ document.getElementById("manage_add_hotel").onclick=function(){
 		alert('주소를 확인해주세요');
 		return;
 	}
-	console.log(hotel_address2);
+
 	const hotel_name= document.getElementById("hotel_names").value +"";
 	const hotel_phone = document.getElementById("hotel_phone1").value + "-" + document.getElementById("hotel_phone2").value + "-"+ document.getElementById("hotel_phone3").value
 	let hotel_convenience = '';
@@ -110,9 +104,7 @@ document.getElementById("manage_add_hotel").onclick=function(){
 			hotel_convenience +=  h_convenience_array[i].value+',';
 		}
 
-		if(h_convenience_array.length==i-1){
-			console.log(hotel_convenience);
-		}
+
 	}
 	const hotel_room_name=document.querySelectorAll(".room_name");
 	const hotel_room_bed_size=document.querySelectorAll(".room_bed_size");
@@ -141,11 +133,8 @@ document.getElementById("manage_add_hotel").onclick=function(){
 		}
 	}
 	hotel_room+=']';
-	console.log(hotel_room);
 	const hotel_rule=document.getElementById("hotel_rull").value +"";
 	const hotel_detail_account=document.getElementById("detail_infor").value +"";
-	console.log(hotel_rule);
-	console.log(hotel_detail_account);
 	const x=document.querySelectorAll("#image_preview img");
 	if(x[0]!=null){
 	var pictureList = new Array() ;
@@ -185,7 +174,6 @@ document.getElementById("manage_add_hotel").onclick=function(){
 	const url = location.href;
 	const urlsplit=url.split('/');
 	const hotelid =urlsplit[urlsplit.length-1];
-	console.log(hotelid);
 
 		$.ajax({
 			url : '/hotel/manage/editinfor' ,
@@ -217,7 +205,6 @@ document.getElementById("manage_add_hotel").onclick=function(){
 					let hotel_room_bed_qty=document.querySelectorAll(".room_bed_qty");
 					let hotel_room_price=document.querySelectorAll(".room_price");
 					let hotel_room_etc=document.querySelectorAll(".room_etc");
-					console.log(hotel_room_name[i].value);
 					hotel_room_name[i].value=respond.hotel_room[i].room_name;
 					hotel_room_bed_size[i].value=respond.hotel_room[i].room_bed_size;
 					hotel_room_bed_qty[i].value=respond.hotel_room[i].room_bed_qty;
@@ -227,7 +214,6 @@ document.getElementById("manage_add_hotel").onclick=function(){
 				}
 				
 				for(let i=0; i<respond.hotel_picture.length;i++){
-					console.log(respond.hotel_picture[i].picture_path);
 					imageLoader2(respond.hotel_picture[i].picture_path);
 				}
 

@@ -91,7 +91,6 @@
 				 , dataType : 'json'
 				 , enctype :'multipart/form-data'	   
 				 , success:function(response) {
-					 console.log(response.path);
 					 img.setAttribute("id",response.path);
 				 }
 			 });
@@ -173,9 +172,7 @@
 			  form.append( "file1", $("#btnAtt")[0].files[0] );
 			  
 			}
-			 console.log(file);
 			 reader.src=file;
-			 console.log(reader.src);
 		}
 		  
 		  /*첨부된 파일이 있는 경우 checkbox와 함께 attZone에 추가할 div를 만들어 반환 */
