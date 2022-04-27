@@ -99,7 +99,7 @@ background-size: 100% 250px;
 					</div>
 					<div id="total_payment_cal">
 						결제금액
-						<div id="total_payments"><div id ="total_payment"></div><input type="text" hidden id="total_payment2" value=0></div>
+						<div id="total_payments"><div id ="total_payment"></div><input type="text" hidden id="total_payment2" ></div>
 						<button id="pay_btn" href="/hotel/payment">결제하기 </button>
 					</div>
 				</div>

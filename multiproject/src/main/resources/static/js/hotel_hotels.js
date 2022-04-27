@@ -217,6 +217,7 @@ $(document).ready(function () {
 					};
 				}
 				document.getElementById("total_payment").innerText = respond[0].room_price.toLocaleString()+"원";
+				document.getElementById("total_payment2").value =  respond[0].room_price;
 				document.getElementsByClassName("checked3")[0].setAttribute("checked","checked");
 				{
 				}
