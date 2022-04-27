@@ -12,9 +12,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MarketController {
+	
 @Autowired
 @Qualifier("mybatisservice")
 MarketService service;
+
 @GetMapping("/market")
 public ModelAndView market(MarketDTO dto){
 	

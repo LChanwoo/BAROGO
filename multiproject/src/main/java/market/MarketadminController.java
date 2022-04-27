@@ -26,7 +26,7 @@ public class MarketadminController {
 	@Qualifier("mybatisservice")
 	MarketService service;
 	@RequestMapping(value="/marketadmin1" ,method=RequestMethod.GET)
-	public ModelAndView protable(String id,HttpServletResponse response) throws IOException {
+	public ModelAndView protable(String id,HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
 		List<MarketDTO> list = service.productlist(id);
 		mv.addObject("list",list);
@@ -37,6 +37,7 @@ public class MarketadminController {
 				mv.setViewName("marketadmin");
 		
 		}else {
+			try {
 			
 			mv.setViewName("marketadinsuccess");
 			response.setContentType("text/html; charset=UTF-8");
@@ -46,7 +47,7 @@ public class MarketadminController {
 			out.println("<script>alert('마켓관리자 회원이아닙니다'); location.href='main';</script>");
 			 
 			out.flush();
-
+			}catch (Exception e) {}
 
 		
 		}

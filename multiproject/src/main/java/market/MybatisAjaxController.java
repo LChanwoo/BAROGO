@@ -26,12 +26,12 @@ public class MybatisAjaxController {
 	
 	
 	@PostMapping("ajaxtable2")
-	public List<MarketDTO> creattable(MarketDTO dto)throws IOException {
+	public List<MarketDTO> creattable(MarketDTO dto) {
 		// 연계데이터부분
 		dto.setId("bbbb");
 		dto.setMarket("롯데마트");
 		dto.setState("결제대기");
-
+		try {
 		String originfilename =dto.img.getOriginalFilename();
 		String beforefilename =originfilename.substring(0, originfilename.indexOf("."));
 		String afterfilename =originfilename.substring(originfilename.indexOf("."));
@@ -42,7 +42,7 @@ public class MybatisAjaxController {
 		File serverfile = new File(savePath+imgname1);
 		dto.getImg().transferTo(serverfile);
 		service.insertproduct(dto);
-		
+		}catch(Exception e){}
 		List<MarketDTO> list = service.productlist(dto.id);
 		return list;
 	}
@@ -64,12 +64,12 @@ public class MybatisAjaxController {
 	}
 	
 	@PostMapping("ajaxupdate")
-	public MarketDTO ajaxupdate(MarketDTO dto)throws IOException {
+	public MarketDTO ajaxupdate(MarketDTO dto){
 		// 연계데이터부분
 		dto.setId("aaaa");
 		dto.setMarket("하나로마트");
 		dto.setState("결제대기");
-
+		try {
 		String originfilename =dto.img.getOriginalFilename();
 		String beforefilename =originfilename.substring(0, originfilename.indexOf("."));
 		String afterfilename =originfilename.substring(originfilename.indexOf("."));
@@ -80,7 +80,7 @@ public class MybatisAjaxController {
 		File serverfile = new File(savePath+imgname1);
 		dto.getImg().transferTo(serverfile);
 		service.updatemember(dto);
-
+		}catch(Exception e){}
 		return new MarketDTO();
 	}
 	
