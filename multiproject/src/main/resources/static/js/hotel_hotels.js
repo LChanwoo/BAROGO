@@ -142,7 +142,7 @@ document.getElementById("pay_btn").onclick=function(){
 				type : 'post',
 				dataType : 'json',
 				success : function(respond){
-					if(respond.pay==1){	}
+					if(respond.pay==1){ payment();	}
 					else{
 						alert('로그인 후 이용바랍니다.');
 						window.location.href="/login";
@@ -152,9 +152,6 @@ document.getElementById("pay_btn").onclick=function(){
 		});
 	}
 	getData()
-	.then(function(data) {
-		payment();
-	})
   
 }
 

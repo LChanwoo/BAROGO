@@ -1,13 +1,13 @@
 $(document).ready(function(){ 
 	$("#iamportPayment").click(function(){ 
 		
-		 var name = document.getElementById('proname').value;
-		 var amount = document.getElementById('amount').value;
-		 var buyer_email = document.getElementById('buyer_email').value;
-		 var buyer_name = document.getElementById('buyer_name').value;
-		 var buyer_tel = document.getElementById('buyer_tel').value;
-		 var buyer_addr = document.getElementById('buyer_addr').value;
-		 var buyer_postcode = document.getElementById('buyer_postcode').value;
+		//  var name = document.getElementById('proname').value;
+		//  var amount = document.getElementById('amount').value;
+		//  var buyer_email = document.getElementById('buyer_email').value;
+		//  var buyer_name = document.getElementById('buyer_name').value;
+		//  var buyer_tel = document.getElementById('buyer_tel').value;
+		//  var buyer_addr = document.getElementById('buyer_addr').value;
+		//  var buyer_postcode = document.getElementById('buyer_postcode').value;
     	payment(); //버튼 클릭하면 호출 
     }); 
 })
@@ -70,7 +70,7 @@ IMP.request_pay({
         msg += '에러내용 : ' + rsp.error_msg;
         alert(msg);
     }
-    document.getElementById('payform').submit();
+    // document.getElementById('payform').submit();
     location.href="/";
 });
 }
