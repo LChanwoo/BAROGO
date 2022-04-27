@@ -169,9 +169,11 @@ $(document).ready(function () {
 		dataType : 'json',
 		success : function(respond){
 				for(let i =0 ;i<respond.length;i++){
+					try{
 					makepic();
 					makepicbtn(i);
 					document.querySelectorAll(".carousel-item img")[i].setAttribute("src",respond[i]);
+					}catch{}
 				}			
 				document.querySelectorAll(".carousel-item")[0].setAttribute("class","carousel-item active");
 				const carobtn = document.querySelectorAll("button[ data-bs-target=\"#carouselExampleIndicators\"]")[0];
