@@ -94,67 +94,11 @@ const getAjax = function() {
 	resolve();
 	})
 	};
-	// function getDocHeight() {
-	// 	var D = document;
-	// 	return Math.max(
-	// 		D.body.scrollHeight, D.documentElement.scrollHeight,
-	// 		D.body.offsetHeight, D.documentElement.offsetHeight,
-	// 		D.body.clientHeight, D.documentElement.clientHeight
-	// 	);
-	// }
-	// $(window).scroll(function() {
-	// 	console.log($(window).scrollTop() + " , "+  $(window).height()  + " , "+ getDocHeight());
-	// 	if($(window).scrollTop() + $(window).height() == getDocHeight()) {
-	// 		alert("bottom!");
-	// 	}
-	// });
-	function disableScrolling(){
-		var x=window.scrollX;
-		var y=window.scrollY;
-		window.onscroll=function(){window.scrollTo(x, y);};
-	}
-	
-	function enableScrolling(){
-		window.onscroll=function(){};
-	}
-	// const timer = setInterval(() => {
-	// 	console.log('하이');
-	// }, 00);
-	const divif = function(respond) {
-		return new Promise((resolve, reject) => {
-		
-			if(respond.length==0){return;}
-			else{				
-				console.log(respond.length);
-				makesection();
-				for(let i=0;i<respond.length;i++){
-					makediv();
-				} 
-				for(let i=0;i<respond.length;i++){
-					inserttodiv(i,respond);
-				} 
-				page++;
-				
-			}
-			resolve();
-		})
-		};
-	setTimeout(()=>{
+
 	window.addEventListener('scroll',async () => { 
 		 scrollTop = parseInt( $(window).scrollTop());
 		 innerHeight = $(window).innerHeight();
 		 scrollHeight = $('html').prop('scrollHeight')
-		//  console.log(scrollTop+innerHeight);
-		//  console.log(scrollHeight);
-		// const scrollable =document.documentElement.scrollHeight -window.innerHeight;
-		// const scrolled=window.scrollY;
-		// console.log("scrollable = "+scrollable);
-		// console.log("scrolled = "+Math.ceil(scrolled));
-		// if(Math.ceil(scrolled)==scrollable){
-
-		// 	console.log("bottom");
-		// }
-
 		if( scrollTop+innerHeight>=scrollHeight){
 			console.log(page);
 			 const respond=await getAjax()
@@ -173,12 +117,9 @@ const getAjax = function() {
 				 } 
 			 }
 		}				
-		// else{
-		// 	return ;
-		// }
 
 	});
-	},300);
+
 
 
 

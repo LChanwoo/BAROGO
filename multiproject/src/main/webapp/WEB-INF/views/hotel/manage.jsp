@@ -15,11 +15,7 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="/css/styles.css" rel="stylesheet" />
-<!-- <link href="/css/hotel.css" rel="stylesheet" /> -->
-
 <script src="/jquery-3.6.0.min.js"></script>
-<!-- <script src="/js/hotel_managelist.js"></script> -->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="/js/chatbot.js"></script>
 <!-- 
 <link rel="stylesheet" href="/css/hotel.css" /> -->
@@ -59,7 +55,7 @@
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
-	<script src="js/scripts.js"></script>
+	<script src="/js/scripts.js"></script>
 	<script src="/js/hotel_alert.js"></script>
 	<!-- footer import -->
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>

@@ -5,6 +5,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="css/header.css" />
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <!-- header -->
@@ -17,7 +18,7 @@
     });
 
     $("#header, #nav").css({
-      width: "1850px",
+      width: "1870px",
       height: "80px",
       margin: "0 auto",
     });
@@ -28,7 +29,7 @@
 
     $("#header h1").css({
       float: "left",
-      paddingTop: "0",
+      paddingTop: "9px",
       margin: "0 auto",
     });
 
@@ -38,8 +39,8 @@
 
     $("#headerlogin li").css({
       float: "left",
-      marginTop: "0px",
-      marginLeft: "20px",
+      marginTop: "8px",
+      marginLeft: "25px",
       lineHeight: "60px",
       fontSize: "25px",      
     });
@@ -77,7 +78,7 @@
 		<c:if test="${userId != null }">
 			
 				<li><a href="<c:url value='/logout' />" style="font-size: 15px;">Logout</a></li>
-				<li><a href="<c:url value='/mypagepw_form' />" style="font-size: 15px;">Mypage</a></li>
+				<li><a href="<c:url value='/mypagePw' />" style="font-size: 15px;">Mypage</a></li>
 			
 		</c:if>
 		</ul>

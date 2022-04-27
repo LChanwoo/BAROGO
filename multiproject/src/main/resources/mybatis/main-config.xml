@@ -5,17 +5,14 @@
 <configuration>
 <!-- 1. sql 실행 결과 XXXDTO 매핑 -->
 <typeAliases>
-	<typeAlias type="hotel.HotelPostDTO" alias="hotelpostdto"/>
-	<typeAlias type="hotel.HotelRoomDTO" alias="hotelroomdto"/>
-	<typeAlias type="hotel.HotelPictureDTO" alias="hotelpicturedto"/>
-	<typeAlias type="hotel.HotelceoDTO" alias="hotelceodto"/>
-	<typeAlias type="hotel.HotelReservationDTO" alias="hotelreservationdto"/>
-	
 	<typeAlias type="edu.multi.kdigital.dto.UserDto" alias="user"/>
 	<typeAlias type="edu.multi.kdigital.dto.UserDto" alias="UserDto"/>
 	<typeAlias type="edu.multi.kdigital.dto.PaymentDto" alias="payment"/>	
 </typeAliases>
-
-
+<!--   	<mappers>
+  		<mapper resource="mybatis/mappers/User-mapping.xml"/>
+  		<mapper resource="mybatis/mappers/Payment-mapping.xml"/>
+  	</mappers>
+ -->
 </configuration>
 

@@ -28,7 +28,7 @@
 
     $("#header h1").css({
       float: "left",
-      paddingTop: "0",
+      paddingTop: "9px",
       margin: "0 auto",
     });
 
@@ -38,7 +38,7 @@
 
     $("#headerlogin li").css({
       float: "left",
-      marginTop: "0px",
+      marginTop: "23px",
       marginLeft: "20px",
       lineHeight: "60px",
       fontSize: "25px",      
