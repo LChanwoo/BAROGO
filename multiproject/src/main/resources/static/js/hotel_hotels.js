@@ -1,4 +1,5 @@
 
+let amount;
 
 var myCarousel = document.querySelector('#carouselExampleIndicators');
 var carousel = new bootstrap.Carousel(myCarousel);
@@ -213,7 +214,8 @@ $(document).ready(function () {
 						enddate=document.getElementById("end_date").value;
 						const DateA= moment(startdate);
 						const DateB= moment(enddate);
-						document.getElementById("total_payment").innerText = ((DateB.diff(DateA,'days'))*price).toLocaleString() +"원";
+						amount=((DateB.diff(DateA,'days'))*price);
+						document.getElementById("total_payment").innerText = amount.toLocaleString() +"원";
 					};
 				}
 				document.getElementById("total_payment").innerText = respond[0].room_price.toLocaleString()+"원";

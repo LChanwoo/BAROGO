@@ -21,13 +21,13 @@ IMP.request_pay({
     pg : 'inicis', // version 1.1.0부터 지원.
     pay_method : 'card',
     merchant_uid : 'merchant_' + new Date().getTime(),
-    name : document.getElementById('proname').value,
-    amount : document.getElementById('amount').value,
-    buyer_email : document.getElementById('buyer_email').value,
-    buyer_name : document.getElementById('buyer_name').value,
-    buyer_tel : document.getElementById('buyer_tel').value,
-    buyer_addr : document.getElementById('buyer_addr').value,
-    buyer_postcode : document.getElementById('buyer_postcode').value,
+    name : document.getElementById('hotel_namess').value,
+    amount : amount,
+    // buyer_email : document.getElementById('buyer_email').value,
+    // buyer_name : document.getElementById('buyer_name').value,
+    // buyer_tel : document.getElementById('buyer_tel').value,
+    // buyer_addr : document.getElementById('buyer_addr').value,
+    // buyer_postcode : document.getElementById('buyer_postcode').value,
 }, function(rsp) {
     if ( rsp.success ) {
         var msg = '결제가 완료되었습니다.';
