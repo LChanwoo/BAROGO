@@ -22,7 +22,7 @@ IMP.request_pay({
     pay_method : 'card',
     merchant_uid : 'merchant_' + new Date().getTime(),
     name : document.getElementById('hotel_namess').value,
-    amount : amount,
+    amount : document.getElementById("total_payment2").value,
     // buyer_email : document.getElementById('buyer_email').value,
     // buyer_name : document.getElementById('buyer_name').value,
     // buyer_tel : document.getElementById('buyer_tel').value,
