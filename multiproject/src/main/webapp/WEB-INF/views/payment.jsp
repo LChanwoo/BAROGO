@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,14 +29,14 @@
 			<div class="w3-container w3-card-4">
 				<div class=" w3-large w3-margin-top">
 					<div>
-						<label class="label" for="proname">상품 이름 </label> <br> <input
-							type="text" class="w3-input" id="proname" name="proname">
-					</div>
+                        <label class="label" for="proname" >상품 이름 </label> <br> <input
+                            type="text" class="w3-input" id="proname" name="proname" value="${paydto.name }" readonly="readonly">
+                    </div>
 
-					<div>
-						<label class="label" for="amount">가격 </label> <br> <input
-							type="text" class="w3-input" id="amount" name="amount">
-					</div>
+                    <div>
+                        <label class="label" for="amount">가격 </label> <br> <input
+                            type="text" class="w3-input" id="amount" name="amount" value ="${paydto.price }" readonly="readonly">
+                    </div>
 					<div>
 						<br> <br>
 						<h2>결제 정보 등록</h2>

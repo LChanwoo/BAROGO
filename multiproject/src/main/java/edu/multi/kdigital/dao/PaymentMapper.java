@@ -1,8 +1,12 @@
 package edu.multi.kdigital.dao;
 
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
 
 import edu.multi.kdigital.dto.PaymentDto;
 
@@ -11,7 +15,10 @@ import edu.multi.kdigital.dto.PaymentDto;
 public interface PaymentMapper {
 
 
-	public int paymentinfo(PaymentDto pay);
-
+	public void paymentinfo(PaymentDto dto);
 	
+	 public List<PaymentDto> paymentList(PaymentDto dto);
+
+
+		
 }

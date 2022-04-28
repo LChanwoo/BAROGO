@@ -8,6 +8,7 @@ $(document).ready(function(){
 		 var buyer_tel = document.getElementById('buyer_tel').value;
 		 var buyer_addr = document.getElementById('buyer_addr').value;
 		 var buyer_postcode = document.getElementById('buyer_postcode').value;
+		 var buyer_postcode = document.getElementById('userId').value;
     	payment(); //버튼 클릭하면 호출 
     }); 
 })
@@ -35,12 +36,13 @@ IMP.request_pay({
         msg += '상점 거래ID : ' + rsp.merchant_uid;
         msg += '결제 금액 : ' + rsp.paid_amount;
         msg += '카드 승인번호 : ' + rsp.apply_num;
+        payform.submit();
+        alert("결제되었습니다.");
     } else {
         var msg = '결제에 실패하였습니다.';
         msg += '에러내용 : ' + rsp.error_msg;
     }
-    alert(msg);
-    document.getElementById('payform').submit();
-    location.href="/";
+
+
 });
 }

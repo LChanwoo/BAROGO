@@ -1,12 +1,14 @@
 package edu.multi.kdigital.service;
 
-import javax.servlet.http.HttpSession;
+import java.util.List;
 
 import edu.multi.kdigital.dto.PaymentDto;
 
 public interface PaymentService {
-	// 회원가입
-	public int paymentinfo(PaymentDto pay);
+	
+	public void paymentinfo(PaymentDto dto);
+	
+	 public List<PaymentDto> paymentList(PaymentDto dto);
 	
 
 }

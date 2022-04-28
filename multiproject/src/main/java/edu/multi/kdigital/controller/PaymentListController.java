@@ -1,34 +1,36 @@
 package edu.multi.kdigital.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
 
 import edu.multi.kdigital.dto.PaymentDto;
 import edu.multi.kdigital.service.PaymentService;
 
 
 @Controller
-public class PaymentController {
+public class PaymentListController {
 	
 	@Inject
 	PaymentService pservice;
-
-	@RequestMapping("/payment")
-	public String payment(PaymentDto pay, Model model) {
-		return "/payment";
-	}
 	
-	// 데이터처리
-    @RequestMapping(value = "/payinsert" , method = RequestMethod.POST)
-    public ModelAndView paymentinfo(PaymentDto dto, ModelAndView mv) {
-    	pservice.paymentinfo(dto);		
-    	mv.setViewName("/main");
-		return mv;
-    }
+	   @RequestMapping(value="/paymentlist.do", method=RequestMethod.GET)
+	    public String paymentList(PaymentDto dto, Model model) {	        
+		   System.out.println(dto.getUserId()); 
+		   List<PaymentDto> list = pservice.paymentList(dto);
+	        model.addAttribute("list", list);
+	        
+	        return "/paymentlist";
+	    }
 }

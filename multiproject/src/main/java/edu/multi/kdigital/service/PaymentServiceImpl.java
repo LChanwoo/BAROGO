@@ -1,5 +1,7 @@
 package edu.multi.kdigital.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -16,10 +18,19 @@ public class PaymentServiceImpl implements PaymentService {
 	
 	public MemberRepository memberRepository;
 	
-	@Override
-	public int paymentinfo(PaymentDto pay) {
-		return pservice.paymentinfo(pay);
-	}
 	
+	@Override
+	public void paymentinfo(PaymentDto dto) {
+		dto.setProname(dto.getProname());
+		pservice.paymentinfo(dto);
+		}
+	
+	 @Override
+	    public List<PaymentDto> paymentList(PaymentDto dto) {
+	        return pservice.paymentList(dto);
 
+        }
+	 
 }
+
+
