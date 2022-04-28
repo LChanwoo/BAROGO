@@ -41,9 +41,7 @@ $(document).ready(function () {
 			success : function(respond){
                for(let i=1;i<= parseInt(respond.count/3+1);i++){
 					makepage(i);
-
 			   } 
-               
             }
     }); 
 	$.ajax({

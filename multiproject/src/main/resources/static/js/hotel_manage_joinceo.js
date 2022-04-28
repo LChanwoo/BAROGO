@@ -185,7 +185,11 @@ $(document).ready(function () {
 					success : function(respond){
 						alert("사업자 등록이 완료되었습니다.");
 						window.location.href="/hotel/manage";
-						}
+					},
+					error :function(respond){
+						console.log(respond);
+					}
+
 					}); 
 		}
 		else{

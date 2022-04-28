@@ -375,9 +375,7 @@ public class HotelController {
 	@ResponseBody
 	@RequestMapping(value="/hotel/userinfor",method = RequestMethod.POST )
 	public UserDto hoteluserinfor( HttpServletResponse response, HttpSession session){ 
-		String login_id= (String)session.getAttribute("userId");
-		
-		return uService.memberView(login_id); 
+		return uService.memberView((String)session.getAttribute("userId")); 
 		
 	}
 	
@@ -414,7 +412,6 @@ public class HotelController {
 	@ResponseBody
 	@RequestMapping(value="/hotel/manage", method= RequestMethod.POST)
 	public ArrayList< hotelmanagelistDTO> hotelmanagelist(HttpSession session, HotelPostDTO dto){ 
-		System.out.println("hotel/manage  -  post요청");
 		String loginid = (String)session.getAttribute("userId");
 		dto.setBusiness_id(loginid);
 		ArrayList<HotelPostDTO> hpdtos=hotelservice.selectHotelManageList(dto);
@@ -422,11 +419,9 @@ public class HotelController {
 		for (int i = 0; i < hpdtos.size(); i++) {
 			String hotelName=hpdtos.get(i).getHotel_name();
 			String pic_url=hpdtos.get(i).getHotel_picture();
-			System.out.println(pic_url);
 			String contents=hpdtos.get(i).getHotel_address1()+" "+hpdtos.get(i).getHotel_address2();
 			String location=contents;
 			String hotel_id = hpdtos.get(i).getHotel_id();
-			System.out.println(hotel_id);
 			hotelmanagelistDTO hmdto= new hotelmanagelistDTO(hotelName, pic_url, contents, location,hotel_id);
 			hmdtos.add(hmdto);
 		}
