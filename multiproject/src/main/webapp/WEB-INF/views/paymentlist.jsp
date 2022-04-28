@@ -38,20 +38,22 @@ table  {
 	<hr>
 	<section>
 		<!-- Sidebar-->
-		<div class="border-end bg-white" id="sidebar-wrapper">
-			<div class="list-group list-group-flush">
-				<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="/mypage">회원 수정</a> 
-				<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="/deletemember">회원 탈퇴</a> 
-				<a class="list-group-item list-group-item-action list-group-item-light p-3"	>내역 확인</a>
-				<a class=" list-group-item-action list-group-item-light p-1 mypagelists"	href="/reservation">호텔 예약내역</a>	
-				<a class=" list-group-item-action list-group-item-light p-1 mypagelists"	href="/paymentlist.do?userId=${userId}">마켓 구매내역</a>
-				<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="/hotel/manage">호텔관리</a>
-				<a class=" list-group-item-action list-group-item-light p-1 mypagelists"	href="/hotel/manage/reservation">호텔예약관리</a>
-				<a class=" list-group-item-action list-group-item-light p-1 mypagelists"	href="/hotel/manage">호텔등록/수정</a>
-				<a class=" list-group-item  list-group-item-action list-group-item-light p-1 mypagelists"	href="/hotel/manage/delete">호텔삭제</a>
-				<a class="list-group-item list-group-item-action list-group-item-light p-3" href="/marketadmin">마켓 상품 관리</a>
+		<div class="d-flex" id="wrapper">
+		<div class="d-flex" id="wrapper">
+			<div class="border-end bg-white" id="sidebar-wrapper">
+				<div class="list-group list-group-flush">
+					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="/mypage">회원 수정</a> 
+					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="/deletemember">회원 탈퇴</a> 
+					<a class="list-group-item list-group-item-action list-group-item-light p-3"	>내역 확인</a>
+					<a class=" list-group-item-action list-group-item-light p-1 mypagelists"	href="/reservation">호텔 예약내역</a>	
+					<a class=" list-group-item-action list-group-item-light p-1 mypagelists"	href="/paymentlist.do?userId=${userId}">마켓 구매내역</a>
+					<a class="list-group-item list-group-item-action list-group-item-light p-3"	href="/hotel/manage">호텔관리</a>
+					<a class=" list-group-item-action list-group-item-light p-1 mypagelists"	href="/hotel/manage/reservation">호텔예약관리</a>
+					<a class=" list-group-item-action list-group-item-light p-1 mypagelists"	href="/hotel/manage">호텔등록/수정</a>
+					<a class=" list-group-item  list-group-item-action list-group-item-light p-1 mypagelists"	href="/hotel/manage/delete">호텔삭제</a>
+					<a class="list-group-item list-group-item-action list-group-item-light p-3" href="/marketadmin">마켓 상품 관리</a>
+				</div>
 			</div>
-		</div>
 			<div class="page-wrapper">
 				<div class="container-fluid">
 					<div class="col-lg-8">

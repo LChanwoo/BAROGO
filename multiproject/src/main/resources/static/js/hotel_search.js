@@ -2,17 +2,18 @@ let pagex= 2;
 document.getElementsByClassName("search_btns1")[0].onclick=function(){
 	const val= document.getElementsByClassName("searchtextbox")[0];
 
-	window.location.href="/hotel/search?text="+val.value+"?page=";
+	window.location.href="/hotel/search?text="+val.value+"?page=1";
 
 }
 const getAjax = function() {
 	return new Promise((resolve, reject) => { // 1.
 	  $.ajax({
-		url: "/hotel",
+		url: "/hotel/search",
 		type: "post",
 		dataType: "json",
 		data: {'page':pagex},
 		success: (respond) => {
+			console.log(respond.length);
 			resolve(respond);
 		},
 		error: (e) => {
