@@ -31,16 +31,17 @@ function basketajax(i){
 						
 					$("#basket_tb").append(
 								
-			"<tr><td style= 'width:170px'><input type = 'checkbox' checked='checked' class='bscl'><p>"+
-			dto[j].name+"</p></td><td style= 'width:70px'><input type = 'number' style = 'width:30px;height:20px;' value ="+dto[j].num+">"+
-			"</td><td style= 'width:130px'>"+dto[j].price+"</td><td style='width:90px'>"+dto[j].num*dto[j].price+"</td></tr>"	
+			"<tr><td style= 'width:170px'><input type = 'checkbox' checked='checked' class='bscl'>"+
+			"<input class='payname' readonly='readonly' type=text name='name' style = 'border:0;' value='"+dto[j].name+"'>"+
+			"</td><td style= 'width:70px'><input min='0' id='changenum" + j + "' onchange='numchange(" + j + ")' type = number value ="+dto[j].num +" style = 'width:30px;height:20px;'>"+
+			"</td><td style= 'width:130px' id='changeprice"+j+"'>"+dto[j].price+"</td><td style='width:90px'  class='num_only"+j+"'>"+dto[j].num*dto[j].price+"</td></tr>"	
 					)
 				totalprice += dto[j].num*dto[j].price;
 				
 				
 				}//for
 				$('#totalinput').val(totalprice)		
-           	alert(totalprice);
+           
 			},//success
 			err:function(err){
 				console.log(err)
@@ -74,18 +75,23 @@ $(document).ready(function(){
 		/*장바구니 삭제*/
 	$('#delete_bs').click(
 			
-			function(){
+	function(){
 		var name1 = []
-	
-		$('input:checked~p').each(function(){
-			name1.push($(this).text());
-		})	
+		alert($('input:checked+input').val())
+		$('input:checked+input').each(function(){
+			name1.push($(this).val());
+		
+		});
+		var name = {
+			'name':name1
+		}
+			
 		$.ajax({
 			url: '/deletebasket'	,
-					data:{name : name1},
+					data:name,
 					type:'post',
 					dataType:'json',
-					traditional:true,
+					traditional:true, 
 					success:function(dto){
 						alert('장바구니 삭제완료')
 						var totalprice = 0;
@@ -94,9 +100,10 @@ $(document).ready(function(){
 						)
 						for(var i =0 ; i<dto.length;i++){
 						$('#basket_tb').append(	
-			"<tr><td style= 'width:170px'><input type = 'checkbox'  class='bscl' checked='checked'>"+dto[i].name+
-			"</td><td style= 'width:70px'><input type = 'number' style = 'width:30px;height:20px;' value ="+dto[i].num+">"+
-			" </td><td style= 'width:130px'>"+dto[i].price+"</td><td style='width:90px'>"+dto[i].num*dto[i].price+"</td></tr>"					
+			"<tr><td style= 'width:170px'><input type = 'checkbox'  class='bscl' checked='checked'>"+
+			"<input class='payname' readonly='readonly' type=text name='name' style = 'border:0;' value="+dto[j].name+"'>"+
+			"</td><td style= 'width:70px'><input min='0' id='changenum" + j + "' onchange='numchange(" + j + ")' type = number value ="+dto[j].num +" style = 'width:30px;height:20px;'>"+
+			"</td><td style= 'width:130px' id='changeprice"+j+"'>"+dto[j].price+"</td><td style='width:90px'  class='num_only"+j+"'>"+dto[j].num*dto[j].price+"</td></tr>"					
 					)
 				totalprice += dto[j].num*dto[j].price;
 				

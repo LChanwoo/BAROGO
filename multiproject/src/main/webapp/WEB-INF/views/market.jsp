@@ -7,12 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/css/market.css" rel="stylesheet">
-<script src="/jquery-3.6.0.min.js"></script>
-<script src="/js/chatbot.js"></script>
-<script src="/js/market.js"></script>
+<link href="css/market.css" rel="stylesheet">
+<script src="jquery-3.6.0.min.js"></script>
+<script src="js/chatbot.js"></script>
+<script src="js/market.js"></script>
 <script type="text/javascript">
 function numchange(i){
+	
 	var total1= $('#changenum'+i).val()*$('#changeprice'+i).text()
 	
 	$('.num_only'+i).text(total1)
@@ -32,7 +33,6 @@ function numchange(i){
 		var total = 0
 		for(var j = 0 ; j<${fn:length(basketlist)} ; j++){
 			total += parseInt($('.num_only'+j).text())
-			
 		}
 		$('#totalinput').val(total)
 		}
@@ -52,7 +52,7 @@ function numchange(i){
 </style>
 
 </head>
-<body  style="background-image: URL(/images/market.png); 
+<body  style="background-image: URL(images/market.png); 
 background-repeat: no-repeat;
 background-size: 100% 250px; ">
 	<!-- header import -->
@@ -114,7 +114,7 @@ background-size: 100% 250px; ">
            	<tr><td style= 'width:170px'>
            	<input class="ckbox" type = "checkbox" id = "bs_ck${dto1.index }" class="bscl" checked='checked'>
            	<input class='payname' readonly='readonly' type=text name='name' style = 'border:0;' value='${dto.name}'></td>
-           	<td style= 'width:70px'><input min="0" id='changenum${dto1.index }' onchange=numchange(${dto1.index }) type = number value =${dto.num} style = 'width:30px;height:20px;'> </td>
+           	<td style= 'width:70px'><input min="0" id='changenum${dto1.index }' onchange='numchange(${dto1.index })' type = number value =${dto.num} style = 'width:30px;height:20px;'> </td>
            	<td style= 'width:130px' id='changeprice${dto1.index }'>${dto.price }</td>
            	<td style='width:90px' class='num_only${dto1.index }'>
            	${dto.num*dto.price }

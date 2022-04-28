@@ -14,7 +14,7 @@ function ajaxdelete(){
 		type:"post",
 		dataType:"json",
 		success:function(dto){
-		 location.href='marketadmin?id=aaaa '
+		 location.href='marketadmin '
 			}	,
 		/*success함수는 받는게있어야 함수실행됨*/
 		error:function(err){
@@ -152,18 +152,18 @@ $(document).ready(function(){
 	 	$("#orderby").click(
 	 		
 	 		function(){
-	 		count=0
-	 		var tb_1 = "";
-	 		tb_1+="<table border = '1' id='tb_1'>"
-	 		tb_1+="<tr>"
-	 		tb_1+="<td>No</td>"
-	 		tb_1+="<td>상품명</td>"
-	 	    tb_1+="<td>판매가</td>"
-	 	    tb_1+="<td>수량</td></tr>"
-	 	    tb_1+="<tr><td></td><td>오더</td><td></td><td></td><td</td></tr>"			
-	 	    tb_1+="</table>"	
-	 		$("#con2").html(tb_1)
-	 		}		
+	 			$.ajax({
+					url:"/updateinfo",
+					data: {name:$('input:checked~p').text()} ,
+					type:"post",
+					dataType:"json",
+					success:function(dto){
+						
+						
+					}
+		
+	})
+	 			}		
 	 	)
 	 	/*상품등록  */
 	 	$("#proregister").click(

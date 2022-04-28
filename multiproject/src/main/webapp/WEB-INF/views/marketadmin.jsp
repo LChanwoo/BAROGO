@@ -6,16 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="/jquery-3.6.0.min.js"></script>
-<script src="/js/chatbot.js"></script>
-<script src="/js/marketadmin.js"></script>
+<script src="jquery-3.6.0.min.js"></script>
+<script src="js/chatbot.js"></script>
+<script src="js/marketadmin.js"></script>
 <script type="text/javascript">
 
 
 
 
 </script>
-<link href="/css/marketadmin.css" rel="stylesheet">
+<link href="css/marketadmin.css" rel="stylesheet">
 </head>
 
 <body>
@@ -29,8 +29,7 @@
 			<div id="li_div" style="margin-bottom:20px">
 			<ul>
 			
-			<a href="marketadmin?id=aaaa"><li>등록상품</li></a>
-			<a href="#" id="orderby"><li>주문내역</li></a>
+			<a href="marketadmin"><li>등록상품</li></a>
 			<a href="#" id="proregister"><li>상품등록</li></a>
 			<a href="#"id="proupdate"><li>상품정보 수정</li></a>
 			<a href="#" id="deletemember" onclick=ajaxdelete() ><li>선택상품 삭제</li></a>

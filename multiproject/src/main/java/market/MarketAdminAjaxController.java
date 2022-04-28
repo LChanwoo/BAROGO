@@ -46,7 +46,7 @@ public class MarketAdminAjaxController {
 		String imgname1 = beforefilename+UUID.randomUUID().toString()+afterfilename;
 		dto.setImgname(imgname1);
 		
-		String savePath="/usr/mydir/upload/";
+		String savePath="/usr/mydir/upload";
 		File serverfile = new File(savePath+imgname1);
 		dto.getImg().transferTo(serverfile);
 		service.insertproduct(dto);
@@ -96,7 +96,7 @@ public class MarketAdminAjaxController {
 		String imgname1 = beforefilename+UUID.randomUUID().toString()+afterfilename;
 		dto.setImgname(imgname1);
 		
-		String savePath = "/usr/mydir/upload/";
+		String savePath = "/usr/mydir/upload";
 		File serverfile = new File(savePath+imgname1);
 		dto.getImg().transferTo(serverfile);
 		service.updatemember(dto);
