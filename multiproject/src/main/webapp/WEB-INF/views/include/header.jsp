@@ -62,7 +62,7 @@
 	<div id="headerlogin">
 		<ul>
 			<li><a href="<c:url value='/hotel' />" style="font-size: 30px;">Hotel</a></li>
-			<li><a href="<c:url value='/market' />" style="font-size: 30px;">Market</a></li>
+			<li><a href="<c:url value='/Market' />" style="font-size: 30px;">Market</a></li>
 		
 
 		<c:if test="${userId == null }">
