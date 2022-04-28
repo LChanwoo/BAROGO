@@ -89,7 +89,9 @@ public class HotelController {
 	public ArrayList<HotelPostDTO> searchs(String text,int page){ 
 		
 		System.out.println(text);
+		System.out.println(page);
 		String[] new_str = text.split(" ");
+		System.out.println("new_str.length : "+new_str.length);
 		int new_page = (page-1)*15;
 		for(int i=0; i<new_str.length;i++) {
 			new_str[i] = "%"+new_str[i]+"%";

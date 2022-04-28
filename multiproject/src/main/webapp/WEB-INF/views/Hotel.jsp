@@ -108,7 +108,7 @@ background-size: 100% 250px;
 	<!-- footer import -->
 	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	<script src="/js/hotel_list.js"></script>
-	<script src="/js/hotel_search.js"></script>
+<!-- 	<script src="/js/hotel_search.js"></script> -->
 	<!-- end of footer import -->
 </body>
 
