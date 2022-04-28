@@ -6,14 +6,21 @@ document.getElementsByClassName("search_btns1")[0].onclick=function(){
 
 }
 const getAjax = function() {
+	const url = decodeURI(location.href);
+	const urlsplit=url.split('/');
+	const txt=urlsplit[urlsplit.length-1]
+	const txt1=txt.split('?')[1];
+	const txt2=txt1.split('=')[1].split('?')[0];
+	const text=txt2.split('?')[0];
 	return new Promise((resolve, reject) => { // 1.
 	  $.ajax({
 		url: "/hotel/search",
-		type: "post",
 		dataType: "json",
-		data: {'page':pagex},
+		data : {'text':text,
+				'page':pagex},
+		type : 'post',
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 		success: (respond) => {
-			console.log(respond.length);
 			resolve(respond);
 		},
 		error: (e) => {
@@ -48,18 +55,18 @@ const makesection=function(){
 	var addressContainer = document.getElementById("search_list");
 	addressContainer.appendChild(i);
 }
-const inserttodiv = function(i,respond) {
-	return new Promise((resolve, reject) => {
-	const hotelname= document.getElementsByClassName("hotel_list_infor_name")[i+15*(pagex-2)];
-	const pic_url= document.getElementsByClassName("hotel_list_infor_pic_img")[i+15*(pagex-2)];
-	const contents= document.getElementsByClassName("hotel_list_infor_detail")[i+15*(pagex-2)];
-	const edithref = document.getElementsByClassName("goedit")[i+15*(pagex-2)];
-	edithref.setAttribute("href","/hotel/"+respond[i].hotel_id);
-	hotelname.innerHTML = respond[i].hotel_name;
-	pic_url.setAttribute("src",respond[i].hotel_picture);
-	contents.innerHTML = respond[i].hotel_phone+"<br>"+respond[i].hotel_address1+" "+respond[i].hotel_address2+"<br>";
-	resolve();
-	})
+	const inserttodiv = function(i,respond) {
+		return new Promise((resolve, reject) => {
+		const hotelname= document.getElementsByClassName("hotel_list_infor_name")[i+15*(pagex-2)];
+		const pic_url= document.getElementsByClassName("hotel_list_infor_pic_img")[i+15*(pagex-2)];
+		const contents= document.getElementsByClassName("hotel_list_infor_detail")[i+15*(pagex-2)];
+		const edithref = document.getElementsByClassName("goedit")[i+15*(pagex-2)];
+		edithref.setAttribute("href","/hotel/"+respond[i].hotel_id);
+		hotelname.innerHTML = respond[i].hotel_name;
+		pic_url.setAttribute("src",respond[i].hotel_picture);
+		contents.innerHTML = respond[i].hotel_phone+"<br>"+respond[i].hotel_address1+" "+respond[i].hotel_address2+"<br>";
+		resolve();
+		})
 	};
 
 	window.addEventListener('scroll',async () => { 
@@ -81,7 +88,7 @@ const inserttodiv = function(i,respond) {
 			 }
 		}				
 
-	});
+	})
 
 
 $(document).ready(function () {
