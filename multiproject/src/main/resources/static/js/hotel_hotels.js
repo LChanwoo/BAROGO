@@ -113,6 +113,7 @@ let infoWindows = new Array();
 const x = parseFloat(document.getElementById("data_x").innerHTML);
 const y = parseFloat(document.getElementById("data_y").innerText);
 const title = document.getElementById("data_title").innerText;
+
 try{
 var mapOptions = {
 	center: new naver.maps.LatLng( y,x),
@@ -210,6 +211,7 @@ $(document).ready(function () {
 		type : 'post',
 		dataType : 'json',
 		success : function(respond){
+			try{
 				for(let i =0 ;i<respond.length;i++){
 					makeroom(respond[i],i);
 					document.getElementsByClassName("checked3")[i].onclick= function(){
@@ -228,6 +230,7 @@ $(document).ready(function () {
 				document.getElementsByClassName("checked3")[0].setAttribute("checked","checked");
 				{
 				}
+			}catch{}
 
         }
 	});  
