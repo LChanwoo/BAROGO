@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Mapper 
 @Repository("mybatisdao")
 public interface MarketDAO {
-	public int insertproduct (MarketDTO dto);
+	public void insertproduct (MarketDTO dto);
 	public List<MarketDTO> productlist (String id);
 	public List<MarketDTO> marketproduct(String market);
 	public void deletepro(String name);
@@ -21,4 +21,5 @@ public interface MarketDAO {
 	public List<MarketDTO> marketlist();
 	public void insertmarketadmin(MarketDTO dto);
 	public MarketDTO marketadminlist(String id);
+	public String market(String id);
 }

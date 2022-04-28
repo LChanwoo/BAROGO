@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>BAROGO</title>
+<title>Insert title here</title>
 <link href="/css/market.css" rel="stylesheet">
 <script src="/jquery-3.6.0.min.js"></script>
 <script src="/js/chatbot.js"></script>
@@ -52,7 +52,7 @@ function numchange(i){
 </style>
 
 </head>
-<body  style="background-image: URL(images/market.png); 
+<body  style="background-image: URL(/images/market.png); 
 background-repeat: no-repeat;
 background-size: 100% 250px; ">
 	<!-- header import -->
@@ -64,8 +64,9 @@ background-size: 100% 250px; ">
 	<div id="con1">
 		<div id="con2">
 			<select id="select1">
+				<option style='visibility: hidden; height: 0'>${marketname }</option>
 			<!--foreach 옵션 -->
-					<option>마켓선택</option>
+					
 			<c:forEach items="${marketlist }" var="dto3">
 				
 					<option>${dto3.market }</option>
@@ -83,7 +84,7 @@ background-size: 100% 250px; ">
 			<li class="lii${prolist.index } lid" ) onmouseover="lihover(${prolist.index })" onmouseout="liout(${prolist.index })">
 			<div class="li3 lif${prolist.index }">
 				<div class='li4 lia'>
-			<input type ="button" value = "장바구니담기" id = "basket${prolist.index }" onclick = basketajax(${prolist.index })>
+			<input class="basket_btn" type ="button" value = "장바구니담기" id = "basket${prolist.index }" onclick = basketajax(${prolist.index })>
 				</div>
 			</div>
 			<div class='li5 lib'>
@@ -126,7 +127,7 @@ background-size: 100% 250px; ">
 		
 				<div id="totalprice">
 		
-		총 결제금액 :<input readonly="readonly" type= "text" id = "totalinput" name = "price" style='border:0;' />
+					총 결제금액 :<input readonly="readonly" type= "text" id = "totalinput" name = "price" style='border:0;' />
 			
 				</div>
 			<input id="delete_bs" type = "button" value="장바구니에서 삭제"> 

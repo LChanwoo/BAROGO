@@ -9,7 +9,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>BAROGO</title>
+<title>Insert title here</title>
 
 <!-- CSS -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -40,16 +40,13 @@
 					<a class=" list-group-item-action list-group-item-light p-1 mypagelists"	href="/hotel/manage/reservation">호텔예약관리</a>
 					<a class=" list-group-item-action list-group-item-light p-1 mypagelists"	href="/hotel/manage">호텔등록/수정</a>
 					<a class=" list-group-item  list-group-item-action list-group-item-light p-1 mypagelists"	href="/hotel/manage/delete">호텔삭제</a>
-					<a class="list-group-item list-group-item-action list-group-item-light p-3" href="/marketadmin">마켓 관리</a>
-<!-- 					<a class="list-group-item-action list-group-item-light p-1 mypagelists" href="#!">마켓 예약등록</a> 
-						<a class="list-group-item-action list-group-item-light p-1 mypagelists" href="#!">마켓 등록/수정</a>
-						<a class="list-group-item list-group-item-action list-group-item-light p-1 mypagelists" href="#!">마켓 삭제</a> -->
-
+					<a class="list-group-item list-group-item-action list-group-item-light p-3" href="/marketadmin">마켓 상품 관리</a>
 				</div>
-			</div>
+			</div> 
 			<div>
 				<div class="page_name">마켓사업자등록</div>
 				<div class="wrapper22">
+					<form id= "marketadmin" action="marketmypage" >
 					<div class="manage_hotel_list">
 						<div id="manage_hotel_add_form">
 							<div class="title mb10">
@@ -74,15 +71,17 @@
 								</div>
 								<div id="self-introduce">
 									<div>
+								
+									<!-- /////////////////////////////////////// -->
 									<label style="font-size : 20px;">Mart Name</label>
 									<br>
-									<input class="martname" type="text"  />
+									<input class="martname" type="text"  name="market"/>
 									</div>
 									<br>
 									<div>
 									<label style="font-size : 20px;">Mart Adress </label>
 									<br>
-									<input class="martadress" type="text"  />
+									<input class="martadress" type="text"  name="address"/>
 									</div>	
 								</div>
 							</div>
@@ -123,8 +122,11 @@
 								</div>
 							</div>
 						</div>
-						<button id="manage_add_ceo">제출</button>
+						<button id="manage_add_ceo" type="submit">제출</button>
+						<!-- /////////////////////////////////////// -->
+						
 					</div>
+					</form>
 				</div>
 			</div>
 			<div hidden id="business_id">${id}</div>

@@ -6,18 +6,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>바로고</title>
+<title>Insert title here</title>
 
-<link href="css/geolocation.css" rel="stylesheet">
-<script src="jquery-3.6.0.min.js"></script>
-<script src="js/chatbot.js"></script>
-<script src="js/market.js"></script>
+<link href="/css/geolocation.css" rel="stylesheet">
+<script src="/jquery-3.6.0.min.js"></script>
+<script src="/js/chatbot.js"></script>
+<script src="/js/market.js"></script>
 
 
 <script type="text/javascript">
 $(document).ready(
 				function(){
-					alert('a');
+					
 		 navigator.geolocation.getCurrentPosition((position) => {
 				let latitude =position.coords.latitude;
 				let longitude =position.coords.longitude;
@@ -49,7 +49,7 @@ $(document).ready(
 </style>
 
 </head>
-<body  style="background-image: URL(images/market.png); 
+<body  style="background-image: URL(/images/market.png); 
 background-repeat: no-repeat;
 background-size: 100% 250px; ">
 	<!-- header import -->
@@ -77,7 +77,7 @@ background-size: 100% 250px; ">
 	</div>
 
 	<!-- footer import -->
-	<%@ include file="/WEB-INF/views/include/footer2.jsp"%>
+	<%@ include file="/WEB-INF/views/include/footer.jsp"%>
 	<!-- end of footer import -->
 </body>
 <script 

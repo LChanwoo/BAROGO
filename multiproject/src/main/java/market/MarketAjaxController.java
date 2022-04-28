@@ -2,6 +2,8 @@ package market;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,22 +12,30 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MarketAjaxController {
 	@Autowired
-	@Qualifier("mybatisservice")
+	@Qualifier("marketservice")
 	MarketService service;
 	@PostMapping("basket")
-	public List<MarketDTO> basket(MarketDTO dto){
-		dto.setId("aaaa");
-		dto.setMarket("하나로마트");
+	public List<MarketDTO> basket(HttpSession session,MarketDTO dto){
+		dto.setId((String)(session.getAttribute("userId")));
 		service.insertbasket(dto);
-		List<MarketDTO> list = service.basketlist(dto.getId());
+		List<MarketDTO> list;
+		if(dto.getId()==null) {
+		list = null;
+		}else {
+		list = service.basketlist(dto.getId());
+		}
 		
+		
+		System.out.println(dto.getMarket());
 		return list;
 	}
 	
 	@PostMapping("deletebasket")	
-	public List<MarketDTO> deletebasket(String[] name){
+	public List<MarketDTO> deletebasket(HttpSession session,String[] name){
+		System.out.println("삭제할 이름:"+name);
 		MarketDTO dto =new MarketDTO();
-		dto.setId("aaaa");
+		dto.setId((String)session.getAttribute("userId"));
+		System.out.println(dto.getId());
 		for(int i =0 ; i<name.length;i++)
 		{
 			service.deletebasket(name[i]);

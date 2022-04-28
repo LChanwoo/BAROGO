@@ -3,7 +3,7 @@ package market;
 import java.util.List;
 
 public interface MarketService {
-	public int insertproduct(MarketDTO dto);
+	public void insertproduct(MarketDTO dto);
 	public List<MarketDTO> productlist (String id);
 	public List<MarketDTO> marketproduct (String market);
 	public void deletepro(String name);
@@ -16,4 +16,5 @@ public interface MarketService {
 	public List<MarketDTO> marketlist();
 	public void insertmarketadmin(MarketDTO dto);
 	public MarketDTO marketadminlist(String id);
+	public String market(String id);
 }

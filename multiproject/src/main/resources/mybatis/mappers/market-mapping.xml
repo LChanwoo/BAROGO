@@ -72,4 +72,8 @@ delete from shoppingbasket where name = #{i}
 select * from marketadmin where id= #{i}
 </select>
 
+<select id = "market" resultType="String" parameterType="String">
+select market from marketadmin where id= #{i}
+</select>
+
 </mapper>

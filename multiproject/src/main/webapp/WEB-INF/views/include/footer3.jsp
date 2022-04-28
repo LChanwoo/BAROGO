@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 $(document).ready(function(){
-
+	
 	
 function preventClick(e){
 	e.preventDefault()
@@ -16,19 +16,19 @@ function showPopup(){
     window.open("test.jsp","팝업 테스트","width=900, height=900, top=10, left=10");
 }
 
-
+if($('#headerlogin li:nth-child(3)').text() == "Logout"){
 $(".btn-open-popup").click(function(){
-	if($('#headerlogin li:nth-child(3)').text() == "Logout"){
 	$(".modal").css("display","block"),
 	$("body").css("overflow","hidden")
-
+})//click end,
 	}else{
 		alert("로그인하세요")
 		location.href = "/login"
 	}
-})//click end,
 
-
+$("#clo1").click(function(){
+	
+})
 
 
 
@@ -39,16 +39,12 @@ $(".btn-open-popup").click(function(){
 
 <!-- end of header -->
     <footer>
-    <div style="display: scroll; position: fixed; bottom: 150px; right: 42px;">
+    <div style="display: scroll; position: fixed; bottom: 100px; right: 42px;">
 	<a href="#" title="맨위로">
 	<img style="width: 25px;" src="<c:url value='/images/angleup.png' />" alt="맨위로">
 	</a>
 	</div>
-	<div style="position: fixed; bottom: 85px; right: 27px;">
-	<a  href='javascript:void(0)'  class="btn-open-popup">
-	<img style="width: 55px;" src="/images/장바구니1.png" >
-	</a>
-	</div>
+	
 	
 
 

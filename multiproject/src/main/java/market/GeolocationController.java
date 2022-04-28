@@ -13,12 +13,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class GeolocationController {
 	@Autowired
-	@Qualifier("mybatisservice")
+	@Qualifier("marketservice")
 	MarketService service;
 	
-	@GetMapping("geolocation")
+	@GetMapping("Market")
 	public ModelAndView marketlist() {
-		System.out.println("컨트롤러1 ");
+		
 		List<MarketDTO> marketlistrepeat = service.marketlist();
 	   ArrayList<MarketDTO> marketlist = new ArrayList<MarketDTO>();
 
@@ -33,7 +33,7 @@ public class GeolocationController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("marketlist1",marketlist);
 		mv.setViewName("geolocation");
-		System.out.println("컨트롤러2 ");
+		
 		return mv;
 		
 

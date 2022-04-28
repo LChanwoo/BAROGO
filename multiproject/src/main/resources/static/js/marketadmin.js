@@ -43,7 +43,7 @@ function upajax(){
 					enctype :'multipart/form-data',
 					success:function(dto){
 						alert('수정완료')
-						location.href='marketadmin?id=aaaa '
+						location.href='marketadmin '
 					},
 					error:function(err){
 						console.log(err)
@@ -69,7 +69,7 @@ function requestajax(k){
 		dataType:"json",
 		enctype :'multipart/form-data',
 		success:function(list){
-			alert(list[list.length-1].name+"상품등록완료")
+			alert(/*list[list.length-1].name+*/"상품등록완료")
 			var tb_1 = "";
 	 		tb_1+="<table border = '1' id='tb_1'>"
 	 		tb_1+="<tr>"
@@ -115,7 +115,7 @@ $(document).ready(function(){
 		
 			$.ajax({
 					url:"/updateinfo",
-					data: {name:$('input:checked~p').text(),id:'aaaa'} ,
+					data: {name:$('input:checked~p').text()} ,
 					type:"post",
 					dataType:"json",
 					success:function(dto){
@@ -130,7 +130,7 @@ $(document).ready(function(){
 				tb_2+="<tr><td colspan='3' style='height:240px;'><textarea rows=''  name= 'explain1' cols='' placeholder='상품설명'>"+dto.explain1+"</textarea>	</td></tr> "
 				tb_2+="</table><div id='sub'><input type='button' value = '수정완료' id='updateajax' onclick=upajax() class='inbtn'></div></form>"	
 				
-						alert(dto.id)
+						
 					$("input:checked").attr("disabled", true)	
 					$("#fd").html(tb_2)	
 					$("#sub").html

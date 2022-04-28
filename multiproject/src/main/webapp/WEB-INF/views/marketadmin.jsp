@@ -5,17 +5,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>BAROGO</title>
-<script src="jquery-3.6.0.min.js"></script>
-<script src="js/chatbot.js"></script>
-<script src="js/marketadmin.js"></script>
+<title>Insert title here</title>
+<script src="/jquery-3.6.0.min.js"></script>
+<script src="/js/chatbot.js"></script>
+<script src="/js/marketadmin.js"></script>
 <script type="text/javascript">
 
 
 
 
 </script>
-<link href="css/marketadmin.css" rel="stylesheet">
+<link href="/css/marketadmin.css" rel="stylesheet">
 </head>
 
 <body>

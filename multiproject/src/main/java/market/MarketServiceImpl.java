@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-@Service("mybatisservice")
+@Service("marketservice")
 public class MarketServiceImpl implements MarketService {
 	
 
@@ -15,13 +15,16 @@ public class MarketServiceImpl implements MarketService {
 	@Qualifier("mybatisdao")
 	MarketDAO dao;
 	
-	
+	public String market(String id) {
+		String market = dao.market(id);
+		return market;
+	};
 	
 	public void updatemember(MarketDTO dto) {
 		dao.updatemember(dto);
 	};
-	public int insertproduct(MarketDTO dto) {
-		return dao.insertproduct(dto);
+	public void insertproduct(MarketDTO dto) {
+		dao.insertproduct(dto);
 	};
 	
 	public List<MarketDTO> productlist (String id){
