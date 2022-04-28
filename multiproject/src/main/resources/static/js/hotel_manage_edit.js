@@ -4,7 +4,7 @@ let loginid ;
 
 
 function isCheckNum(str){
-	var checkReg=/^[0-9]{3,4}$/;
+	var checkReg=/^[0-9]{2,4}$/;
 	if(checkReg.test(str.value)==false){
 		alert("2~4자리 숫자만 입력해 주세요");
 		str.value=null;
