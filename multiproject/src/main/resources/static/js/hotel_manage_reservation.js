@@ -63,7 +63,7 @@ $(document).ready(function () {
 								success : function(respond){	
 									document.getElementsByClassName('res_hotel_confirm')[i+1].innerHTML=respond.result;
 									document.getElementsByClassName('res_confirm')[i].innerHTML="";
-									alert("예약승인됨");
+									alert("예약이 승인되었습니다.");
 									window.location.href="/hotel/manage/reservation";
 								}
 							}); 
@@ -84,11 +84,11 @@ $(document).ready(function () {
 								success : function(respond){	
 									document.getElementsByClassName('res_hotel_confirm')[i+1].innerHTML=respond.result;
 									document.getElementsByClassName('res_confirm')[i].innerHTML="";
-									alert("예약취소됨");
+									alert("예약이 취소되었습니다");
 									window.location.href="/hotel/manage/reservation";
 								},
 								error : function(respond){	
-									alert("dpd");
+									alert("서버 오류 : 예약취소에 실패하였습니다.");
 									window.location.href="/hotel/manage/reservation";
 								}
 							}); 
@@ -113,11 +113,11 @@ $(document).ready(function () {
 								success : function(respond){	
 									document.getElementsByClassName('res_hotel_confirm')[i+1].innerHTML=respond.result;
 									document.getElementsByClassName('res_confirm')[i].innerHTML="";
-									alert("예약취소됨");
+									alert("예약이 취소되었습니다");
 									window.location.href="/hotel/manage/reservation";
 								},
 								error : function(respond){	
-									alert("dpd");
+									alert("서버 오류 : 예약취소에 실패하였습니다.");
 									window.location.href="/hotel/manage/reservation";
 								}
 							}); 

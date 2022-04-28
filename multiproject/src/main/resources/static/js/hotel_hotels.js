@@ -142,7 +142,13 @@ document.getElementById("pay_btn").onclick=function(){
 				type : 'post',
 				dataType : 'json',
 				success : function(respond){
-					if(respond.pay==1){ payment();	}
+					if(respond.login==1){
+						$.ajax({
+							url : '/hotel/userinfor' ,
+							type : 'post',
+							dataType : 'json',
+							success : function(data){payment(data);}
+						});	}
 					else{
 						alert('로그인 후 이용바랍니다.');
 						window.location.href="/login";

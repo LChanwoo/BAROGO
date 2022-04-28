@@ -37,12 +37,10 @@ function CheckForm() {
 	let txt1=document.getElementById("txtMobile1");
 	let txt2=document.getElementById("txtMobile2");
 	let txt3=document.getElementById("txtMobile3");
-	if (txt1.value == ""||txt2.value.length != 4 ||txt2.value.length != 4) {
-		window.alert("휴대폰 번호를 확인하세요.");
+	if (txt1.value == ""||txt2.value.length <= 2 ||txt2.value.length <= 2 ) {
+		window.alert("휴대전화 번호를 확인하세요.");
 		return false;
 	}
-	if(!isCheckNum(txt2.value)){window.alert("숫자만 입력해주세요"); return false;}
-	else if(!isCheckNum(txt3.value)){window.alert("숫자만 입력해주세요");return false;}
 	
 	const phone= (String)(txt1.value+txt2.value+txt3.value) ;
 	phonetmp=phone;
@@ -110,7 +108,7 @@ $(document).ready(function () {
 				  , data : form
 				  , dataType : 'json'
 				  , enctype :'multipart/form-data'	   
-				  , success:function(response) {
+				  , success:function(response) { 
 					  document.querySelectorAll('.profile-pic')[0].setAttribute("id",response.path);
 				  }
 			  });

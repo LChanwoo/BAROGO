@@ -20,11 +20,11 @@ IMP.init('imp27550428');
 IMP.request_pay({
     pg : 'inicis', // version 1.1.0부터 지원.
     pay_method : 'card',
-    merchant_uid : 'merchant_' + new Date().getTime(),
+    merchant_uid : 'h' + new Date().getTime(),
     name : document.getElementById('hotel_namess').value,
     amount : document.getElementById("total_payment2").value,
-    // buyer_email : document.getElementById('buyer_email').value,
-    // buyer_name : document.getElementById('buyer_name').value,
+    buyer_email : data.userEmail,
+    buyer_name : data.userName,
     // buyer_tel : document.getElementById('buyer_tel').value,
     // buyer_addr : document.getElementById('buyer_addr').value,
     // buyer_postcode : document.getElementById('buyer_postcode').value,

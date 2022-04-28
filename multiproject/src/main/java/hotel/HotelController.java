@@ -36,6 +36,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.fasterxml.jackson.databind.JsonNode;
 
+import edu.multi.kdigital.dto.UserDto;
+import edu.multi.kdigital.service.UserService;
+
 
 
 @Controller
@@ -52,6 +55,10 @@ public class HotelController {
 	@Autowired
 	@Qualifier("mapservice")
 	NaverMapService mapservice;
+	
+	@Autowired
+	@Qualifier("user")
+	UserService uService;
 	
 	@RequestMapping("/Hotel")
 	public String main(){ 
@@ -266,7 +273,6 @@ public class HotelController {
 			System.out.println(date1);
 			System.out.println(enddate);
 			Date endd=  new Date ( date1.getTime ( ) + (long) ( 1000 * 60 * 60 * 24 ) );
-			date=sdf.format( date1);
 			end= sdf.format(endd);
 			System.out.println(end);
 		}
@@ -352,8 +358,18 @@ public class HotelController {
 			if(login_id==null) {return "{\"pay\": 0 }"; }
 		}catch (Exception e) {}
 		
-		return "{\"pay\":"+1+"}"; 
+		return "{\"login\":"+1+"}"; 
+		
 	}
+	@ResponseBody
+	@RequestMapping(value="/hotel/userinfor",method = RequestMethod.POST )
+	public UserDto hoteluserinfor( HttpServletResponse response, HttpSession session){ 
+		String login_id= (String)session.getAttribute("userId");
+		
+		return uService.memberView(login_id); 
+		
+	}
+	
 //	@ResponseBody
 //	@RequestMapping(value="/hotel/getpay",method = RequestMethod.POST )
 //	public String hotelpay(
