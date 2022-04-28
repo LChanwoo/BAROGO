@@ -113,7 +113,7 @@ let infoWindows = new Array();
 const x = parseFloat(document.getElementById("data_x").innerHTML);
 const y = parseFloat(document.getElementById("data_y").innerText);
 const title = document.getElementById("data_title").innerText;
-
+try{
 var mapOptions = {
 	center: new naver.maps.LatLng( y,x),
     zoom: 18
@@ -124,6 +124,7 @@ var marker = new naver.maps.Marker({
     position: new naver.maps.LatLng( y, x),
     map: map
 });
+}catch{}
 
 
 var infoWindow = new naver.maps.InfoWindow({

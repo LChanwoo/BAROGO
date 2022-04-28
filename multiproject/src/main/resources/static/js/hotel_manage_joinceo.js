@@ -164,16 +164,21 @@ $(document).ready(function () {
     });
 	document.getElementById("manage_add_ceo").onclick=function(){
 		 if(cert_ok&&business_reg_ok){
+			const txt1=document.getElementById("txtMobile1");
+			const txt2=document.getElementById("txtMobile2");
+			const txt3=document.getElementById("txtMobile3");
 			const business_id=document.getElementById("business_id").innerHTML;
 			const profile_picture=document.getElementsByClassName("profile-pic")[0].getAttribute("id");
 			const profile_text=document.getElementById("self-introduce_text").value;
 			const business_registration = document.getElementsByClassName('brid')[0].getAttribute("id");
+			const business_phone = txt1.value+txt2.value+txt3.value;
 				$.ajax({
 					url : '/hotel/manage/joinceo' ,
 					data : {'business_id':business_id
 							,'profile_picture':profile_picture
 							,'profile_text':profile_text
 							,'business_registration':business_registration
+							,'business_phone':business_phone 
 						},
 					type : 'post',
 					dataType : 'json',
