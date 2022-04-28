@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import edu.multi.kdigital.controller.LoginController;
 import edu.multi.kdigital.controller.MainController;
 import edu.multi.kdigital.dao.PaymentMapper;
+import edu.multi.kdigital.repository.MemberRepository;
 import hotel.HotelDAO;
 import market.MarketController;
 import market.MarketDAO;
@@ -25,6 +26,7 @@ import upload.UploadController;
 @MapperScan(basePackageClasses = HotelDAO.class)
 @MapperScan(basePackageClasses = PaymentMapper.class)
 @MapperScan(basePackageClasses = MarketDAO.class)
+@MapperScan(basePackageClasses = MemberRepository.class)
 public class MultiprojectApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MultiprojectApplication.class, args);
