@@ -57,7 +57,7 @@ public class HotelController {
 	NaverMapService mapservice;
 	
 	@Autowired
-	@Qualifier("user")
+	@Qualifier("UserService")
 	UserService uService;
 	
 	@RequestMapping("/Hotel")
