@@ -6,9 +6,12 @@
 <mapper namespace="edu.multi.kdigital.dao.PaymentMapper">
     
     <!-- 회원가입 -->
-    <insert id="paymentinfo" parameterType="UserDto">
-        INSERT INTO 'payment' VALUES (#{proname}, #{amount}, #{buyer_email},#{buyer_name},#{buyer_tel},#{buyer_addr},#{buyer_postcode})
-    </insert>
+    <insert id="paymentinfo" parameterType="payment">
+        INSERT INTO payment VALUES (#{proname}, #{amount}, #{buyer_email},#{buyer_name},#{buyer_tel},#{buyer_addr},#{buyer_postcode})
+    </insert>    
+<!--     <insert id="hotel paymentinfo" parameterType="payment">
+        INSERT INTO payment VALUES (#{proname}, #{amount}, #{buyer_email},#{buyer_name})
+    </insert> -->
     
     	<!-- 로그인 -->
 	<select id="paymentout" resultType="String">

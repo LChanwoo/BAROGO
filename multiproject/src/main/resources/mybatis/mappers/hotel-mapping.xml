@@ -19,7 +19,7 @@
 	<select id="selectHotelcount" parameterType="hotelpostdto" resultType="int">
 		select count(*) from hotel_table where business_id = #{business_id}
 	</select>
-	<select id="selectHotelceobyhids" parameterType="String" resultType="hotelceodto">
+	<select id="selectHotelceobybids" parameterType="String" resultType="hotelceodto">
 		select * from is_business_id where business_id = #{business_id}
 	</select>
 	<select id="selectHotelRoombyhids" parameterType="String" resultType="hotelroomdto">
@@ -46,6 +46,10 @@
 	
 	<select id="isBusinessId" parameterType="String" resultType="int">
 		select count(*) from is_business_id where business_id = #{business_id};
+	</select>
+	
+	<select id="getBusinessId" parameterType="String" resultType="hotelceodto">
+		select * from is_business_id where business_id = #{business_id} limit 1;
 	</select>
 	<select id="selecthotelsearch" parameterType="String" resultType="hotelpostdto">
 	
@@ -76,7 +80,7 @@
 	</insert> 
 	
 	<insert id="addceo" parameterType="hotelceodto" >
-		 insert is_business_id values(#{business_id},#{profile_picture},#{profile_text},#{business_registration})
+		 insert is_business_id values(#{business_id},#{profile_picture},#{profile_text},#{business_registration},#{business_phone})
 	</insert>
 	<insert id="postReservation" parameterType="hotelreservationdto" >
 		 insert into hotel_reservation(hotel_id,hotel_name,business_id,user_id,start_date,end_date,payment,regist_time) values(#{hotel_id},#{hotel_name},#{business_id},#{user_id},#{start_date},#{end_date},#{payment},#{regist_time})

@@ -2,6 +2,15 @@ package edu.multi.kdigital.dto;
 
 public class PaymentDto {
 	String proname,amount,buyer_email,buyer_name,buyer_tel,buyer_addr,buyer_postcode;
+	
+	public PaymentDto() {}
+
+	public PaymentDto(String proname, String amount, String buyer_email, String buyer_name) {
+		this.proname = proname;
+		this.amount = amount;
+		this.buyer_email = buyer_email;
+		this.buyer_name = buyer_name;
+	}
 
 	public String getProname() {
 		return proname;

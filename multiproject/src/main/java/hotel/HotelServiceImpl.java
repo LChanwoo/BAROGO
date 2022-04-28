@@ -69,8 +69,8 @@ public class HotelServiceImpl implements HotelService {
 	public ArrayList<HotelReservationDTO> selectReservationsbyuids(String user_id){
 		return dao.selectReservationsbyuids(user_id);
 	}
-	public ArrayList<HotelceoDTO> selectHotelceobyhids(String business_id){
-		return dao.selectHotelceobyhids(business_id);
+	public ArrayList<HotelceoDTO> selectHotelceobybids(String business_id){
+		return dao.selectHotelceobybids(business_id);
 	}
 	public ArrayList<HotelPostDTO> selectHotelbyhids(String hotel_id){
 		return dao.selectHotelbyhids(hotel_id);

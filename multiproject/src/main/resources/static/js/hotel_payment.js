@@ -29,7 +29,6 @@ IMP.request_pay({
     // buyer_addr : document.getElementById('buyer_addr').value,
     // buyer_postcode : document.getElementById('buyer_postcode').value,
 }, function(rsp) {
-    document.getElementById('payform').submit();
     if ( rsp.success ) {
         var msg = '결제가 완료되었습니다.';
         msg += '고유ID : ' + rsp.imp_uid;
@@ -50,6 +49,7 @@ IMP.request_pay({
 		const DateA2= moment(startdate);
 		const DateB2= moment(enddate);
 		const hotel_price=((DateB2.diff(DateA2,'days'))*price);
+
         $.ajax({
             url : '/hotel/getpay' ,
             data : {'hotel_id': hotelid,
@@ -58,6 +58,10 @@ IMP.request_pay({
                     'start_date':DateA,
                     'end_date': DateB,
                     'payment': hotel_price,
+                    'proname':document.getElementById('hotel_namess').value,
+                    'amount': document.getElementById("total_payment2").value,
+                    'buyer_email' : data.userEmail,
+                    'buyer_name' : data.userName
                     },
             type : 'post',
             dataType : 'json',

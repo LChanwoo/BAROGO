@@ -19,11 +19,11 @@ public interface HotelService {
 	public int updateReservationConfirm(String reservation_id);
 	
 	public int isBusinessId(String business_id);
-	public ArrayList<HotelPostDTO> selecthotelsearch(String[] str,int page) ;
 	public int selectHotelcount(HotelPostDTO dto);
+	public ArrayList<HotelPostDTO> selecthotelsearch(String[] str,int page) ;
 	public ArrayList<HotelReservationDTO> selectReservationsbybids(String business_id);
 	public ArrayList<HotelReservationDTO> selectReservationsbyuids(String user_id);
-	public ArrayList<HotelceoDTO> selectHotelceobyhids(String business_id);
+	public ArrayList<HotelceoDTO> selectHotelceobybids(String business_id);
 	public ArrayList<HotelPostDTO> selectHotelbyhids(String hotel_id);
 	public ArrayList<HotelPictureDTO> selectHotelPicturebyhids(String hotel_id);
 	public ArrayList<HotelPostDTO> selectHotelpagelist(int page); 

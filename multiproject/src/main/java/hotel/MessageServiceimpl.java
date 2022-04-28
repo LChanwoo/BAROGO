@@ -34,4 +34,24 @@ public class MessageServiceimpl implements MessageService{
 			System.out.println(e.getCode());
 		}
 	}
+	public void sendReservationMessage(String toNumber,String hotel_name) {
+		
+		Message coolsms = new Message(apiKey, apiSecret);
+		
+		HashMap<String, String> params = new HashMap<String, String>();
+		params.put("to", toNumber);
+		params.put("from", fromNumber);
+		params.put("type", "SMS");
+		params.put("text", "[바로고] "+hotel_name+" 예약내역을 확인하세요.");
+		params.put("app_version", "test app 1.2"); // application name and version
+		
+		try {
+			JSONObject obj = (JSONObject)coolsms.send(params);
+			System.out.println(obj.toString());
+		} catch (CoolsmsException e) {
+			System.out.println(e.getMessage());
+			System.out.println(e.getCode());
+		}
+	}
+	
 }

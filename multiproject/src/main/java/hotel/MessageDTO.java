@@ -11,6 +11,9 @@ public class MessageDTO {
 	}
 
 	public MessageDTO() {}
+	public MessageDTO(String phone_number) {
+		this.phone_number = phone_number;
+	}
 	public MessageDTO(String phone_number, String randomNumber) {
 		this.phone_number = phone_number;
 		this.randomNumber = randomNumber;

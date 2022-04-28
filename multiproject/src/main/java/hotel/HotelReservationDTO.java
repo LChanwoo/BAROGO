@@ -2,11 +2,47 @@ package hotel;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import edu.multi.kdigital.dto.PaymentDto;
+
 public class HotelReservationDTO {
 	String reservation_id, hotel_id, business_id, user_id;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
 	String start_date,end_date;
 	String confirm,payment,regist_time,hotel_name;
+	String proname,amount,buyer_email,buyer_name;
+
+
+	public String getProname() {
+		return proname;
+	}
+
+	public void setProname(String proname) {
+		this.proname = proname;
+	}
+
+	public String getAmount() {
+		return amount;
+	}
+
+	public void setAmount(String amount) {
+		this.amount = amount;
+	}
+
+	public String getBuyer_email() {
+		return buyer_email;
+	}
+
+	public void setBuyer_email(String buyer_email) {
+		this.buyer_email = buyer_email;
+	}
+
+	public String getBuyer_name() {
+		return buyer_name;
+	}
+
+	public void setBuyer_name(String buyer_name) {
+		this.buyer_name = buyer_name;
+	}
 
 	public String getRegist_time() {
 		return regist_time;

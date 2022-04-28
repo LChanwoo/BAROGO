@@ -28,7 +28,7 @@ public interface HotelDAO {
 	public int selectHotelcount(HotelPostDTO dto); 
 	public ArrayList<HotelReservationDTO> selectReservationsbybids(String business_id);
 	public ArrayList<HotelReservationDTO> selectReservationsbyuids(String user_id);
-	public ArrayList<HotelceoDTO> selectHotelceobyhids(String business_id);
+	public ArrayList<HotelceoDTO> selectHotelceobybids(String business_id);
 	public ArrayList<HotelPictureDTO> selectHotelPicturebyhids(String hotel_id);
 	public ArrayList<HotelPostDTO> selectHotelbyhids(String hotel_id);
 	public ArrayList<HotelPostDTO> selectHotelpagelist(int page); 

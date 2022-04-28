@@ -62,8 +62,17 @@ public class UploadController {
 			String ext1 = originname1.substring(originname1.indexOf("."));
 			File serverfile1 = new File(savePath +"/"+ beforeext1+"("+UUID.randomUUID().toString()+")"+ext1); 
 			System.out.println(serverfile1);
-			mf1.transferTo(serverfile1);
-			img.setPath(serverfile1.toString());
+			try {
+				mf1.transferTo(serverfile1);
+				img.setPath(serverfile1.toString());
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+//			System.out.println(img.getPath());
+//			String pathtmp = serverfile1.toString();
+//			System.out.println(pathtmp);
+//			String path = pathtmp.replaceAll("\\\\","/");
+//			System.out.println(path);
 		}
 		
 		return img;

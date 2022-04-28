@@ -36,7 +36,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.fasterxml.jackson.databind.JsonNode;
 
+import edu.multi.kdigital.dto.PaymentDto;
 import edu.multi.kdigital.dto.UserDto;
+import edu.multi.kdigital.service.PaymentService;
 import edu.multi.kdigital.service.UserService;
 
 
@@ -59,6 +61,11 @@ public class HotelController {
 	@Autowired
 	@Qualifier("UserService")
 	UserService uService;
+	
+	@Autowired
+	@Qualifier("PaymentService")
+	PaymentService pService;
+	
 	
 	@RequestMapping("/Hotel")
 	public String main(){ 
@@ -192,7 +199,7 @@ public class HotelController {
 		String y=address.get("addresses").get(0).get("y").toPrettyString();
 		x = x.replaceAll("\"", "");
 		y = y.replaceAll("\"", "");
-		ArrayList<HotelceoDTO> hcdtos= hotelservice.selectHotelceobyhids(business_id);
+		ArrayList<HotelceoDTO> hcdtos= hotelservice.selectHotelceobybids(business_id);
 		String profile_picture =hcdtos.get(0).getProfile_picture();
 		String profile_text =hcdtos.get(0).getProfile_text();
 		SimpleDateFormat sdf1=new SimpleDateFormat("YYYY-MM-dd");
@@ -328,25 +335,29 @@ public class HotelController {
 			return "{\"pay\": 0 }"; 
 		}
 		}catch (Exception e) {}
+//		System.out.println(dto.getProname());
+//		String proname=dto.getProname();
+//		String amount=dto.getAmount();
+//		String buyer_email=dto.getBuyer_email();
+//		String buyer_name=dto.getBuyer_name();
+//		PaymentDto pdto= new PaymentDto(proname, amount, buyer_email, buyer_name);
+		//pService.paymentinfo(pdto);
 		SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		Date now_date=	new Date();
 		String now= sdf.format(now_date);
 		System.out.println(now);
 		dto.setUser_id(login_id);
 		dto.setRegist_time(now);
-		System.out.println(dto.getHotel_name());
-		System.out.println(dto.getHotel_id());
-		System.out.println(dto.getBusiness_id());
-		System.out.println(dto.getUser_id());
-		System.out.println(dto.getStart_date());
-		System.out.println(dto.getEnd_date());
-		System.out.println(dto.getPayment());
-		String s="1";
+		ArrayList<HotelceoDTO> hcdtos= hotelservice.selectHotelceobybids(dto.getBusiness_id());
+		String hotel_phone = hcdtos.get(0).getBusiness_phone();
+		String hotel_name = dto.getHotel_name();
 		try {
 		System.out.println(hotelservice.postReservation(dto));
 		}catch (Exception e) {
 			e.printStackTrace();
 		}			
+		String s="1";
+		mservice.sendReservationMessage(hotel_phone, hotel_name);
 		
 		return "{\"pay\":"+s+"}"; 
 	}
@@ -370,33 +381,7 @@ public class HotelController {
 		
 	}
 	
-//	@ResponseBody
-//	@RequestMapping(value="/hotel/getpay",method = RequestMethod.POST )
-//	public String hotelpay(
-//			@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
-//			HotelReservationDTO dto, HttpSession session){ 
-//		String login_id= (String)session.getAttribute("loginid");
-//		SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
-//		String now=sdf.format(new Date());
-//		dto.setUser_id(login_id);
-//		dto.setRegist_time(now);
-//		System.out.println(dto.getHotel_name());
-//		System.out.println(dto.getHotel_id());
-//		System.out.println(dto.getBusiness_id());
-//		System.out.println(dto.getUser_id());
-//		System.out.println(dto.getStart_date());
-//		System.out.println(dto.getEnd_date());
-//		System.out.println(dto.getPayment());
-//		String s="";
-//		try {
-//		System.out.println(hotelservice.postReservation(dto));
-//		}catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return "{\"pay\":"+s+"}"; 
-//	}
-	
-	
+
 
 	@RequestMapping(value="/hotel/manage", method= RequestMethod.GET)
 	public ModelAndView hotelmanage( 
@@ -772,13 +757,13 @@ public class HotelController {
 	public String joinceobtn(HotelceoDTO dto, HttpSession session, HttpServletResponse response){ 
 		String pathtmp = (String)dto.getProfile_picture();
 		System.out.println(pathtmp);
-		String pathtmp2 = pathtmp.substring(2, pathtmp.length());
+		String pathtmp2 = pathtmp.substring(10, pathtmp.length());
 		System.out.println(pathtmp2);
 		String path = pathtmp2.replaceAll("\\\\","/");
 		dto.setProfile_picture(path);
 		String pathtmp3 = (String)dto.getBusiness_registration();
 		System.out.println(pathtmp3);
-		String pathtmp4 = pathtmp3.substring(2, pathtmp3.length());
+		String pathtmp4 = pathtmp3.substring(10, pathtmp3.length());
 		System.out.println(pathtmp4);
 		String path2 = pathtmp4.replaceAll("\\\\","/");
 		dto.setBusiness_registration(path2);
@@ -799,7 +784,6 @@ public class HotelController {
 	 public MessageDTO sendmessage(MessageDTO dto){ 
 		 MessageDTO result = new MessageDTO();
 		 try {
-		 System.out.println(dto.getPhone_number()); 
 		 DecimalFormat df= new DecimalFormat("0000");
 		 String randomNumber = df.format((int)(Math.random()*9999));
 		 	result.setRandomNumber(randomNumber);
