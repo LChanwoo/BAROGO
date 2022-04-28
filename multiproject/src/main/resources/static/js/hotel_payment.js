@@ -29,6 +29,7 @@ IMP.request_pay({
     // buyer_addr : document.getElementById('buyer_addr').value,
     // buyer_postcode : document.getElementById('buyer_postcode').value,
 }, function(rsp) {
+    document.getElementById('payform').submit();
     if ( rsp.success ) {
         var msg = '결제가 완료되었습니다.';
         msg += '고유ID : ' + rsp.imp_uid;
@@ -70,6 +71,6 @@ IMP.request_pay({
         msg += '에러내용 : ' + rsp.error_msg;
         alert(msg);
     }
-    // document.getElementById('payform').submit();
+    
   });
 }
