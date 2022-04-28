@@ -1,4 +1,4 @@
-let page= 2;
+let pagex= 2;
 document.getElementsByClassName("search_btns1")[0].onclick=function(){
 	const val= document.getElementsByClassName("searchtextbox")[0];
 
@@ -11,7 +11,7 @@ const getAjax = function() {
 		url: "/hotel",
 		type: "post",
 		dataType: "json",
-		data: {'page':page},
+		data: {'page':pagex},
 		success: (respond) => {
 			resolve(respond);
 		},
@@ -49,10 +49,10 @@ const makesection=function(){
 }
 const inserttodiv = function(i,respond) {
 	return new Promise((resolve, reject) => {
-	const hotelname= document.getElementsByClassName("hotel_list_infor_name")[i+15*(page-2)];
-	const pic_url= document.getElementsByClassName("hotel_list_infor_pic_img")[i+15*(page-2)];
-	const contents= document.getElementsByClassName("hotel_list_infor_detail")[i+15*(page-2)];
-	const edithref = document.getElementsByClassName("goedit")[i+15*(page-2)];
+	const hotelname= document.getElementsByClassName("hotel_list_infor_name")[i+15*(pagex-2)];
+	const pic_url= document.getElementsByClassName("hotel_list_infor_pic_img")[i+15*(pagex-2)];
+	const contents= document.getElementsByClassName("hotel_list_infor_detail")[i+15*(pagex-2)];
+	const edithref = document.getElementsByClassName("goedit")[i+15*(pagex-2)];
 	edithref.setAttribute("href","/hotel/"+respond[i].hotel_id);
 	hotelname.innerHTML = respond[i].hotel_name;
 	pic_url.setAttribute("src",respond[i].hotel_picture);
@@ -70,7 +70,7 @@ const inserttodiv = function(i,respond) {
 			 if(respond.length==0){return;}
 			 else{				
 				 makesection();
-				 page++;
+				 pagex++;
 				 for(let i=0;i<respond.length;i++){
 					 makediv();
 				 } 
