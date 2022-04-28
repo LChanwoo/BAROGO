@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -31,8 +32,9 @@ public class MarketAjaxController {
 	}
 	
 	@PostMapping("deletebasket")	
-	public List<MarketDTO> deletebasket(HttpSession session,String[] name){
-		System.out.println("삭제할 이름:"+name);
+	public List<MarketDTO> deletebasket(HttpSession session,
+			@RequestParam(value="name[]") String[] name){
+		System.out.println("===삭제할 이름:"+name);
 		MarketDTO dto =new MarketDTO();
 		dto.setId((String)session.getAttribute("userId"));
 		System.out.println(dto.getId());
@@ -45,6 +47,7 @@ public class MarketAjaxController {
 		
 		return list;
 	}
+
 	@PostMapping("changeoption")
 	public List<MarketDTO> changeoption(MarketDTO dto){
 		List<MarketDTO> changelist =  service.marketproduct(dto.market);
