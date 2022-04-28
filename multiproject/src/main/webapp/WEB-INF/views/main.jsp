@@ -9,7 +9,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>바로고</title>
+<title>바로고 - BAROGO</title>
 
     <!-- CSS -->
 <link href="/css/slide.css" rel="stylesheet" />

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>BAROGO</title>
 <script type="text/javascript">
 
 

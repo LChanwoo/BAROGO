@@ -9,7 +9,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Insert title here</title>
+<title>BAROGO</title>
 
 <!-- CSS -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">

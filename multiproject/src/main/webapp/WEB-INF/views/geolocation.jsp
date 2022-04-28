@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>바로고</title>
 
 <link href="css/geolocation.css" rel="stylesheet">
 <script src="jquery-3.6.0.min.js"></script>
