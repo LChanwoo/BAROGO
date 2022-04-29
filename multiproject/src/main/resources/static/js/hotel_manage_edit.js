@@ -139,9 +139,12 @@ document.getElementById("manage_add_hotel").onclick=function(){
 	if(x[0]!=null){
 	var pictureList = new Array() ;
 	 for(var i=0; i<x.length; i++){
+		 try{
 		 var data = new Object() ; 
 		 data.path = x[i].getAttribute("id"); 
 		 pictureList.push(data) ; 
+		 }
+		 catch{}
 	}
 		 var picture_jsonData = JSON.stringify(pictureList) ; 
 	}
