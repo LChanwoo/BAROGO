@@ -72,6 +72,10 @@
 							id="buyer_postcode" name="buyer_postcode">
 					</div>
 
+					<div style="display:none">
+						<input type="text" class="w3-input w3-border w3-round" id="userId" name="userId" value="${userId}">
+					</div>
+
 				</div>
 				<button id="iamportPayment" type="button"
 					class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-margin-bottom w3-round">결제하기</button>
