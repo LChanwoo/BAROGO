@@ -24,7 +24,7 @@
 	<br>
 	<br>
 
-	<form action="/payment" method="post" id="payform">
+	<form action="/payinsert" method="post" id="payform">
 		<div class="w3-content w3-container w3-margin-top">
 			<div class="w3-container w3-card-4">
 				<div class=" w3-large w3-margin-top">
@@ -35,7 +35,7 @@
 
                     <div>
                         <label class="label" for="amount">가격 </label> <br> <input
-                            type="text" class="w3-input" id="amount" name="amount" value ="${paydto.price }" >
+                            type="text" class="w3-input" id="amount" name="amount" value ="${paydto.price }">
                     </div>
 					<div>
 						<br> <br>

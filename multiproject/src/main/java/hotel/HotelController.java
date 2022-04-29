@@ -613,7 +613,7 @@ public class HotelController {
 				String pathtmp = (String)tmp.get("path");
 				System.out.println(pathtmp);
 				String path=null;
-				if(pathtmp.indexOf("/upload")==0){
+				if(pathtmp.indexOf("/upload")==0||pathtmp.indexOf("/upload")==1){
 					path = pathtmp;
 				}
 				else {
