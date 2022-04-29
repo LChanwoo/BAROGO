@@ -100,7 +100,7 @@
 					</div>
 				</div>
 				<div class="manage_hotel_add_form textbox">
-					<span class="manage_hotel_add_question">ROOM 정보</span><button id="add_abs_infor" class="ml20 mr20" >+</button><button id="delete_abs_infor" class=" mr20" >-</button><span class="yet">Room 정보를 입력해주세요.</span>
+					<span class="manage_hotel_add_question">객실 정보</span><button id="add_abs_infor" class="ml20 mr20" >+</button><button id="delete_abs_infor" class=" mr20" >-</button><span class="yet">객실 정보를 입력해주세요.(최대 3개).</span>
 					<div class="abs_infor" id="abs_infor">
 
 					</div>

@@ -8,7 +8,7 @@ $(document).ready(function(){
 		 var buyer_tel = document.getElementById('buyer_tel').value;
 		 var buyer_addr = document.getElementById('buyer_addr').value;
 		 var buyer_postcode = document.getElementById('buyer_postcode').value;
-		 var buyer_postcode = document.getElementById('userId').value;
+		//  var buyer_postcode = document.getElementById('userId').value;
     	payment(); //버튼 클릭하면 호출 
     }); 
 })
