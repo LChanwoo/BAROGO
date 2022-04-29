@@ -35,7 +35,7 @@
 
                     <div>
                         <label class="label" for="amount">가격 </label> <br> <input
-                            type="text" class="w3-input" id="amount" name="amount" value ="${paydto.price }" readonly="readonly">
+                            type="text" class="w3-input" id="amount" name="amount" value ="${paydto.price }" >
                     </div>
 					<div>
 						<br> <br>
