@@ -628,9 +628,15 @@ public class HotelController {
 			}
 			JSONObject tmp=(JSONObject)picarr.get(picarr.length()-1);
 			String pathtmp = (String)tmp.get("path");
-			String pathtmp2 = pathtmp.substring(10, pathtmp.length());
-			String path = pathtmp2.replaceAll("\\\\","/");
-			System.out.println(path);
+			String path=null;
+			if(pathtmp.indexOf("/upload")==0){
+				path = pathtmp;
+			}
+			else {
+				String pathtmp2 = pathtmp.substring(10, pathtmp.length());
+				path = pathtmp2.replaceAll("\\\\","/");
+				System.out.println(path);
+			}
 			dto.setHotel_picture(path);
 			dto.setHotel_id(hotel_id);
 			System.out.println(dto.getHotel_id());
