@@ -606,15 +606,22 @@ public class HotelController {
 				int x3= hotelservice.deleteHotelPicture(dto);
 				System.out.println("호텔사진삭제성공");
 			try {
+				
 			JSONArray picarr = new JSONArray(dto.getHotel_picture());
 			for (int i = 0; i <picarr.length(); i++) {
 				JSONObject tmp=(JSONObject)picarr.get(i);
 				String pathtmp = (String)tmp.get("path");
 				System.out.println(pathtmp);
+				String path=null;
+				if(pathtmp.indexOf("/upload")==0){
+					path = pathtmp;
+				}
+				else {
 				String pathtmp2 = pathtmp.substring(10, pathtmp.length());
 				System.out.println(pathtmp2);
-				String path = pathtmp2.replaceAll("\\\\","/");
+				path = pathtmp2.replaceAll("\\\\","/");
 				System.out.println(path);
+				}
 				HotelPictureDTO hpdto= new HotelPictureDTO(hotel_id,path);
 				int hpres = hotelservice.postHotelPicture(hpdto);
 				System.out.println(hpres);
