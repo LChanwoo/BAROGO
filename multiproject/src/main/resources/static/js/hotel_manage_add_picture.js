@@ -164,7 +164,7 @@
 			reader.onload = function(ee){
 			  img = document.createElement('img')
 			  img.setAttribute('style', img_style)
-			  img.setAttribute('id', "c:"+file)
+			  img.setAttribute('id', file)
 			  img.src = file;
 			  attZone.appendChild(makeDiv(img, file));
 
